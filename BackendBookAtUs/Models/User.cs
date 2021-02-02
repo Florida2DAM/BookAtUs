@@ -14,13 +14,14 @@ namespace BackendBookAtUs.Models
 
         }
 
-        public User(string name, string surname, string email, string avatar, DateTime birth)
+        public User(string name, string surname, string userId, string avatar, DateTime birth, string password)
         {
             Name = name;
             Surname = surname;
-            UserId = email;
+            UserId = userId;
             Avatar = avatar;
             Birth = birth;
+            Password = password;
             Rating = 0;
             Sells = 0;
             Buys = 0;
@@ -30,6 +31,7 @@ namespace BackendBookAtUs.Models
         public string Surname { get; set; }
         public string UserId { get; set; }
         public string Avatar { get; set; }
+        public string Password { get; set; }
         public DateTime Birth { get; set; }
         public double Rating { get; set; }
         public int Sells { get; set; }

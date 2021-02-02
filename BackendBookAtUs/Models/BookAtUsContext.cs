@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Web;
 using System.Web.WebPages;
@@ -10,8 +11,8 @@ namespace BackendBookAtUs.Models
 {
     public class BookAtUsContext : DbContext
     {
-        public DbSet<Product> Productos { get; set; }
-        public DbSet<User> Usuarios { get; set; }
+        public DbSet<Product> Products { get; set; }
+        public DbSet<User> Users { get; set; }
 
         public BookAtUsContext()
         {
@@ -31,10 +32,8 @@ namespace BackendBookAtUs.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-
-            //modelBuilder.Entity<Usuario>().HasData("Book", "At Us", "BookAtUs@hotmail.com", "Avatar xD",DateTime.Now /*"2001-12-21".AsDateTime().Date*/);
-          
-
+            User user = new User("Book", "At Us", "BookAtUs@hotmail.com", "Avatar xD", "2001-12-21".AsDateTime().Date, "Florida_2020");
+            modelBuilder.Entity<User>().HasData(user);
         }
 
     }

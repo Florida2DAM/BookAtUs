@@ -4,18 +4,19 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace BackendBookAtUs.Migrations
 {
-    public partial class m1 : Migration
+    public partial class m2 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Usuarios",
+                name: "Users",
                 columns: table => new
                 {
                     UserId = table.Column<string>(nullable: false),
                     Name = table.Column<string>(nullable: true),
                     Surname = table.Column<string>(nullable: true),
                     Avatar = table.Column<string>(nullable: true),
+                    Password = table.Column<string>(nullable: true),
                     Birth = table.Column<DateTime>(nullable: false),
                     Rating = table.Column<double>(nullable: false),
                     Sells = table.Column<int>(nullable: false),
@@ -25,11 +26,11 @@ namespace BackendBookAtUs.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Usuarios", x => x.UserId);
+                    table.PrimaryKey("PK_Users", x => x.UserId);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Productos",
+                name: "Products",
                 columns: table => new
                 {
                     ProductId = table.Column<int>(nullable: false)
@@ -43,43 +44,48 @@ namespace BackendBookAtUs.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Productos", x => x.ProductId);
+                    table.PrimaryKey("PK_Products", x => x.ProductId);
                     table.ForeignKey(
-                        name: "FK_Productos_Usuarios_ProprietaryUserId",
+                        name: "FK_Products_Users_ProprietaryUserId",
                         column: x => x.ProprietaryUserId,
-                        principalTable: "Usuarios",
+                        principalTable: "Users",
                         principalColumn: "UserId",
                         onDelete: ReferentialAction.Restrict);
                 });
 
+            migrationBuilder.InsertData(
+                table: "Users",
+                columns: new[] { "UserId", "Avatar", "Birth", "Buys", "Name", "Password", "ProductId", "ProductId1", "Rating", "Sells", "Surname" },
+                values: new object[] { "BookAtUs@hotmail.com", "Avatar xD", new DateTime(2001, 12, 21, 0, 0, 0, 0, DateTimeKind.Unspecified), 0, "Book", "Florida_2020", null, null, 0.0, 0, "At Us" });
+
             migrationBuilder.CreateIndex(
-                name: "IX_Productos_ProprietaryUserId",
-                table: "Productos",
+                name: "IX_Products_ProprietaryUserId",
+                table: "Products",
                 column: "ProprietaryUserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Usuarios_ProductId",
-                table: "Usuarios",
+                name: "IX_Users_ProductId",
+                table: "Users",
                 column: "ProductId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Usuarios_ProductId1",
-                table: "Usuarios",
+                name: "IX_Users_ProductId1",
+                table: "Users",
                 column: "ProductId1");
 
             migrationBuilder.AddForeignKey(
-                name: "FK_Usuarios_Productos_ProductId",
-                table: "Usuarios",
+                name: "FK_Users_Products_ProductId",
+                table: "Users",
                 column: "ProductId",
-                principalTable: "Productos",
+                principalTable: "Products",
                 principalColumn: "ProductId",
                 onDelete: ReferentialAction.Restrict);
 
             migrationBuilder.AddForeignKey(
-                name: "FK_Usuarios_Productos_ProductId1",
-                table: "Usuarios",
+                name: "FK_Users_Products_ProductId1",
+                table: "Users",
                 column: "ProductId1",
-                principalTable: "Productos",
+                principalTable: "Products",
                 principalColumn: "ProductId",
                 onDelete: ReferentialAction.Restrict);
         }
@@ -87,14 +93,14 @@ namespace BackendBookAtUs.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropForeignKey(
-                name: "FK_Productos_Usuarios_ProprietaryUserId",
-                table: "Productos");
+                name: "FK_Products_Users_ProprietaryUserId",
+                table: "Products");
 
             migrationBuilder.DropTable(
-                name: "Usuarios");
+                name: "Users");
 
             migrationBuilder.DropTable(
-                name: "Productos");
+                name: "Products");
         }
     }
 }

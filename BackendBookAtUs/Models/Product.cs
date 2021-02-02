@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Web;
+using WebGrease;
 
 namespace BackendBookAtUs.Models
 {
@@ -14,7 +15,7 @@ namespace BackendBookAtUs.Models
         
         }
 
-        public Product(int productId, double title, int description, double price, int category, List<string> pics, DateTime uploadDate, List<User> watched, List<User> likes, User proprietary)
+        public Product(int productId, double title, int description, double price, int category, List<string> pics, DateTime uploadDate, List<User> watched, List<User> likes, User proprietary, Image pic)
         {
             ProductId = productId;
             Title = title;
@@ -25,7 +26,6 @@ namespace BackendBookAtUs.Models
             Watched = new List<User>();
             Likes = new List<User>();
             Proprietary = proprietary;
-            //Pics = new List<string>();
         }
 
         public int ProductId { get; set; }

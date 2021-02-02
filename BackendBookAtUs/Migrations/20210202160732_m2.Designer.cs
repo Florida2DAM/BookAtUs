@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BackendBookAtUs.Migrations
 {
     [DbContext(typeof(BookAtUsContext))]
-    [Migration("20210201182939_m1")]
-    partial class m1
+    [Migration("20210202160732_m2")]
+    partial class m2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -47,7 +47,7 @@ namespace BackendBookAtUs.Migrations
 
                     b.HasIndex("ProprietaryUserId");
 
-                    b.ToTable("Productos");
+                    b.ToTable("Products");
                 });
 
             modelBuilder.Entity("BackendBookAtUs.Models.User", b =>
@@ -65,6 +65,9 @@ namespace BackendBookAtUs.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Password")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<int?>("ProductId")
@@ -88,7 +91,21 @@ namespace BackendBookAtUs.Migrations
 
                     b.HasIndex("ProductId1");
 
-                    b.ToTable("Usuarios");
+                    b.ToTable("Users");
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = "BookAtUs@hotmail.com",
+                            Avatar = "Avatar xD",
+                            Birth = new DateTime(2001, 12, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Buys = 0,
+                            Name = "Book",
+                            Password = "Florida_2020",
+                            Rating = 0.0,
+                            Sells = 0,
+                            Surname = "At Us"
+                        });
                 });
 
             modelBuilder.Entity("BackendBookAtUs.Models.Product", b =>
