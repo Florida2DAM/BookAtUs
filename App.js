@@ -23,6 +23,7 @@ import { Button } from 'react-native-elements';
 import { Pantalla1} from './screens/Pantalla1';
 import { Pantalla2} from './screens/Pantalla2';
 import { Pantalla3} from './screens/Pantalla3';
+import { AddBook} from './screens/AddBook';
 
 const pilaNavegacio = createStackNavigator(); //Creem la pila de Navegació
 
@@ -35,6 +36,7 @@ pantallaPrincipal = ({navigation}) => {return(
     <Text> Pantalla inicial </Text>
     <Button title='Pantalla 1' onPress={()=>navigation.navigate('Pantalla 1')} /> 
     <Button title='Pantalla 2' onPress={()=>navigation.navigate('Pantalla 2')} /> 
+    <Button title='AddBook' onPress={()=>navigation.navigate('AddBook')} /> 
   </View>
 </View>
 )}
@@ -48,6 +50,7 @@ pantallaPrincipal = ({navigation}) => {return(
           <pilaNavegacio.Screen name="Pantalla 1" component={Pantalla1} />
           <pilaNavegacio.Screen name="Pantalla 2" component={Pantalla2} />
           <pilaNavegacio.Screen name="Pantalla 3" component={Pantalla3} />
+          <pilaNavegacio.Screen name="AddBook" component={AddBook}/>
         </pilaNavegacio.Navigator>
       </NavigationContainer>
     );
