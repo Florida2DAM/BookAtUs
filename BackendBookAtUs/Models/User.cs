@@ -36,7 +36,5 @@ namespace BackendBookAtUs.Models
         public double Rating { get; set; }
         public int Sells { get; set; }
         public int Buys { get; set; }
-
-
     }
 }

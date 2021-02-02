@@ -13,6 +13,7 @@ namespace BackendBookAtUs.Models
     {
         public DbSet<Product> Products { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<PurchaseConfirmed> PurchaseConfirmed { get; set; }
 
         public BookAtUsContext()
         {
@@ -35,6 +36,5 @@ namespace BackendBookAtUs.Models
             User user = new User("Book", "At Us", "BookAtUs@hotmail.com", "Avatar xD", "2001-12-21".AsDateTime().Date, "Florida_2020");
             modelBuilder.Entity<User>().HasData(user);
         }
-
     }
 }

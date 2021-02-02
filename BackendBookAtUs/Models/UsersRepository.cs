@@ -24,7 +24,6 @@ namespace BackendBookAtUs.Models
                 return users;
 
             }
-
         }
 
         internal User Retrieve(string id, string pwd)
@@ -39,7 +38,6 @@ namespace BackendBookAtUs.Models
                 return users;
 
             }
-
         }
 
         internal bool Delete(string username) 
