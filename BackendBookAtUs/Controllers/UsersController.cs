@@ -36,8 +36,10 @@ namespace BackendBookAtUs.Controllers
         }
 
         // DELETE: api/Users/5
-        public void Delete(int id)
+        public void Delete(string username)
         {
+            UsersRepository repo = new UsersRepository();
+            return repo.Retrieve(username, password);
         }
     }
 }

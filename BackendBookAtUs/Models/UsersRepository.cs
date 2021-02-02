@@ -42,6 +42,31 @@ namespace BackendBookAtUs.Models
 
         }
 
+        internal bool Delete(string username) 
+        {
+            try
+            {
+                BookAtUsContext context = new BookAtUsContext();
+                User user = context
+                        .Users
+                        .FirstOrDefault(p => p.UserId == username);
+
+                context.Users.Remove(user);
+                if (context.SaveChanges() >= 1)
+                    return true;
+                else
+                {
+                    Debug.WriteLine("Not saved change");
+                    return false;
+                }          
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Error with catch: " + ex.Message);
+                return false;
+            }
+        }
+
         internal bool Save(User user)
         {
             try
@@ -52,8 +77,10 @@ namespace BackendBookAtUs.Models
                 if (context.SaveChanges() >= 1)
                     return true;
                 else
+                {
                     Debug.WriteLine("Not saved change");
                     return false;
+                }
             }
             catch (Exception ex)
             {
