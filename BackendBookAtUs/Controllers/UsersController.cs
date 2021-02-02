@@ -17,9 +17,10 @@ namespace BackendBookAtUs.Controllers
         }
 
         // GET: api/Users/5
-        public string Get(int id)
+        public User Get(string username, string password)
         {
-            return "value";
+            UsersRepository repo = new UsersRepository();
+            return repo.Retrieve(username, password);
         }
 
         // POST: api/Users

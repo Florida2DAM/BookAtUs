@@ -8,6 +8,7 @@ using System.Web;
 using System.Globalization;
 using System.Web.WebPages;
 using BackendBookAtUs.Common;
+using Microsoft.SqlServer.Server;
 
 namespace BackendBookAtUs.Models
 {
@@ -20,6 +21,21 @@ namespace BackendBookAtUs.Models
                 List<User> users = context
                     .Users
                     .ToList();
+                return users;
+
+            }
+
+        }
+
+        internal User Retrieve(string id, string pwd)
+        {
+            using (BookAtUsContext context = new BookAtUsContext())
+            {
+                User users = context
+                    .Users
+                    .Where(s => s.UserId == id)
+                    .Where(p => p.Password == Security.Encode(pwd))
+                    .FirstOrDefault();
                 return users;
 
             }
