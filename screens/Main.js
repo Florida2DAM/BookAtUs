@@ -19,6 +19,7 @@ export class Main extends Component {
           <StatusBar barStyle="dark-content" />
           <View >
               <Text> Main </Text>
+              <Button title='Profile' onPress={()=>this.props.navigation.navigate('Profile')} />
           </View>
         </View>
     );

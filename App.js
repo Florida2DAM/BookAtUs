@@ -24,6 +24,18 @@ import { Login } from './screens/Login';
 import { Password } from './screens/Password';
 import { Main } from './screens/Main';
 import { Register } from './screens/Register';
+import { Profile } from './screens/Profile';
+import { EditProfile } from './screens/EditProfile';
+import { AddBook } from './screens/AddBook';
+import { BookInfo } from './screens/BookInfo';
+import { BookList } from './screens/BookList';
+import { Chat } from './screens/Chat';
+import { Favorites } from './screens/Favorites';
+import { MyAds } from './screens/MyAds';
+import { Help } from './screens/Help';
+
+
+
 
 const pilaNavegacio = createStackNavigator();
 
@@ -49,6 +61,15 @@ pantallaPrincipal = ({navigation}) => {return(
           <pilaNavegacio.Screen name="Password" component={Password} />
           <pilaNavegacio.Screen name="Main" component={Main} />
           <pilaNavegacio.Screen name="Register" component={Register} />
+          <pilaNavegacio.Screen name="AddBook" component={AddBook} />
+          <pilaNavegacio.Screen name="BookInfo" component={BookInfo} />
+          <pilaNavegacio.Screen name="BookList" component={BookList} />
+          <pilaNavegacio.Screen name="Profile" component={Profile} />
+          <pilaNavegacio.Screen name="EditProfile" component={EditProfile} />
+          <pilaNavegacio.Screen name="Favorites" component={Favorites} />
+          <pilaNavegacio.Screen name="MyAds" component={MyAds} />
+          <pilaNavegacio.Screen name="Chat" component={Chat} />
+          <pilaNavegacio.Screen name="Help" component={Help} />
         </pilaNavegacio.Navigator>
       </NavigationContainer>
     );
