@@ -20,12 +20,24 @@ import {
 } from 'react-native';
 
 import { Button } from 'react-native-elements';
-import { Pantalla1} from './screens/Pantalla1';
-import { Pantalla2} from './screens/Pantalla2';
-import { Pantalla3} from './screens/Pantalla3';
-import { AddBook} from './screens/AddBook';
+import { Login } from './screens/Login';
+import { Password } from './screens/Password';
+import { Main } from './screens/Main';
+import { Register } from './screens/Register';
+import { Profile } from './screens/Profile';
+import { EditProfile } from './screens/EditProfile';
+import { AddBook } from './screens/AddBook';
+import { BookInfo } from './screens/BookInfo';
+import { BookList } from './screens/BookList';
+import { Chat } from './screens/Chat';
+import { Favorites } from './screens/Favorites';
+import { MyAds } from './screens/MyAds';
+import { Help } from './screens/Help';
 
-const pilaNavegacio = createStackNavigator(); //Creem la pila de Navegació
+
+
+
+const pilaNavegacio = createStackNavigator();
 
 export class App extends Component {
   
@@ -33,10 +45,9 @@ pantallaPrincipal = ({navigation}) => {return(
   <View style={styles.contenidor}>
   <StatusBar barStyle="dark-content" />
   <View>
-    <Text> Pantalla inicial </Text>
-    <Button title='Pantalla 1' onPress={()=>navigation.navigate('Pantalla 1')} /> 
-    <Button title='Pantalla 2' onPress={()=>navigation.navigate('Pantalla 2')} /> 
-    <Button title='AddBook' onPress={()=>navigation.navigate('AddBook')} /> 
+    <Button title='Login' onPress={()=>navigation.navigate('Login')} />  
+    <Button title='Register' onPress={()=>navigation.navigate('Register')} />
+    <Button title='AddBook' onPress={()=>navigation.navigate('AddBook')} />
   </View>
 </View>
 )}
@@ -47,10 +58,19 @@ pantallaPrincipal = ({navigation}) => {return(
       <NavigationContainer>
         <pilaNavegacio.Navigator>
           <pilaNavegacio.Screen name="Home" component={this.pantallaPrincipal} />
-          <pilaNavegacio.Screen name="Pantalla 1" component={Pantalla1} />
-          <pilaNavegacio.Screen name="Pantalla 2" component={Pantalla2} />
-          <pilaNavegacio.Screen name="Pantalla 3" component={Pantalla3} />
-          <pilaNavegacio.Screen name="AddBook" component={AddBook}/>
+          <pilaNavegacio.Screen name="Login" component={Login} />
+          <pilaNavegacio.Screen name="Password" component={Password} />
+          <pilaNavegacio.Screen name="Main" component={Main} />
+          <pilaNavegacio.Screen name="Register" component={Register} />
+          <pilaNavegacio.Screen name="AddBook" component={AddBook} />
+          <pilaNavegacio.Screen name="BookInfo" component={BookInfo} />
+          <pilaNavegacio.Screen name="BookList" component={BookList} />
+          <pilaNavegacio.Screen name="Profile" component={Profile} />
+          <pilaNavegacio.Screen name="EditProfile" component={EditProfile} />
+          <pilaNavegacio.Screen name="Favorites" component={Favorites} />
+          <pilaNavegacio.Screen name="MyAds" component={MyAds} />
+          <pilaNavegacio.Screen name="Chat" component={Chat} />
+          <pilaNavegacio.Screen name="Help" component={Help} />
         </pilaNavegacio.Navigator>
       </NavigationContainer>
     );
