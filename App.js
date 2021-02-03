@@ -24,6 +24,7 @@ import { Login } from './screens/Login';
 import { Password } from './screens/Password';
 import { Main } from './screens/Main';
 import { Register } from './screens/Register';
+import { Chat } from './screens/Chat';
 
 const pilaNavegacio = createStackNavigator();
 
@@ -35,6 +36,7 @@ pantallaPrincipal = ({navigation}) => {return(
   <View>
     <Button title='Login' onPress={()=>navigation.navigate('Login')} />  
     <Button title='Register' onPress={()=>navigation.navigate('Register')} />
+    <Button title='Chat' onPress={()=>navigation.navigate('Chat')} />
   </View>
 </View>
 )}
@@ -49,6 +51,7 @@ pantallaPrincipal = ({navigation}) => {return(
           <pilaNavegacio.Screen name="Password" component={Password} />
           <pilaNavegacio.Screen name="Main" component={Main} />
           <pilaNavegacio.Screen name="Register" component={Register} />
+          <pilaNavegacio.Screen name="Chat" component={Chat} />
         </pilaNavegacio.Navigator>
       </NavigationContainer>
     );
