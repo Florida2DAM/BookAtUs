@@ -9,6 +9,7 @@ import {
   View,
   Text,
   StatusBar,
+  ScrollView,
 } from 'react-native';
 
 import {Button} from 'react-native-elements'
@@ -42,7 +43,7 @@ export class Main extends Component {
 
     return (
       <View style={{flex: 1}}>
-      
+        <ScrollView>
       <SearchBar
       inputContainerStyle={{backgroundColor: 'white'}}
       leftIconContainerStyle={{backgroundColor: 'white'}}
@@ -52,14 +53,15 @@ export class Main extends Component {
         justifyContent: 'space-around',
         borderTopWidth:0,
         borderBottomWidth:0}}
-      />
-      <View style={{ position: 'absolute', width:'100%',bottom: 0,flex: 0.5 }}>
+        />
+      <View style={{width:'100%',bottom: 0,flex: 0.5,marginTop:450 }}>
         <ButtonGroup
         onPress={this.updateIndex}
         selectedIndex={selectedIndex}
         buttons={buttons}
         containerStyle={{height: 75, backgroundColor: '#81D3F8'}} />
         </View>
+        </ScrollView>
       </View>
     );
   }

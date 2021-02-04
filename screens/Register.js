@@ -66,7 +66,7 @@ export class Register extends Component {
                     </View>
                     <View style={{flex: 1}}>
                     <Button title='Continue' onPress={()=>this.props.navigation.navigate('Main')} />
-                    <Text style={{textAlign: 'center',fontFamily: 'Arial', fontSize: 18}}>You have an account?</Text>
+                    <Text style={{textAlign: 'center',fontFamily: 'Arial', fontSize: 18}}>Have you an account?</Text>
                     <Text style={{textAlign: 'center',fontFamily: 'Arial', fontSize: 18,color: '#169BD5'}} onPress={()=>this.props.navigation.navigate('Login')}>Log in</Text>
                     </View>
                 </View>
