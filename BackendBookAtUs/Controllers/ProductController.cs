@@ -5,9 +5,11 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace BackendBookAtUs.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class ProductController : ApiController
     {
         // GET: api/Product
@@ -15,6 +17,14 @@ namespace BackendBookAtUs.Controllers
         {
             var repo = new ProductsRepository();
             List<Product> products = repo.RetrieveCategory(category);
+            return products;
+        }
+
+
+        public IEnumerable<ProductoDTO> GetImagen()
+        {
+            var repo = new ProductsRepository();
+            List<ProductoDTO> products = repo.RetrieveDTO();
             return products;
         }
 

@@ -33,8 +33,7 @@ namespace BackendBookAtUs.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            User user = new User("Book", "At Us", "BookAtUs@hotmail.com", "Avatar xD", "2001-12-21".AsDateTime().Date, "Florida_2020");
-            modelBuilder.Entity<User>().HasData(user);
+            
         }
     }
 }

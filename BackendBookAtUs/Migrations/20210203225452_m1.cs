@@ -4,10 +4,26 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace BackendBookAtUs.Migrations
 {
-    public partial class m2 : Migration
+    public partial class m1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "PurchaseConfirmed",
+                columns: table => new
+                {
+                    PurchaseId = table.Column<int>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Id_Buyer = table.Column<string>(nullable: true),
+                    Id_Seller = table.Column<string>(nullable: true),
+                    Date_Purchase = table.Column<DateTime>(nullable: false),
+                    ProductId = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PurchaseConfirmed", x => x.PurchaseId);
+                });
+
             migrationBuilder.CreateTable(
                 name: "Users",
                 columns: table => new
@@ -35,8 +51,8 @@ namespace BackendBookAtUs.Migrations
                 {
                     ProductId = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Title = table.Column<double>(nullable: false),
-                    Description = table.Column<int>(nullable: false),
+                    Title = table.Column<string>(nullable: true),
+                    Description = table.Column<string>(nullable: true),
                     Price = table.Column<double>(nullable: false),
                     Category = table.Column<int>(nullable: false),
                     UploadDate = table.Column<DateTime>(nullable: false),
@@ -53,15 +69,15 @@ namespace BackendBookAtUs.Migrations
                         onDelete: ReferentialAction.Restrict);
                 });
 
-            migrationBuilder.InsertData(
-                table: "Users",
-                columns: new[] { "UserId", "Avatar", "Birth", "Buys", "Name", "Password", "ProductId", "ProductId1", "Rating", "Sells", "Surname" },
-                values: new object[] { "BookAtUs@hotmail.com", "Avatar xD", new DateTime(2001, 12, 21, 0, 0, 0, 0, DateTimeKind.Unspecified), 0, "Book", "Florida_2020", null, null, 0.0, 0, "At Us" });
-
             migrationBuilder.CreateIndex(
                 name: "IX_Products_ProprietaryUserId",
                 table: "Products",
                 column: "ProprietaryUserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_PurchaseConfirmed_ProductId",
+                table: "PurchaseConfirmed",
+                column: "ProductId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Users_ProductId",
@@ -72,6 +88,14 @@ namespace BackendBookAtUs.Migrations
                 name: "IX_Users_ProductId1",
                 table: "Users",
                 column: "ProductId1");
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_PurchaseConfirmed_Products_ProductId",
+                table: "PurchaseConfirmed",
+                column: "ProductId",
+                principalTable: "Products",
+                principalColumn: "ProductId",
+                onDelete: ReferentialAction.Restrict);
 
             migrationBuilder.AddForeignKey(
                 name: "FK_Users_Products_ProductId",
@@ -95,6 +119,9 @@ namespace BackendBookAtUs.Migrations
             migrationBuilder.DropForeignKey(
                 name: "FK_Products_Users_ProprietaryUserId",
                 table: "Products");
+
+            migrationBuilder.DropTable(
+                name: "PurchaseConfirmed");
 
             migrationBuilder.DropTable(
                 name: "Users");

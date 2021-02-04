@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Drawing;
 using System.Linq;
 using System.Web;
@@ -15,7 +16,7 @@ namespace BackendBookAtUs.Models
         
         }
 
-        public Product(int productId, double title, int description, double price, int category,  User proprietary, Image pic)
+        public Product(int productId, string title, string description, double price, int category,  User proprietary, Byte[] pic)
         {
             ProductId = productId;
             Title = title;
@@ -26,9 +27,10 @@ namespace BackendBookAtUs.Models
             Watched = new List<User>();
             Likes = new List<User>();
             Proprietary = proprietary;
+            Image = pic;
         }
 
-        public Product(double title, int description, double price, int category)
+        public Product(string title, string description, double price, int category)
         {
             Title = title;
             Description = description;
@@ -36,15 +38,32 @@ namespace BackendBookAtUs.Models
             Category = category;
         }
 
+
+
         public int ProductId { get; set; }
-        public double Title { get; set; }
-        public int Description { get; set; }
+        public string Title { get; set; }
+        public string Description { get; set; }
         public double Price { get; set; }
         public int Category { get; set; }
-        //public List<string> Pics { get; set; }
+        public Byte[] Image { get; set; }
         public DateTime UploadDate { get; set; }
         public List<User> Watched { get; set; }
         public List<User> Likes { get; set; }
         public User Proprietary { get; set; }
     }
+    
+    public class ProductoDTO
+    {
+        public Byte[] Image { get; set; }
+
+        public ProductoDTO(byte[] image)
+        {
+            Image = image;
+        }
+
+        public ProductoDTO()
+        {
+        }
+    }
+
 }

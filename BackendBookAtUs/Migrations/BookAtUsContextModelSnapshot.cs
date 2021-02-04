@@ -26,8 +26,11 @@ namespace BackendBookAtUs.Migrations
                     b.Property<int>("Category")
                         .HasColumnType("int");
 
-                    b.Property<int>("Description")
-                        .HasColumnType("int");
+                    b.Property<string>("Description")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<byte[]>("Image")
+                        .HasColumnType("longblob");
 
                     b.Property<double>("Price")
                         .HasColumnType("double");
@@ -35,8 +38,8 @@ namespace BackendBookAtUs.Migrations
                     b.Property<string>("ProprietaryUserId")
                         .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
 
-                    b.Property<double>("Title")
-                        .HasColumnType("double");
+                    b.Property<string>("Title")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<DateTime>("UploadDate")
                         .HasColumnType("datetime(6)");
@@ -46,6 +49,31 @@ namespace BackendBookAtUs.Migrations
                     b.HasIndex("ProprietaryUserId");
 
                     b.ToTable("Products");
+                });
+
+            modelBuilder.Entity("BackendBookAtUs.Models.PurchaseConfirmed", b =>
+                {
+                    b.Property<int>("PurchaseId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("Date_Purchase")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("Id_Buyer")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Id_Seller")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("ProductId")
+                        .HasColumnType("int");
+
+                    b.HasKey("PurchaseId");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("PurchaseConfirmed");
                 });
 
             modelBuilder.Entity("BackendBookAtUs.Models.User", b =>
@@ -90,20 +118,6 @@ namespace BackendBookAtUs.Migrations
                     b.HasIndex("ProductId1");
 
                     b.ToTable("Users");
-
-                    b.HasData(
-                        new
-                        {
-                            UserId = "BookAtUs@hotmail.com",
-                            Avatar = "Avatar xD",
-                            Birth = new DateTime(2001, 12, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Buys = 0,
-                            Name = "Book",
-                            Password = "Florida_2020",
-                            Rating = 0.0,
-                            Sells = 0,
-                            Surname = "At Us"
-                        });
                 });
 
             modelBuilder.Entity("BackendBookAtUs.Models.Product", b =>
@@ -111,6 +125,13 @@ namespace BackendBookAtUs.Migrations
                     b.HasOne("BackendBookAtUs.Models.User", "Proprietary")
                         .WithMany()
                         .HasForeignKey("ProprietaryUserId");
+                });
+
+            modelBuilder.Entity("BackendBookAtUs.Models.PurchaseConfirmed", b =>
+                {
+                    b.HasOne("BackendBookAtUs.Models.Product", "product")
+                        .WithMany()
+                        .HasForeignKey("ProductId");
                 });
 
             modelBuilder.Entity("BackendBookAtUs.Models.User", b =>

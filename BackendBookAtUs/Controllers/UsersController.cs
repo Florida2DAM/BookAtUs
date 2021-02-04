@@ -1,4 +1,5 @@
 ﻿using BackendBookAtUs.Models;
+using System.Web.Http.Cors;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +9,7 @@ using System.Web.Http;
 
 namespace BackendBookAtUs.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class UsersController : ApiController
     {
         // GET: api/Users
@@ -36,10 +38,10 @@ namespace BackendBookAtUs.Controllers
         }
 
         // DELETE: api/Users/5
-        public void Delete(string username)
+        public bool Delete(string username)
         {
             UsersRepository repo = new UsersRepository();
-            return repo.Retrieve(username, password);
+            return repo.Delete(username);
         }
     }
 }

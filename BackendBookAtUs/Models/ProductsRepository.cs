@@ -5,6 +5,8 @@ using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Web;
 using System.Diagnostics;
+using System.Data;
+using Microsoft.AspNetCore.Cors;
 
 namespace BackendBookAtUs.Models
 {
@@ -19,6 +21,20 @@ namespace BackendBookAtUs.Models
                     .ToList();
                 return products;
             }
+        }
+
+        internal List<ProductoDTO> RetrieveDTO()
+        {
+            using (BookAtUsContext context = new BookAtUsContext())
+            {
+                List<ProductoDTO> productos = context.Products.Select(p => ToDTO(p)).ToList();
+                return productos;
+            }
+        }
+
+        static public ProductoDTO ToDTO(Product p)
+        {
+            return new ProductoDTO(p.Image);
         }
 
         internal Product RetrieveId(int id)

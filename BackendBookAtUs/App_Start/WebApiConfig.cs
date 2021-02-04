@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Http;
 using System.Web.Http;
 using Microsoft.Owin.Security.OAuth;
 using Newtonsoft.Json.Serialization;
 
-namespace BackendBookAtUs
+namespace WebApi
 {
     public static class WebApiConfig
     {
@@ -16,6 +15,8 @@ namespace BackendBookAtUs
             // Configure Web API para usar solo la autenticación de token de portador.
             config.SuppressDefaultHostAuthentication();
             config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
+            //config.EnableCors(new EnableCorsAttribute("https://localhost:3000", "*", "*"));
+            config.EnableCors();
 
             // Rutas de Web API
             config.MapHttpAttributeRoutes();

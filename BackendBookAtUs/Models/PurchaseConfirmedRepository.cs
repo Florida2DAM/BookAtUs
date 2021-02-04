@@ -37,7 +37,7 @@ namespace BackendBookAtUs.Models
             {
                 using (BookAtUsContext context = new BookAtUsContext())
                 {
-                    PurchaseConfirmed purchase = context.PurchaseConfirmed.FirstOrDefault(p => p.idPurchase == id);
+                    PurchaseConfirmed purchase = context.PurchaseConfirmed.FirstOrDefault(p => p.PurchaseId == id);
                     context.PurchaseConfirmed.Remove(purchase);
                     if (context.SaveChanges() >= 1)
                         return true;
