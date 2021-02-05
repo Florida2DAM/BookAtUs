@@ -3,7 +3,6 @@ import React, { Component, useState } from 'react';
 import DropDownPicker from 'react-native-dropdown-picker'
 import Icon from 'react-native-vector-icons/Feather';
 import DocumentPicker from 'react-native-document-picker';
-import AddImage from '../components/AddImage';
 
 import {
   SafeAreaView,
@@ -22,26 +21,67 @@ import {
 import { Button, Input } from 'react-native-elements'
 import { shouldUseActivityState } from 'react-native-screens';
 
-
-
-
-
-
-
-
-
 export class AddBook extends Component {
   constructor(props) {
-    super(props)
-    this.state =  {
-      book: "Fantasy"
+    super(props);
+    this.state = {
+      singleFileOBJ: '',
+    };
+  }
+ 
+  async SingleFilePicker() {
+    try {
+      const res = await DocumentPicker.pick({
+        type: [DocumentPicker.types.allFiles],
+      
+      });
+ 
+      this.setState({ singleFileOBJ: res });
+      
+    } catch (err) {
+      if (DocumentPicker.isCancel(err)) {
+        Alert.alert('Canceled');
+      } else {
+        Alert.alert('Unknown Error: ' + JSON.stringify(err));
+        throw err;
+      }
     }
-
-
   }
 
  
   render() {
+    const selectOneFile = async () => {
+      //Opening Document Picker for selection of one file
+      try {
+          const res = await DocumentPicker.pick({
+              type: [DocumentPicker.types.images],
+              //There can me more options as well
+              // DocumentPicker.types.allFiles
+              // DocumentPicker.types.images
+              // DocumentPicker.types.plainText
+              // DocumentPicker.types.audio
+              // DocumentPicker.types.pdf
+          });
+          //Printing the log realted to the file
+          console.log('res : ' + JSON.stringify(res));
+          console.log('URI : ' + res.uri);
+          console.log('Type : ' + res.type);
+          alert('File Name : ' + res.name);
+          alert('File Size : ' + res.size);
+          //Setting the state to show single file attributes
+          this.setState(res);
+      } catch (err) {
+          //Handling any exception (If any)
+          if (DocumentPicker.isCancel(err)) {
+              //If user canceled the document selection
+              alert('Canceled from single doc picker');
+          } else {
+              //For Unknown Error
+              alert('Unknown Error: ' + JSON.stringify(err));
+              throw err;
+          }
+      }
+  };
     return (
       <ScrollView>
         <View style={styles.contenidor}>
@@ -86,37 +126,26 @@ export class AddBook extends Component {
               })}
             />
           </View>
+          
+          <View style={styles.MainContainer}>
+ 
+        <Text style={styles.text}>
+          File Name: {this.state.singleFileOBJ.name ? this.state.singleFileOBJ.name : ''}
+        </Text>
+        <View style={{alignItems:'center'}}>
+        <Image source={{ uri: this.state.singleFileOBJ.uri ? this.state.singleFileOBJ.uri : '' }} style={{ width: 143, height: 130}}/>
+        <TouchableOpacity
+          activeOpacity={0.5}
+          style={styles.button}
+          onPress={this.SingleFilePicker.bind(this)}>
+          <Text style={styles.buttonText}>
+            Click Here To Pick File
+          </Text>
+        </TouchableOpacity>
+        </View>
+      </View>
           <View>
-
-            {/*To show single file attribute*/}
-            <TouchableOpacity
-              activeOpacity={0.5}
-              onPress={selectOneFile}>
-              {/*Single file selection button*/}
-              <Text style={{ marginRight: 10, fontSize: 19 }}>
-                Click here to pick one file
-            </Text>
-              <Image
-            source={{
-              uri: 'https://img.icons8.com/offices/40/000000/attach.png',
-            }}
-            />
-            </TouchableOpacity>
-            <AddImage>
-            <Text style={styles.textStyle}>
-              File Name: {singleFile.name ? singleFile.name : ''}
-              {'\n'}
-              Type: {singleFile.type ? singleFile.type : ''}
-              {'\n'}
-              File Size: {singleFile.size ? singleFile.size : ''}
-              {'\n'}
-              URI: {singleFile.uri ? singleFile.uri : ''}
-              {'\n'}
-            </Text>
-            </AddImage>
-          </View>
-          <View>
-            <Button title='Post' />
+            <Button buttonStyle={{width:230,borderRadius:10,backgroundColor: '#0091EA'}} title='Post' onPress={() => this.props.navigation.navigate('Main')}/>
           </View>
         </View>
       </ScrollView>
@@ -189,7 +218,31 @@ const styles = StyleSheet.create({
     borderStyle: 'solid',
     borderWidth: 2
   },
+  MainContainer: {
+    flex: 1,
+    backgroundColor: '#fff',
+    padding: 16,
+    justifyContent: 'center',
+  },
+ 
+  button: {
+    width: '100%',
+    backgroundColor: '#0091EA',
+    borderRadius:9,
+  },
+ 
+  buttonText: {
+    color: '#fff',
+    fontSize: 21,
+    padding: 10,
+    textAlign: 'center'
+  },
+ 
+  text: {
+    color: '#000',
+    fontSize: 16,
+    padding: 10,
+    textAlign: 'left'
+  },
 
 });
-
-export default AddBook;
