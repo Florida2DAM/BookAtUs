@@ -1,7 +1,6 @@
 import 'react-native-gesture-handler';
 import React, { Component, useState } from 'react';
 import DropDownPicker from 'react-native-dropdown-picker'
-import Icon from 'react-native-vector-icons/Feather';
 import DocumentPicker from 'react-native-document-picker';
 
 import {
@@ -28,16 +27,16 @@ export class AddBook extends Component {
       singleFileOBJ: '',
     };
   }
- 
+
   async SingleFilePicker() {
     try {
       const res = await DocumentPicker.pick({
         type: [DocumentPicker.types.allFiles],
-      
+
       });
- 
+
       this.setState({ singleFileOBJ: res });
-      
+
     } catch (err) {
       if (DocumentPicker.isCancel(err)) {
         Alert.alert('Canceled');
@@ -48,40 +47,40 @@ export class AddBook extends Component {
     }
   }
 
- 
+
   render() {
     const selectOneFile = async () => {
       //Opening Document Picker for selection of one file
       try {
-          const res = await DocumentPicker.pick({
-              type: [DocumentPicker.types.images],
-              //There can me more options as well
-              // DocumentPicker.types.allFiles
-              // DocumentPicker.types.images
-              // DocumentPicker.types.plainText
-              // DocumentPicker.types.audio
-              // DocumentPicker.types.pdf
-          });
-          //Printing the log realted to the file
-          console.log('res : ' + JSON.stringify(res));
-          console.log('URI : ' + res.uri);
-          console.log('Type : ' + res.type);
-          alert('File Name : ' + res.name);
-          alert('File Size : ' + res.size);
-          //Setting the state to show single file attributes
-          this.setState(res);
+        const res = await DocumentPicker.pick({
+          type: [DocumentPicker.types.images],
+          //There can me more options as well
+          // DocumentPicker.types.allFiles
+          // DocumentPicker.types.images
+          // DocumentPicker.types.plainText
+          // DocumentPicker.types.audio
+          // DocumentPicker.types.pdf
+        });
+        //Printing the log realted to the file
+        console.log('res : ' + JSON.stringify(res));
+        console.log('URI : ' + res.uri);
+        console.log('Type : ' + res.type);
+        alert('File Name : ' + res.name);
+        alert('File Size : ' + res.size);
+        //Setting the state to show single file attributes
+        this.setState(res);
       } catch (err) {
-          //Handling any exception (If any)
-          if (DocumentPicker.isCancel(err)) {
-              //If user canceled the document selection
-              alert('Canceled from single doc picker');
-          } else {
-              //For Unknown Error
-              alert('Unknown Error: ' + JSON.stringify(err));
-              throw err;
-          }
+        //Handling any exception (If any)
+        if (DocumentPicker.isCancel(err)) {
+          //If user canceled the document selection
+          alert('Canceled from single doc picker');
+        } else {
+          //For Unknown Error
+          alert('Unknown Error: ' + JSON.stringify(err));
+          throw err;
+        }
       }
-  };
+    };
     return (
       <ScrollView>
         <View style={styles.contenidor}>
@@ -126,26 +125,24 @@ export class AddBook extends Component {
               })}
             />
           </View>
-          
           <View style={styles.MainContainer}>
- 
-        <Text style={styles.text}>
-          File Name: {this.state.singleFileOBJ.name ? this.state.singleFileOBJ.name : ''}
-        </Text>
-        <View style={{alignItems:'center'}}>
-        <Image source={{ uri: this.state.singleFileOBJ.uri ? this.state.singleFileOBJ.uri : '' }} style={{ width: 143, height: 130}}/>
-        <TouchableOpacity
-          activeOpacity={0.5}
-          style={styles.button}
-          onPress={this.SingleFilePicker.bind(this)}>
-          <Text style={styles.buttonText}>
-            Click Here To Pick File
+            <Text style={styles.text}>
+              File Name: {this.state.singleFileOBJ.name ? this.state.singleFileOBJ.name : ''}
+            </Text>
+            <View style={{ alignItems: 'center' }}>
+              <Image source={{ uri: this.state.singleFileOBJ.uri ? this.state.singleFileOBJ.uri : '' }} style={{ width: 143, height: 130 }} />
+              <TouchableOpacity
+                activeOpacity={0.5}
+                style={styles.button}
+                onPress={this.SingleFilePicker.bind(this)}>
+                <Text style={styles.buttonText}>
+                  Click Here To Pick File
           </Text>
-        </TouchableOpacity>
-        </View>
-      </View>
+              </TouchableOpacity>
+            </View>
+          </View>
           <View>
-            <Button buttonStyle={{width:230,borderRadius:10,backgroundColor: '#0091EA'}} title='Post' onPress={() => this.props.navigation.navigate('Main')}/>
+            <Button buttonStyle={{ width: 230, borderRadius: 10, backgroundColor: '#0091EA' }} title='Post' onPress={() => this.props.navigation.navigate('Main')} />
           </View>
         </View>
       </ScrollView>
@@ -224,20 +221,20 @@ const styles = StyleSheet.create({
     padding: 16,
     justifyContent: 'center',
   },
- 
+
   button: {
     width: '100%',
     backgroundColor: '#0091EA',
-    borderRadius:9,
+    borderRadius: 9,
   },
- 
+
   buttonText: {
     color: '#fff',
     fontSize: 21,
     padding: 10,
     textAlign: 'center'
   },
- 
+
   text: {
     color: '#000',
     fontSize: 16,

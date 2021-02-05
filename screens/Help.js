@@ -4,12 +4,11 @@ import React, { Component } from 'react';
 import {
   StyleSheet,
   View,
-  StatusBar,
   Button,
   Text,
 } from 'react-native';
 
-import { Card, CheckBox, Image, Input, } from 'react-native-elements'
+import { Card, Image, Input, } from 'react-native-elements'
 import { ScrollView } from 'react-native-gesture-handler';
 import RadioButton from '../components/RadioButton';
 const PROP = [

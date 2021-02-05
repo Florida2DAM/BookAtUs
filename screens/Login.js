@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Button, Text, StatusBar, ScrollView } from 'react-native';
 import {
-    Input, Icon,
+    Input,
 } from 'react-native-elements';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -22,10 +22,10 @@ export class Login extends Component {
     pantallaPrincipal = ({ navigation }) => {
         return (
             <View style={{ flex: 1, flexDirection: 'column', backgroundColor: 'white', alignItems: 'center', alignContent: 'center' }}>
-                    <ScrollView>
+                <ScrollView>
                     <StatusBar barStyle="white-content" />
                     <View style={{ margin: 50 }}>
-                        <Text style={{ fontFamily: 'Arial', fontSize: 32, textAlign: 'center', color: '#333333', flex: 0.55,marginBottom:50 }}> Log in and start discovering </Text>
+                        <Text style={{ fontFamily: 'Arial', fontSize: 32, textAlign: 'center', color: '#333333', flex: 0.55, marginBottom: 50 }}> Log in and start discovering </Text>
                         <View style={{ flex: 1 }}>
                             <Input
                                 placeholder='Email'
@@ -35,16 +35,16 @@ export class Login extends Component {
                                 placeholder='Password'
                                 leftIcon={{ name: 'lock' }}
                             />
-                            <Text style={{ textAlign: 'right', fontFamily: 'Arial', fontSize: 18, color: '#169BD5',marginBottom:80 }} onPress={() => navigation.navigate('Password')}>Don't remember your password?</Text>
+                            <Text style={{ textAlign: 'right', fontFamily: 'Arial', fontSize: 18, color: '#169BD5', marginBottom: 80 }} onPress={() => navigation.navigate('Password')}>Don't remember your password?</Text>
                         </View>
-                        
+
                         <Button title='Continue' onPress={() => navigation.navigate('Main')} />
                         <Text style={{ textAlign: 'center', fontFamily: 'Arial', fontSize: 18 }}>Don't you have an account?</Text>
                         <Text style={{ textAlign: 'center', fontFamily: 'Arial', fontSize: 18, color: '#169BD5' }} onPress={() => navigation.navigate('Register')}>Sign in</Text>
-                        
+
                     </View>
-                    </ScrollView>
-                </View>
+                </ScrollView>
+            </View>
         )
     }
 
