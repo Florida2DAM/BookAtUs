@@ -29,7 +29,7 @@ import { EditProfile } from './screens/EditProfile';
 import { AddBook } from './screens/AddBook';
 import { BookInfo } from './screens/BookInfo';
 import { BookList } from './screens/BookList';
-import { Chat } from './screens/Chat';
+import { ChatScreen } from './screens/Chat';
 import { Favorites } from './screens/Favorites';
 import { MyAds } from './screens/MyAds';
 import { Help } from './screens/Help';
