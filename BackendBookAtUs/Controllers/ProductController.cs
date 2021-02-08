@@ -20,14 +20,6 @@ namespace BackendBookAtUs.Controllers
             return products;
         }
 
-
-        public IEnumerable<ProductoDTO> GetImagen()
-        {
-            var repo = new ProductsRepository();
-            List<ProductoDTO> products = repo.RetrieveDTO();
-            return products;
-        }
-
         // GET: api/Product/5
         public Product Get(int id)
         {

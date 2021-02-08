@@ -22,21 +22,7 @@ namespace BackendBookAtUs.Models
                 return products;
             }
         }
-
-        internal List<ProductoDTO> RetrieveDTO()
-        {
-            using (BookAtUsContext context = new BookAtUsContext())
-            {
-                List<ProductoDTO> productos = context.Products.Select(p => ToDTO(p)).ToList();
-                return productos;
-            }
-        }
-
-        static public ProductoDTO ToDTO(Product p)
-        {
-            return new ProductoDTO(p.Image);
-        }
-
+    
         internal Product RetrieveId(int id)
         {
             using (BookAtUsContext context = new BookAtUsContext())

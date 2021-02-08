@@ -17,10 +17,12 @@ namespace BackendBookAtUs.Models
             MessageId = messageId;
             User = user;
             Body = body;
+            Date = DateTime.Now;
         }
 
         public int MessageId { get; set; }
         public string User { get; set; }
         public string Body { get; set; }
+        public DateTime Date { get; set; }
     }
 }

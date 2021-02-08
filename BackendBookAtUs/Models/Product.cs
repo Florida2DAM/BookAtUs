@@ -39,7 +39,6 @@ namespace BackendBookAtUs.Models
         }
 
 
-
         public int ProductId { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
@@ -50,20 +49,6 @@ namespace BackendBookAtUs.Models
         public List<User> Watched { get; set; }
         public List<User> Likes { get; set; }
         public User Proprietary { get; set; }
-    }
-    
-    public class ProductoDTO
-    {
-        public Byte[] Image { get; set; }
-
-        public ProductoDTO(byte[] image)
-        {
-            Image = image;
-        }
-
-        public ProductoDTO()
-        {
-        }
     }
 
 }
