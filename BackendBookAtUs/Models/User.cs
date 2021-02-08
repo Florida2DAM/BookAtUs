@@ -16,7 +16,7 @@ namespace BackendBookAtUs.Models
 
         }
 
-        public User(string name, string surname, string userId, Byte[] avatar, DateTime birth, string password)
+        public User(string name, string surname, string userId, Byte[] avatar, string birth, string password)
         {
             Name = name;
             Surname = surname;
@@ -34,7 +34,7 @@ namespace BackendBookAtUs.Models
         public string UserId { get; set; }
         public Byte[] Avatar { get; set; }
         public string Password { get; set; }
-        public DateTime Birth { get; set; }
+        public string Birth { get; set; }
         public double Rating { get; set; }
         public int Sells { get; set; }
         public int Buys { get; set; }
