@@ -39,7 +39,7 @@ namespace BackendBookAtUs.Models
         public ChatDTO(int chatId, int productId, string buyer, string seller)
         {
             ChatId = chatId;
-            ProductId = productId;
+              
             Buyer = buyer;
             Seller = seller;
         }
