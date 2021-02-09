@@ -2,7 +2,7 @@ import 'react-native-gesture-handler';
 import React, { Component, useState } from 'react';
 import DropDownPicker from 'react-native-dropdown-picker'
 import DocumentPicker from 'react-native-document-picker';
-
+import axios from "axios";
 import {
   SafeAreaView,
   TouchableOpacity,
@@ -25,13 +25,20 @@ export class AddBook extends Component {
     super(props);
     this.state = {
       singleFileOBJ: '',
+      title : '',
+      description : '',
+      price : null,
+      category : null,
+      userId : 'admin',
+      image : null,
+      url: 'http://10.0.2.2:7010/api/Product'
     };
   }
 
   async SingleFilePicker() {
     try {
       const res = await DocumentPicker.pick({
-        type: [DocumentPicker.types.allFiles],
+        type: [DocumentPicker.types.images],
 
       });
 
@@ -45,6 +52,19 @@ export class AddBook extends Component {
         throw err;
       }
     }
+  }
+
+  postbook = () => {
+    const book = {
+      title: this.state.title,
+      description: this.state.description,
+      price: this.state.price,
+      category: this.state.category,
+      proprietaryuserid: this.state.userId,
+      image: this.state.image
+    };
+    axios.post(this.state.url, book);
+    this.props.navigation.navigate('Main');
   }
 
 
@@ -87,19 +107,25 @@ export class AddBook extends Component {
           <StatusBar barStyle="dark-content" />
           <View style={styles.ViewTitle}>
             <Text style={styles.Text}>Book Title: </Text>
-            <Input style={styles.InputTitle}>
+            <Input style={styles.InputTitle}
+              onChangeText={(e) => this.setState({ title: e })}
+            >
 
             </Input>
           </View>
           <View style={styles.ViewDescription}>
             <Text style={styles.Text}>Description: </Text>
-            <Input style={styles.InputDescription}>
+            <Input style={styles.InputDescription}
+              onChangeText={(f) => this.setState({ description: f })}
+            >
 
             </Input>
           </View>
           <View style={styles.ViewTitle}>
             <Text style={styles.Text}>Price: </Text>
-            <Input style={styles.InputPrice}>
+            <Input style={styles.InputPrice}
+              keyboardType='numeric'
+              onChangeText={(d) => this.setState({ price: d })}           >
 
             </Input>
           </View>
@@ -142,7 +168,7 @@ export class AddBook extends Component {
             </View>
           </View>
           <View>
-            <Button buttonStyle={{ width: 230, borderRadius: 10, backgroundColor: '#0091EA' }} title='Post' onPress={() => this.props.navigation.navigate('Main')} />
+            <Button buttonStyle={{ width: 230, borderRadius: 10, backgroundColor: '#0091EA' }} title='Post' onPress={this.postbook} />
           </View>
         </View>
       </ScrollView>
