@@ -30,7 +30,7 @@ export class AddBook extends Component {
       price : null,
       category : null,
       userId : 'admin',
-      image : null,
+      image : '',
       url: 'http://10.0.2.2:7010/api/Product'
     };
   }
@@ -63,10 +63,29 @@ export class AddBook extends Component {
       proprietaryuserid: this.state.userId,
       image: this.state.image
     };
-    axios.post(this.state.url, book);
-    this.props.navigation.navigate('Main');
+    axios.post(this.state.url, book).then(
+    this.props.navigation.navigate('Main')
+    ).catch(err => {
+      alert(err)
+    })
   }
-
+categorytoint = (x) => {
+  if(x == "mystery"){
+    this.setState({category:1})
+  } else if(x == "Fantasy"){
+    this.setState({category:2})
+  } else if(x == "Studies"){
+    this.setState({category:3})
+  } else if(x == "Romance"){
+    this.setState({category:4})
+  } else if(x == "lightnovel"){
+    this.setState({category:5})
+  } else if(x == "heavynovel"){
+    this.setState({category:6})
+  } else{
+    alert("Pick a category")
+  }
+}
 
   render() {
     const selectOneFile = async () => {
@@ -146,9 +165,7 @@ export class AddBook extends Component {
                 justifyContent: 'flex-start'
               }}
               dropDownStyle={{ backgroundColor: '#fafafa' }}
-              onChangeItem={item => this.setState({
-                book: item.value
-              })}
+              onChangeItem={item => this.categorytoint(item.value)}
             />
           </View>
           <View style={styles.MainContainer}>
@@ -156,7 +173,7 @@ export class AddBook extends Component {
               File Name: {this.state.singleFileOBJ.name ? this.state.singleFileOBJ.name : ''}
             </Text>
             <View style={{ alignItems: 'center' }}>
-              <Image source={{ uri: this.state.singleFileOBJ.uri ? this.state.singleFileOBJ.uri : '' }} style={{ width: 143, height: 130 }} />
+              <Image source={{ uri: this.state.singleFileOBJ.uri ? this.state.singleFileOBJ.uri : ''}} style={{ width: 143, height: 130 }} />
               <TouchableOpacity
                 activeOpacity={0.5}
                 style={styles.button}

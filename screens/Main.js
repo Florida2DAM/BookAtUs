@@ -8,6 +8,7 @@ import {
   View,
   Text,
   ScrollView,
+  TouchableOpacity,
 } from 'react-native';
 
 export class Main extends Component {
@@ -30,9 +31,69 @@ export class Main extends Component {
   };
 
   render() {
-    const component1 = () => <Text style={{ fontFamily: 'Arial', fontSize: 22 }} onPress={() => this.props.navigation.navigate('BookList')}>Library</Text>
-    const component2 = () => <Text style={{ fontFamily: 'Arial', fontSize: 22 }} onPress={() => this.props.navigation.navigate('AddBook')}>Add</Text>
-    const component3 = () => <Text style={{ fontFamily: 'Arial', fontSize: 22 }} onPress={() => this.props.navigation.navigate('Profile')}>Profile</Text>
+    const component1 = () => <TouchableOpacity
+      activeOpacity={0.8}
+      onPress={() => this.props.navigation.navigate('BookList')}
+      style={{
+        elevation: 8,
+        backgroundColor: "#81D3F8",
+        paddingVertical: 22,
+        paddingHorizontal: 20,
+        width: '100%',
+        height: '100%'
+      }}
+
+    >
+      <Text style={{
+        fontSize: 18,
+        color: "#fff",
+        fontWeight: "bold",
+        alignSelf: "center",
+        textTransform: "uppercase"
+      }}>Library</Text>
+    </TouchableOpacity>
+    const component2 = () => <TouchableOpacity
+      activeOpacity={0.8}
+      onPress={() => this.props.navigation.navigate('AddBook')}
+      style={{
+        elevation: 8,
+        backgroundColor: "#81D3F8",
+        paddingVertical: 22,
+        paddingHorizontal: 20,
+        width: '100%',
+        height: '100%'
+      }}
+
+    >
+      <Text style={{
+        fontSize: 18,
+        color: "#fff",
+        fontWeight: "bold",
+        alignSelf: "center",
+        textTransform: "uppercase"
+      }}>Add</Text>
+    </TouchableOpacity>
+    const component3 = () => <TouchableOpacity
+      activeOpacity={0.8}
+      onPress={() => this.props.navigation.navigate('Profile')}
+      style={{
+        elevation: 8,
+        backgroundColor: "#81D3F8",
+        paddingVertical: 22,
+        paddingHorizontal: 20,
+        width: '100%',
+        height: '100%'
+      }}
+
+    >
+      <Text style={{
+        fontSize: 18,
+        color: "#fff",
+        fontWeight: "bold",
+        alignSelf: "center",
+        textTransform: "uppercase"
+      }}>Profile</Text>
+    </TouchableOpacity>
     const { search } = this.state;
     const buttons = [{ element: component1 }, { element: component2 }, { element: component3 }]
     const { selectedIndex } = this.state
