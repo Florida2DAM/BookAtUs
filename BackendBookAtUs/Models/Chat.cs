@@ -13,16 +13,16 @@ namespace BackendBookAtUs.Models
 
         }
 
-        public Chat(int chatId, int product, string buyer, string seller)
+        public Chat(int chatId, Product product, string buyer, string seller)
         {
-            ProductId = product;
+            Product = product;
             Buyer = buyer;
             Seller = seller;
             Messages = new List<Message>();
         }
  
         public int ChatId { get; set; }
-        public int ProductId { get; set; }
+        public Product Product { get; set; }
         public string Buyer { get; set; }
         public string Seller { get; set; }
         public List<Message> Messages { get; set; }
@@ -33,21 +33,25 @@ namespace BackendBookAtUs.Models
     {
         public ChatDTO()
         {
-             
+
         }
 
-        public ChatDTO(int chatId, int productId, string buyer, string seller)
+        public ChatDTO(int chatId, int productId, string buyer, string seller, string productName, byte[] productImage)
         {
             ChatId = chatId;
-              
+            ProductId = productId;
             Buyer = buyer;
             Seller = seller;
+            ProductName = productName;
+            ProductImage = productImage;
         }
 
         public int ChatId { get; set; }
         public int ProductId { get; set; }
         public string Buyer { get; set; }
         public string Seller { get; set; }
+        public string ProductName { get; set; }
+        public Byte[] ProductImage { get; set; }
     }
 
 }

@@ -58,7 +58,7 @@ namespace BackendBookAtUs.Models
             {
                 Chat chat = context
                     .Chat
-                    .Where(p => p.ProductId == chatDto.ProductId)
+                    .Where(p => p.Product.ProductId == chatDto.ProductId)
                     .Where(s => s.Seller == chatDto.Seller)
                     .Where(b => b.Buyer == chatDto.Buyer)
                     .FirstOrDefault();
@@ -111,7 +111,7 @@ namespace BackendBookAtUs.Models
 
         static public ChatDTO ToDTO(Chat c)
         {
-            return new ChatDTO(c.ChatId, c.ProductId, c.Buyer, c.Seller);
+            return new ChatDTO(c.ChatId, c.Product.ProductId, c.Buyer, c.Seller, c.Product.Title, c.Product.Image);
         }
     }
 }
