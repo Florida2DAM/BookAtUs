@@ -19,7 +19,7 @@ export class Profile extends Component {
                                     <Icon name="chat" type size={30} color="#000000"></Icon>
                                 }
                                     iconContainerStyle={{ margin: 20 }}
-                                    titleStyle={{ color: "#000000" }} title='Chat' onPress={() => this.props.navigation.navigate('MyChats')} > </Button>
+                                    titleStyle={{ color: "#000000" }} title='Chat' onPress={() => this.props.navigation.navigate('Chat')} > </Button>
                             </View>
                             <View style={styles.seccio2}>
                                 <Button icon={

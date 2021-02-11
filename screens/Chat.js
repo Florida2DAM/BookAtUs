@@ -9,9 +9,7 @@ import {
 
 import { Message } from '../components/Message';
 
-import {Button, Icon} from 'react-native-elements';
-
-
+import {Button, Icon} from 'react-native-elements'
 
 export class Chat extends Component {
 

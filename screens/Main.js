@@ -1,15 +1,13 @@
 import 'react-native-gesture-handler';
 import React, { Component } from 'react';
 import { SearchBar, ButtonGroup } from 'react-native-elements';
-
-
-
 import {
   View,
   Text,
   ScrollView,
-  TouchableOpacity,
+  TouchableOpacity
 } from 'react-native';
+import { Image } from 'react-native-elements'
 
 export class Main extends Component {
   constructor() {
@@ -100,18 +98,8 @@ export class Main extends Component {
 
     return (
       <ScrollView>
-        <View style={{ flex: 1 }}>
-          <SearchBar
-            inputContainerStyle={{ backgroundColor: 'white' }}
-            leftIconContainerStyle={{ backgroundColor: 'white' }}
-            inputStyle={{ backgroundColor: 'white' }}
-            containerStyle={{
-              backgroundColor: '#81D3F8',
-              justifyContent: 'space-around',
-              borderTopWidth: 0,
-              borderBottomWidth: 0
-            }}
-          />
+        <View style={{ flex: 1}}>
+        <Image source={{ uri: 'https://i.imgur.com/DTWszbP.png' }} style={{ width: '90%', height: 140, borderRadius: 20, margin: 20 }} />
           <View style={{ width: '100%', bottom: 0, flex: 0.5 }}>
             <ButtonGroup
               onPress={this.updateIndex}

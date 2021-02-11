@@ -1,4 +1,5 @@
 {
   "name": "PI",
-  "displayName": "PI"
+  "displayName": "PI",
+  "orientation": "portrait"
 }
