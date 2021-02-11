@@ -26,13 +26,15 @@ namespace BackendBookAtUs.Migrations
                     b.Property<string>("Buyer")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<int>("ProductId")
+                    b.Property<int?>("ProductId")
                         .HasColumnType("int");
 
                     b.Property<string>("Seller")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.HasKey("ChatId");
+
+                    b.HasIndex("ProductId");
 
                     b.ToTable("Chat");
                 });
@@ -163,6 +165,13 @@ namespace BackendBookAtUs.Migrations
                     b.HasIndex("ProductId1");
 
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("BackendBookAtUs.Models.Chat", b =>
+                {
+                    b.HasOne("BackendBookAtUs.Models.Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductId");
                 });
 
             modelBuilder.Entity("BackendBookAtUs.Models.Message", b =>
