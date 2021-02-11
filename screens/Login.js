@@ -14,6 +14,7 @@ import { AddBook } from './AddBook';
 import { BookInfo } from './BookInfo';
 import { BookList } from './BookList';
 import { Chat } from './Chat';
+import { MyChats } from './MyChats';
 import { Favorites } from './Favorites';
 import { MyAds } from './/MyAds';
 import { Help } from './Help';
@@ -65,6 +66,7 @@ export class Login extends Component {
                     <pilaNavegacio.Screen name="Favorites" component={Favorites} />
                     <pilaNavegacio.Screen name="MyAds" component={MyAds} />
                     <pilaNavegacio.Screen name="Chat" component={Chat} />
+                    <pilaNavegacio.Screen name="MyChats" component={MyChats} />
                     <pilaNavegacio.Screen name="Help" component={Help} />
                 </pilaNavegacio.Navigator>
             </NavigationContainer>
