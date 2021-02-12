@@ -13,6 +13,7 @@ import { Button, Input, CheckBox } from 'react-native-elements'
 import DocumentPicker from 'react-native-document-picker';
 import DatePicker from 'react-native-datepicker'
 import ImgToBase64 from 'react-native-image-base64';
+import { NavigationActions, DrawerNavigator,  StackNavigator } from 'react-navigation';
 export class Register extends Component {
     constructor(props) {
         super(props);
@@ -32,6 +33,15 @@ export class Register extends Component {
             date: null
         };
     }
+
+    navigateToScreen = (route, params) => () => {
+        const navigateAction = NavigationActions.navigate({
+          routeName: route,
+          params: params
+        });
+        this.props.navigation.dispatch(navigateAction);
+        }
+        
 
     handlePicker = data => {
         this.setState({ pickedData: data });
@@ -67,10 +77,10 @@ export class Register extends Component {
 
     render() {
         let disable = true;
-         if (this.state.image != '' && this.state.name != '' && this.state.surname != '' && this.state.date != '' && this.state.userid != '' && this.state.password != '' & this.state.checked) {
-             disable = false;
-         }
-        const year = new Date().getFullYear()-18;
+        if (this.state.image != '' && this.state.name != '' && this.state.surname != '' && this.state.date != '' && this.state.userid != '' && this.state.password != '' & this.state.checked) {
+            disable = false;
+        }
+        const year = new Date().getFullYear() - 18;
         const month = new Date().getMonth();
         const day = new Date().getDate();
         const datepicker = day + "-" + month + "-" + year
@@ -126,7 +136,6 @@ export class Register extends Component {
                                         dateInput: {
                                             marginLeft: 36
                                         }
-                                        // ... You can check the source to find the other keys.
                                     }}
                                     onDateChange={(date) => { this.setState({ date }) }}
                                 />
@@ -151,7 +160,7 @@ export class Register extends Component {
                             <Button disabled={disable} title='Continue' onPress={() => {
                                 if (this.state.password != this.state.confirmpassword) {
                                     alert('Passwords are different')
-                                }else {
+                                } else {
                                     const user = {
                                         userid: this.state.userid,
                                         name: this.state.name,
@@ -164,12 +173,12 @@ export class Register extends Component {
                                         buys: this.state.buys
                                     };
                                     axios.post(this.state.url, user).then(res => {
-                                       if (res.data == false) {
-                                           alert("Sorry, User already created")
-                                       }else {
-                                           alert("User created")
-                                           this.props.navigation.navigate("Login")
-                                       }
+                                        if (res.data == false) {
+                                            alert("Sorry, User already created")
+                                        } else {
+                                            alert("User created")
+                                            this.props.navigation.navigate('Login')
+                                        }
                                     }
                                     ).catch(err => {
                                         alert(err)

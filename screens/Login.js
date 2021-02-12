@@ -80,14 +80,14 @@ export class Login extends Component {
                                             alert('User not found')
                                         }
                                         else {
-                                            navigation.navigate('Main')
+                                            navigation.navigate('Main', data)
                                         }
                                     })
                             }
                         }}
                         />
                         <Text style={{ textAlign: 'center', fontFamily: 'Arial', fontSize: 18 }}>Don't you have an account?</Text>
-                        <Text style={{ textAlign: 'center', fontFamily: 'Arial', fontSize: 18, color: '#169BD5' }} onPress={() => navigation.navigate('Register')}>Sign in</Text>
+                        <Text style={{ textAlign: 'center', fontFamily: 'Arial', fontSize: 18, color: '#169BD5' }} onPress={() => {navigation.navigate('Register')}}>Sign in</Text>
                     </View>
                 </ScrollView>
             </View>

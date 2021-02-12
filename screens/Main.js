@@ -95,7 +95,7 @@ export class Main extends Component {
     const { search } = this.state;
     const buttons = [{ element: component1 }, { element: component2 }, { element: component3 }]
     const { selectedIndex } = this.state
-
+      alert(this.props.navigation.getParam('data'))
     return (
       <ScrollView>
         <View style={{ flex: 1}}>

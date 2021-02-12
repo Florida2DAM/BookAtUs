@@ -9,16 +9,12 @@
 
 import 'react-native-gesture-handler';
 import React, { Component } from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-
 import {
   StyleSheet,
   View,
   Text,
   StatusBar,
 } from 'react-native';
-
 import { Button } from 'react-native-elements';
 import { Login } from './screens/Login';
 import { Password } from './screens/Password';
@@ -33,16 +29,17 @@ import { ChatScreen } from './screens/Chat';
 import { Favorites } from './screens/Favorites';
 import { MyAds } from './screens/MyAds';
 import { Help } from './screens/Help';
-import {   
-  Input,Icon,
-  } from 'react-native-elements';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import {
+  Input, Icon,
+} from 'react-native-elements';
 
+const Stack = createStackNavigator();
 
-
-const pilaNavegacio = createStackNavigator();
-
-export class App extends Component {
+class App extends React.Component {
   
+
 }
 
 export default App;

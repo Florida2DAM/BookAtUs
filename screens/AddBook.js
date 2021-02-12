@@ -1,24 +1,19 @@
 import 'react-native-gesture-handler';
 import React, { Component, useState } from 'react';
-import DropDownPicker from 'react-native-dropdown-picker'
-import DocumentPicker from 'react-native-document-picker';
-import axios from "axios";
 import {
-    SafeAreaView,
     TouchableOpacity,
     ScrollView,
     Image,
-} from 'react-native';
-
-import {
     StyleSheet,
     View,
     Text,
     StatusBar,
 } from 'react-native';
-
 import { Button, Input } from 'react-native-elements'
 import ImgToBase64 from 'react-native-image-base64';
+import DropDownPicker from 'react-native-dropdown-picker'
+import DocumentPicker from 'react-native-document-picker';
+import axios from "axios";
 
 export class AddBook extends Component {
     constructor(props) {
@@ -66,7 +61,7 @@ export class AddBook extends Component {
             image: this.state.image
         };
         axios.post(this.state.url, book).then(
-            
+
         ).catch(err => {
             alert(err)
         })
@@ -82,7 +77,7 @@ export class AddBook extends Component {
             this.setState({ category: 4 })
         } else if (x == "lightnovel") {
             this.setState({ category: 5 })
-        } else if (x == "heavynovel") {
+        } else if (x == "Dark novel") {
             this.setState({ category: 6 })
         } else {
             alert("Pick a category")
@@ -129,8 +124,8 @@ export class AddBook extends Component {
                                 { label: 'Fantasy', value: 'Fantasy' },
                                 { label: 'Studies', value: 'Studies' },
                                 { label: 'Romance', value: 'Romance' },
-                                { label: 'LightNovel', value: 'lightnovel' },
-                                { label: 'HeavyNovel', value: 'heavynovel' }
+                                { label: 'Light novel', value: 'Light novel' },
+                                { label: 'Dark novel', value: 'Dark novel' }
                             ]}
                             defaultValue={this.state.book}
                             containerStyle={{ height: 60, width: 350 }}
@@ -148,7 +143,7 @@ export class AddBook extends Component {
                         </Text>
                         <View style={{ alignItems: 'center' }}>
                             <TouchableOpacity onPress={this.SingleFilePicker.bind(this)}>
-                                <Image onpre source={{ uri: this.state.singleFileOBJ.uri ? this.state.singleFileOBJ.uri : 'https://i.imgur.com/uYRjNNZ.png' }} style={{ width: 143, height: 130 }}/>
+                                <Image onpre source={{ uri: this.state.singleFileOBJ.uri ? this.state.singleFileOBJ.uri : 'https://i.imgur.com/uYRjNNZ.png' }} style={{ width: 143, height: 130 }} />
                             </TouchableOpacity>
                         </View>
                     </View>
