@@ -7,7 +7,6 @@ using System.Linq;
 using System.Web;
 using System.Globalization;
 using System.Web.WebPages;
-using BackendBookAtUs.Common;
 using Microsoft.SqlServer.Server;
 
 namespace BackendBookAtUs.Models
