@@ -76,7 +76,8 @@ export class Register extends Component {
     }
 
     render() {
-        let disable = true;
+        
+let disable = true;
         if (this.state.image != '' && this.state.name != '' && this.state.surname != '' && this.state.date != '' && this.state.userid != '' && this.state.password != '' & this.state.checked) {
             disable = false;
         }
@@ -184,7 +185,7 @@ export class Register extends Component {
                                         alert(err)
                                     })
                                 }
-                            }} />
+                            }}/>
                             <Text style={{ textAlign: 'center', fontFamily: 'Arial', fontSize: 18 }}>Have you an account?</Text>
                             <Text style={{ textAlign: 'center', fontFamily: 'Arial', fontSize: 18, color: '#169BD5' }} onPress={() => this.props.navigation.navigate('Login')}>Log in</Text>
                         </View>

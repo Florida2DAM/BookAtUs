@@ -15,6 +15,7 @@ import { AddBook } from './AddBook';
 import { BookInfo } from './BookInfo';
 import { BookList } from './BookList';
 import { Chat } from './Chat';
+import { MyChats } from './MyChats';
 import { Favorites } from './Favorites';
 import { MyAds } from './/MyAds';
 import { Help } from './Help';
@@ -34,7 +35,7 @@ export class Login extends Component {
             alert('User nor found')
         });
     }
-    
+
     pantallaPrincipal = ({ navigation }) => {
         return (
             <View style={{ flex: 1, flexDirection: 'column', backgroundColor: 'white', alignItems: 'center', alignContent: 'center' }}>
@@ -80,14 +81,14 @@ export class Login extends Component {
                                             alert('User not found')
                                         }
                                         else {
-                                            navigation.navigate('Main', data)
+                                            navigation.navigate('Main');
                                         }
                                     })
                             }
                         }}
                         />
                         <Text style={{ textAlign: 'center', fontFamily: 'Arial', fontSize: 18 }}>Don't you have an account?</Text>
-                        <Text style={{ textAlign: 'center', fontFamily: 'Arial', fontSize: 18, color: '#169BD5' }} onPress={() => {navigation.navigate('Register')}}>Sign in</Text>
+                        <Text style={{ textAlign: 'center', fontFamily: 'Arial', fontSize: 18, color: '#169BD5' }} onPress={() => { navigation.navigate('Register') }}>Sign in</Text>
                     </View>
                 </ScrollView>
             </View>
@@ -110,6 +111,7 @@ export class Login extends Component {
                     <pilaNavegacio.Screen name="Favorites" component={Favorites} />
                     <pilaNavegacio.Screen name="MyAds" component={MyAds} />
                     <pilaNavegacio.Screen name="Chat" component={Chat} />
+                    <pilaNavegacio.Screen name="MyChats" component={MyChats} />
                     <pilaNavegacio.Screen name="Help" component={Help} />
                 </pilaNavegacio.Navigator>
             </NavigationContainer>

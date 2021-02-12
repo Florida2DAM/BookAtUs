@@ -11,7 +11,7 @@ import { Image } from 'react-native-elements'
 
 export class Main extends Component {
   constructor() {
-    super()
+    super();
     this.state = {
       selectedIndex: 3
     }
@@ -20,9 +20,6 @@ export class Main extends Component {
   updateIndex(selectedIndex) {
     this.setState({ selectedIndex })
   }
-  state = {
-    search: '',
-  };
 
   updateSearch = (search) => {
     this.setState({ search });
@@ -52,7 +49,7 @@ export class Main extends Component {
     </TouchableOpacity>
     const component2 = () => <TouchableOpacity
       activeOpacity={0.8}
-      onPress={() => this.props.navigation.navigate('AddBook')}
+      onPress={() => this.props.navigation.navigate("AddBook")}
       style={{
         elevation: 8,
         backgroundColor: "#81D3F8",
@@ -92,10 +89,8 @@ export class Main extends Component {
         textTransform: "uppercase"
       }}>Profile</Text>
     </TouchableOpacity>
-    const { search } = this.state;
     const buttons = [{ element: component1 }, { element: component2 }, { element: component3 }]
     const { selectedIndex } = this.state
-      alert(this.props.navigation.getParam('data'))
     return (
       <ScrollView>
         <View style={{ flex: 1}}>

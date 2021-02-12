@@ -14,49 +14,42 @@ export class Profile extends Component {
                     <View style={{ margin: 50 }}>
                         <Text style={{ fontFamily: 'Arial', fontSize: 32, textAlign: 'center', color: '#333333', flex: 0.55 }}> Profile and Settings </Text>
                         <View style={styles.contenidor}>
-                            <View style={styles.seccio1}>
-                                <Button icon={
-                                    <Icon name="chat" type size={30} color="#000000"></Icon>
-                                }
-                                    iconContainerStyle={{ margin: 20 }}
-                                    titleStyle={{ color: "#000000" }} title='Chat' onPress={() => this.props.navigation.navigate('Chat')} > </Button>
-                            </View>
                             <View style={styles.seccio2}>
                                 <Button icon={
-                                    <Icon name="drive-folder-upload" type size={30} color="#000000"></Icon>
+                                    <Icon name="chat" type size={30} color="#ffffff"></Icon>
                                 }
                                     iconContainerStyle={{ margin: 20 }}
-                                    titleStyle={{ color: "#000000" }} title='MyAds' onPress={() => this.props.navigation.navigate('MyAds')} > </Button>
+                                    titleStyle={{ color: "#ffffff" }} title='Chat' onPress={() => this.props.navigation.navigate('MyChats')} > </Button>
                             </View>
                             <View style={styles.seccio3}>
                                 <Button icon={
-                                    <Icon name="favorite" type size={30} color="#000000"></Icon>
+                                    <Icon name="favorite" type size={30} color="#ffffff"></Icon>
                                 }
                                     iconContainerStyle={{ margin: 20 }}
-                                    titleStyle={{ color: "#000000" }} title='Favorites' onPress={() => this.props.navigation.navigate('Favorites')} > </Button>
+                                    titleStyle={{ color: "#ffffff" }} title='Favorites' onPress={() => this.props.navigation.navigate('Favorites')} > </Button>
                             </View>
                             <View style={styles.seccio4}>
                                 <Button icon={
-                                    <Icon name="exit-to-app" type size={30} color="#000000"></Icon>
+                                    <Icon name="exit-to-app" type size={30} color="#ffffff"></Icon>
                                 }
                                     iconContainerStyle={{ margin: 20 }}
-                                    titleStyle={{ color: "#000000" }} title='Exit' onPress={() => this.props.navigation.navigate('Login')} > </Button>
+                                    titleStyle={{ color: "#ffffff" }} title='Exit' onPress={() => this.props.navigation.navigate('Login')} > </Button>
                             </View>
                             <View style={styles.seccio5}>
                                 <Button icon={
                                     <Icon
                                         name="create"
-                                        size={30} color="#000000"></Icon>
+                                        size={30} color="#ffffff"></Icon>
                                 }
                                     iconContainerStyle={{ margin: 20 }}
-                                    titleStyle={{ color: "#000000" }} title='EditProfile' onPress={() => this.props.navigation.navigate('EditProfile')} > </Button>
+                                    titleStyle={{ color: "#ffffff" }} title='EditProfile' onPress={() => this.props.navigation.navigate('EditProfile')} > </Button>
                             </View>
                             <View style={styles.seccio6}>
                                 <Button icon={
-                                    <Icon name="help" type size={30} color="#000000"></Icon>
+                                    <Icon name="help" type size={30} color="#ffffff"></Icon>
                                 }
                                     iconContainerStyle={{ margin: 20 }}
-                                    titleStyle={{ color: "#000000" }} title='Help' onPress={() => this.props.navigation.navigate('Help')} > </Button>
+                                    titleStyle={{ color: "#ffffff" }} title='Help' onPress={() => this.props.navigation.navigate('Help')} > </Button>
 
                             </View>
                         </View>

@@ -3,8 +3,7 @@ import React, { Component } from 'react';
 import { View, Button, Text, StatusBar, FlatList } from 'react-native';
 import { Card } from 'react-native-elements';
 import { Image } from 'react-native-elements';
-import { ScrollView } from 'react-native-gesture-handler';
-import { Icon, Header } from 'react-native-elements'
+import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 
 export class BookList extends Component {
     constructor() {
@@ -12,7 +11,7 @@ export class BookList extends Component {
         this.state = {
             Email: '',
             Password: '',
-            category: 'Dark Novel',
+            category: '',
             books: [],
             loading: false,
             showbook: false
@@ -64,32 +63,32 @@ export class BookList extends Component {
                                     <Text style={{ fontFamily: 'Arial', fontSize: 32, textAlign: 'center', color: '#333333', flex: 0.20 }}> Book Categories </Text>
                                     <View style={{ flex: 1, flexDirection: 'row' }}>
                                         <Card containerStyle={{ width: 175 }}>
-                                            <Button title='Fantasy' onPress={() => { this.loadBooks('http://10.0.2.2:7010/api/get/Category?category=2'), this.changeCategory('Fantasy') }} />
-                                            <Image source={{ uri: 'https://i.imgur.com/BiKQwmUs.jpg' }} style={{ width: 143, height: 130 }} onPress={() => { this.loadBooks('http://10.0.2.2:7010/api/get/Category?category=2'), this.changeCategory('Fantasy') }}></Image>
+                                            <Button title='Fantasy' onPress={() => { this.loadBooks('http://10.0.2.2:7010/api/Product?category=2'), this.changeCategory('Fantasy') }} />
+                                            <Image source={{ uri: 'https://i.imgur.com/BiKQwmUs.jpg' }} style={{ width: 143, height: 130 }} onPress={() => { this.loadBooks('http://10.0.2.2:7010/api/Product?category=2'), this.changeCategory('Fantasy') }}></Image>
                                         </Card>
                                         <Card containerStyle={{ width: 175 }}>
-                                            <Button title='Mystery' onPress={() => { this.loadBooks('http://10.0.2.2:7010/api/get/Category?category=1'), this.changeCategory('Mystery') }} />
-                                            <Image source={{ uri: 'https://i.imgur.com/htzIa7fs.jpg' }} style={{ width: 143, height: 130 }} onPress={() => { this.loadBooks('http://10.0.2.2:7010/api/get/Category?category=1'), this.changeCategory('Mystery') }}></Image>
-                                        </Card>
-                                    </View>
-                                    <View style={{ flex: 1, flexDirection: 'row' }}>
-                                        <Card containerStyle={{ width: 175 }}>
-                                            <Button title='Studies' onPress={() => { this.loadBooks('http://10.0.2.2:7010/api/get/Category?category=3'), this.changeCategory('Studies') }} />
-                                            <Image source={{ uri: 'https://i.imgur.com/Vaxo1Kos.jpg' }} style={{ width: 143, height: 130 }} onPress={() => { this.loadBooks('http://10.0.2.2:7010/api/get/Category?category=3'), this.changeCategory('Studies') }}></Image>
-                                        </Card>
-                                        <Card containerStyle={{ width: 175 }}>
-                                            <Button title='Romance' onPress={() => { this.loadBooks('http://10.0.2.2:7010/api/get/Category?category=4'), this.changeCategory('Romance') }} />
-                                            <Image source={{ uri: 'https://i.imgur.com/pWuhhh2s.jpg' }} style={{ width: 143, height: 130 }} onPress={() => { this.loadBooks('http://10.0.2.2:7010/api/get/Category?category=4'), this.changeCategory('Romance') }}></Image>
+                                            <Button title='Mystery' onPress={() => { this.loadBooks('http://10.0.2.2:7010/api/Product?category=1'), this.changeCategory('Mystery') }} />
+                                            <Image source={{ uri: 'https://i.imgur.com/htzIa7fs.jpg' }} style={{ width: 143, height: 130 }} onPress={() => { this.loadBooks('http://10.0.2.2:7010/api/Product?category=1'), this.changeCategory('Mystery') }}></Image>
                                         </Card>
                                     </View>
                                     <View style={{ flex: 1, flexDirection: 'row' }}>
                                         <Card containerStyle={{ width: 175 }}>
-                                            <Button title='Light novel' onPress={() => { this.loadBooks('http://10.0.2.2:7010/api/get/Category?category=5'), this.changeCategory('Light Novel') }} />
-                                            <Image source={{ uri: 'https://i.imgur.com/5jjnXtzs.jpg' }} style={{ width: 143, height: 130 }} onPress={() => { this.loadBooks('http://10.0.2.2:7010/api/get/Category?category=5'), this.changeCategory('Light Novel') }}></Image>
+                                            <Button title='Studies' onPress={() => { this.loadBooks('http://10.0.2.2:7010/api/Product?category=3'), this.changeCategory('Studies') }} />
+                                            <Image source={{ uri: 'https://i.imgur.com/Vaxo1Kos.jpg' }} style={{ width: 143, height: 130 }} onPress={() => { this.loadBooks('http://10.0.2.2:7010/api/Product?category=3'), this.changeCategory('Studies') }}></Image>
+                                        </Card>
+                                        <Card containerStyle={{ width: 175 }}>
+                                            <Button title='Romance' onPress={() => { this.loadBooks('http://10.0.2.2:7010/api/Product?category=4'), this.changeCategory('Romance') }} />
+                                            <Image source={{ uri: 'https://i.imgur.com/pWuhhh2s.jpg' }} style={{ width: 143, height: 130 }} onPress={() => { this.loadBooks('http://10.0.2.2:7010/api/Product?category=4'), this.changeCategory('Romance') }}></Image>
+                                        </Card>
+                                    </View>
+                                    <View style={{ flex: 1, flexDirection: 'row' }}>
+                                        <Card containerStyle={{ width: 175 }}>
+                                            <Button title='Light novel' onPress={() => { this.loadBooks('http://10.0.2.2:7010/api/Product?category=5'), this.changeCategory('Light Novel') }} />
+                                            <Image source={{ uri: 'https://i.imgur.com/5jjnXtzs.jpg' }} style={{ width: 143, height: 130 }} onPress={() => { this.loadBooks('http://10.0.2.2:7010/api/Product?category=5'), this.changeCategory('Light Novel') }}></Image>
                                         </Card>
                                         <Card containerStyle={{ width: 175 }}>
                                             <Button title='Dark novel' onPress={() => { this.loadBooks('http://10.0.2.2:7010/api/Product?category=6'), this.changeCategory('Dark Novel') }} />
-                                            <Image source={{ uri: 'https://i.imgur.com/gtxJeHys.jpg' }} style={{ width: 143, height: 130 }} onPress={() => { this.loadBooks('http://10.0.2.2:7010/api/get/Category?category=6'), this.changeCategory('Dark Novel') }}></Image>
+                                            <Image source={{ uri: 'https://i.imgur.com/gtxJeHys.jpg' }} style={{ width: 143, height: 130 }} onPress={() => { this.loadBooks('http://10.0.2.2:7010/api/Product?category=6'), this.changeCategory('Dark Novel') }}></Image>
                                         </Card>
                                     </View>
                                 </View>
@@ -98,24 +97,11 @@ export class BookList extends Component {
                     )
                 } else {
                     return (
-                        <View>
-                            <Header
-                                placement="left"
-                                leftComponent={<Icon
-                                    containerStyle={{ marginTop: 10 }}
-                                    name='arrow-with-circle-left'
-                                    type='entypo'
-                                    color='white'
-                                    size={35}
-                                    onPress={() => this.setState({ showbook: false })}
-                                />}
-                                centerComponent={{ text: 'Category: ' + this.state.category, style: { color: '#fff', fontSize: 30, marginTop: 5 } }}
-                            />
-
-
+                        <View style={{ flex: 1, alignItems: 'center' }}>
                             <View>
                                 <ScrollView>
                                     <FlatList
+                                        style={{ flexWrap: 'wrap' }}
                                         data={this.state.books}
                                         scrollEnabled={true}
                                         numColumns={2}
@@ -123,21 +109,10 @@ export class BookList extends Component {
                                             ({ item }) => {
                                                 return (
                                                     <View>
-                                                        <View style={{ flex: 1, flexDirection: 'row' }}>
-                                                            <Card containerStyle={{ width: 175 }}>
-                                                                <Card.Title>{item.Title}</Card.Title>
-                                                                <Card.Divider />
-                                                                <Card.Image source={{ uri: "data:image/png;base64," + item.Image }}>
-                                                                </Card.Image>
-                                                                <Text style={{ marginBottom: 10 }}>
-                                                                    {item.Description}
-                                                                </Text>
-                                                                <Text style={{fontWeight:'bold', fontSize: 20, alignSelf: 'flex-end'}}>{item.Price}€</Text>
-                                                                <Button
-                                                                    icon={<Icon name='code' color='#ffffff' />}
-                                                                    buttonStyle={{ borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0 }}
-                                                                    title='VIEW NOW' />
-                                                            </Card>
+                                                        <View style={{ flex: 1 }}>
+                                                            <TouchableOpacity style={{ borderRadius: 10, margin: 5, borderWidth: 4, borderColor: 'lightgrey' }} containerStyle={{ width: 190, height: 300, borderRadius: 5 }}>
+                                                                <Image containerStyle={{ borderTopRightRadius: 5, borderTopLeftRadius: 5 }} style={{ width: '100%', aspectRatio: 1 }} source={{ uri: "data:image/png;base64," + item.Image }}></Image>
+                                                            </TouchableOpacity>
                                                         </View>
                                                     </View>
                                                 )
