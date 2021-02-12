@@ -5,7 +5,7 @@ using System.Linq;
 using System.Net.Security;
 using System.Web;
 
-namespace BackendBookAtUs.Common
+namespace BackendBookAtUs.Models
 {
     public static class Security
     {

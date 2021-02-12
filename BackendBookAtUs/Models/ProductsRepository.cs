@@ -22,7 +22,7 @@ namespace BackendBookAtUs.Models
                 return products;
             }
         }
-    
+
         internal Product RetrieveId(int id)
         {
             using (BookAtUsContext context = new BookAtUsContext())

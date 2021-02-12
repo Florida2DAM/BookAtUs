@@ -1,9 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
-using System.Net.Http;
 using System.Web;
 
 namespace BackendBookAtUs.Models
@@ -16,7 +14,7 @@ namespace BackendBookAtUs.Models
 
         }
 
-        public User(string name, string surname, string userId, Byte[] avatar, string birth, string password)
+        public User(string name, string surname, string userId, byte[] avatar, string birth, string password)
         {
             Name = name;
             Surname = surname;
@@ -32,11 +30,23 @@ namespace BackendBookAtUs.Models
         public string Name { get; set; }
         public string Surname { get; set; }
         public string UserId { get; set; }
-        public Byte[] Avatar { get; set; }
+        public byte[] Avatar { get; set; }
         public string Password { get; set; }
         public string Birth { get; set; }
         public double Rating { get; set; }
         public int Sells { get; set; }
         public int Buys { get; set; }
+    }
+    public class Login
+    {
+
+        public string Email { get; set; }
+        public string Password { get; set; }
+
+        public Login(string email, string password)
+        {
+            Email = email;
+            Password = password;
+        }
     }
 }

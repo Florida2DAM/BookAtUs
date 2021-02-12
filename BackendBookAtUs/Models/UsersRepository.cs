@@ -4,11 +4,6 @@ using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 using System.Linq;
-using System.Web;
-using System.Globalization;
-using System.Web.WebPages;
-using BackendBookAtUs.Common;
-using Microsoft.SqlServer.Server;
 
 namespace BackendBookAtUs.Models
 {
@@ -26,21 +21,7 @@ namespace BackendBookAtUs.Models
             }
         }
 
-        internal User Retrieve(string id, string pwd)
-        {
-            using (BookAtUsContext context = new BookAtUsContext())
-            {
-                User users = context
-                    .Users
-                    .Where(s => s.UserId == id)
-                    .Where(p => p.Password == Security.Encode(pwd))
-                    .FirstOrDefault();
-                return users;
-
-            }
-        }
-
-        internal bool Delete(string username) 
+        internal bool Delete(string username)
         {
             try
             {
@@ -56,7 +37,7 @@ namespace BackendBookAtUs.Models
                 {
                     Debug.WriteLine("Not saved change");
                     return false;
-                }          
+                }
             }
             catch (Exception ex)
             {
@@ -85,6 +66,18 @@ namespace BackendBookAtUs.Models
                 Debug.WriteLine("Error with catch: " + ex.Message);
                 return false;
             }
+        }
+
+        internal void Put(string id, User u)
+        {
+            BookAtUsContext context = new BookAtUsContext();
+            User user = context.Users.FirstOrDefault(us => us.UserId == id);
+            user.Name = u.Name;
+            user.Surname = u.Surname;
+            user.Avatar = u.Avatar;
+            user.Password = u.Password;
+            user.Birth = u.Birth;
+            context.SaveChanges();
         }
     }
 }
