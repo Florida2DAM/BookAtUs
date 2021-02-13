@@ -65,7 +65,7 @@ export class Login extends Component {
                                 log = false
                             } else {
                                 debugger;
-                                fetch('http://10.0.2.2:7010/api/Login', {
+                                fetch('http://100.25.140.168:7010/api/Login', {
                                     method: 'post',
                                     headers: {
                                         'Accept': 'application/json',

@@ -28,7 +28,7 @@ export class Register extends Component {
             rating: 0,
             sells: 0,
             buys: 0,
-            url: 'http://10.0.2.2:7010/api/insertUser',
+            url: 'http://100.25.140.168:7010/api/insertUser',
             checked: false,
             date: null
         };
