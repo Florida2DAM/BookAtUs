@@ -19,7 +19,7 @@ import { MyChats } from './MyChats';
 import { Favorites } from './Favorites';
 import { MyAds } from './/MyAds';
 import { Help } from './Help';
-const pilaNavegacio = createStackNavigator();
+const Stack = createStackNavigator();
 export class Login extends Component {
     constructor() {
         super();
@@ -66,7 +66,7 @@ export class Login extends Component {
                             } else {
                                 debugger;
                                 fetch('http://100.25.140.168:7010/api/Login', {
-                                    method: 'post',
+                                    method: 'POST',
                                     headers: {
                                         'Accept': 'application/json',
                                         'Content-Type': 'application/json'
@@ -98,22 +98,22 @@ export class Login extends Component {
     render() {
         return (
             <NavigationContainer>
-                <pilaNavegacio.Navigator>
-                    <pilaNavegacio.Screen name="Login" component={this.pantallaPrincipal} />
-                    <pilaNavegacio.Screen name="Password" component={Password} />
-                    <pilaNavegacio.Screen name="Main" component={Main} />
-                    <pilaNavegacio.Screen name="Register" component={Register} />
-                    <pilaNavegacio.Screen name="AddBook" component={AddBook} />
-                    <pilaNavegacio.Screen name="BookInfo" component={BookInfo} />
-                    <pilaNavegacio.Screen name="BookList" component={BookList} />
-                    <pilaNavegacio.Screen name="Profile" component={Profile} />
-                    <pilaNavegacio.Screen name="EditProfile" component={EditProfile} />
-                    <pilaNavegacio.Screen name="Favorites" component={Favorites} />
-                    <pilaNavegacio.Screen name="MyAds" component={MyAds} />
-                    <pilaNavegacio.Screen name="Chat" component={Chat} />
-                    <pilaNavegacio.Screen name="MyChats" component={MyChats} />
-                    <pilaNavegacio.Screen name="Help" component={Help} />
-                </pilaNavegacio.Navigator>
+                <Stack.Navigator>
+                    <Stack.Screen name="Login" component={this.pantallaPrincipal} />
+                    <Stack.Screen name="Password" component={Password} />
+                    <Stack.Screen name="Main" component={Main} />
+                    <Stack.Screen name="Register" component={Register} />
+                    <Stack.Screen name="AddBook" component={AddBook} />
+                    <Stack.Screen name="BookInfo" component={BookInfo} />
+                    <Stack.Screen name="BookList" component={BookList} />
+                    <Stack.Screen name="Profile" component={Profile} />
+                    <Stack.Screen name="EditProfile" component={EditProfile} />
+                    <Stack.Screen name="Favorites" component={Favorites} />
+                    <Stack.Screen name="MyAds" component={MyAds} />
+                    <Stack.Screen name="Chat" component={Chat} />
+                    <Stack.Screen name="MyChats" component={MyChats} />
+                    <Stack.Screen name="Help" component={Help} />
+                </Stack.Navigator>
             </NavigationContainer>
         );
     }

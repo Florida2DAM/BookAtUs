@@ -9,11 +9,10 @@ import {
     Image
 } from 'react-native';
 import axios from "axios";
-import { Button, Input, CheckBox } from 'react-native-elements'
+import { Button, Input, CheckBox } from 'react-native-elements';
 import DocumentPicker from 'react-native-document-picker';
-import DatePicker from 'react-native-datepicker'
+import DatePicker from 'react-native-datepicker';
 import ImgToBase64 from 'react-native-image-base64';
-import { NavigationActions, DrawerNavigator,  StackNavigator } from 'react-navigation';
 export class Register extends Component {
     constructor(props) {
         super(props);
