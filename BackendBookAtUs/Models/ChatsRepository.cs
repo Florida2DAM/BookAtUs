@@ -41,15 +41,13 @@ namespace BackendBookAtUs.Models
             }
         }
 
-        internal Chat Retrieve(ChatDTO chatDto)
+        internal Chat Retrieve(int chatId)
         {
             using (BookAtUsContext context = new BookAtUsContext())
             {
                 Chat chat = context
                     .Chat
-                    .Where(p => p.Product.ProductId == chatDto.ProductId)
-                    .Where(s => s.Seller == chatDto.Seller)
-                    .Where(b => b.Buyer == chatDto.Buyer)
+                    .Where(p => p.ChatId == chatId)
                     .Include(c => c.Messages)
                     .FirstOrDefault();
                 return chat;

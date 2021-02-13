@@ -6,7 +6,7 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <_PublishTargetUrl>C:\Users\Mark\Desktop\deploy0-8-6</_PublishTargetUrl>
+    <_PublishTargetUrl>C:\Users\Mark\Desktop\deploy0-8-7</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>
     <File Include="Areas/HelpPage/HelpPage.css">
@@ -79,10 +79,10 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>02/12/2021 20:05:43</publishTime>
     </File>
     <File Include="bin/BackendBookAtUs.dll">
-      <publishTime>02/13/2021 15:38:01</publishTime>
+      <publishTime>02/13/2021 17:13:12</publishTime>
     </File>
     <File Include="bin/BackendBookAtUs.pdb">
-      <publishTime>02/13/2021 15:38:01</publishTime>
+      <publishTime>02/13/2021 17:13:12</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>02/12/2021 20:05:43</publishTime>

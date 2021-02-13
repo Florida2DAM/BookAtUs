@@ -20,15 +20,10 @@ namespace BackendBookAtUs.Controllers
         }
 
         // GET: api/Chat/5
-        public Chat Get([FromBody]ChatDTO chat, bool accept)
+        public Chat Get(int chatId)
         {
-            if (accept)
-            {
-                ChatsRepository repo = new ChatsRepository();
-                return repo.Retrieve(chat);
-            }
-            else
-                return null;
+            ChatsRepository repo = new ChatsRepository();
+            return repo.Retrieve(chatId);
         }
 
         public List<ChatDTO> Get(string username)
