@@ -35,13 +35,26 @@ namespace BackendBookAtUs.Models
             }
         }
 
+        /*internal Product Retrievebyuser(string user)
+        {
+            using (BookAtUsContext context = new BookAtUsContext())
+            {
+                Product product = context
+                    .Products
+                    .FirstOrDefault(p => p.ProductId == id);
+                return product;
+
+            }
+        }*/
+
         internal List<Product> RetrieveCategory(int category)
         {
             using (BookAtUsContext context = new BookAtUsContext())
             {
                 List<Product> product = context
                     .Products
-                    .Where(p => p.Category == category).ToList();
+                    .Where(p => p.Category == category)
+                    .ToList();
                 return product;
 
             }

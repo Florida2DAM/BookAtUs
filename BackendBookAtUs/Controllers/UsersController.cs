@@ -3,6 +3,8 @@ using System.Web.Http.Cors;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
 using System.Web.Http;
 
 namespace BackendBookAtUs.Controllers
@@ -17,11 +19,11 @@ namespace BackendBookAtUs.Controllers
         }
 
         // GET: api/Users/5
-        /* public User Get(string username, string password)
-         {
-             UsersRepository repo = new UsersRepository();
-             return repo.Retrieve(username, password);
-         }*/
+       public User Get(string id)
+        {
+            UsersRepository repo = new UsersRepository();
+            return repo.RetrieveId(id);
+        }
 
         // POST: api/Users
         [Route("api/insertUser")]
@@ -34,7 +36,7 @@ namespace BackendBookAtUs.Controllers
 
         [Route("api/Login")]
         [HttpPost]
-        public Response UserLogin([FromBody] Login login)
+        public Response UserLogin([FromBody]Login login)
         {
             BookAtUsContext context = new BookAtUsContext();
             var log = context.Users.Where(x => x.UserId.Equals(login.Email) && x.Password == Security.Encode(login.Password)).FirstOrDefault();
@@ -50,7 +52,7 @@ namespace BackendBookAtUs.Controllers
         }
 
         // PUT: api/Users/5
-        public void Put(string id, [FromBody] User u)
+        public void Put(string id, [FromBody]User u)
         {
             var repo = new UsersRepository();
             repo.Put(id, u);

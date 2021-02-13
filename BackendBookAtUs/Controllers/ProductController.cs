@@ -1,9 +1,6 @@
 ﻿using BackendBookAtUs.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Cors;
 
@@ -12,6 +9,13 @@ namespace BackendBookAtUs.Controllers
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class ProductController : ApiController
     {
+        public IEnumerable<Product> Get()
+        {
+            var repo = new ProductsRepository();
+            List<Product> products = repo.Retrieve();
+            return products;
+        }
+
         // GET: api/Product
         public IEnumerable<Product> GetC(int category)
         {

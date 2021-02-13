@@ -334,29 +334,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\20210203225452_m1.cs" />
-    <Compile Include="Migrations\20210203225452_m1.designer.cs">
-      <DependentUpon>20210203225452_m1.cs</DependentUpon>
+    <Compile Include="Migrations\20210213162846_m1.cs" />
+    <Compile Include="Migrations\20210213162846_m1.designer.cs">
+      <DependentUpon>20210213162846_m1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\20210203225626_m2.cs" />
-    <Compile Include="Migrations\20210203225626_m2.designer.cs">
-      <DependentUpon>20210203225626_m2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20210205162216_m3.cs" />
-    <Compile Include="Migrations\20210205162216_m3.designer.cs">
-      <DependentUpon>20210205162216_m3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20210208161408_m4.cs" />
-    <Compile Include="Migrations\20210208161408_m4.designer.cs">
-      <DependentUpon>20210208161408_m4.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20210208172745_m5.cs" />
-    <Compile Include="Migrations\20210208172745_m5.designer.cs">
-      <DependentUpon>20210208172745_m5.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20210211095716_m6.cs" />
-    <Compile Include="Migrations\20210211095716_m6.designer.cs">
-      <DependentUpon>20210211095716_m6.cs</DependentUpon>
+    <Compile Include="Migrations\20210213190525_m2.cs" />
+    <Compile Include="Migrations\20210213190525_m2.designer.cs">
+      <DependentUpon>20210213190525_m2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\BookAtUsContextModelSnapshot.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
@@ -409,8 +393,7 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
-    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
-    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <None Include="Properties\PublishProfiles\IISProfile.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

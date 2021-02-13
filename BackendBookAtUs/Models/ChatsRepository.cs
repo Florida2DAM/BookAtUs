@@ -13,27 +13,23 @@ namespace BackendBookAtUs.Models
 {
     public class ChatsRepository
     {
-        internal List<Chat> Retrieve()
+        internal List<ChatDTO> Retrieve()
         {
             using (BookAtUsContext context = new BookAtUsContext())
             {
-                List<Chat> chat = context
-                    .Chat
-                    .Include(p => p.Product)
-                    .ToList();
+                List<ChatDTO> chat = context.Chat.Select(p => ToDTO(p)).ToList();
                 return chat;
 
             }
         }
 
-        internal List<ChatDTO> Retrieve(string uname)
+        internal List<ChatDTO> RetrieveBuyers(string uname)
         {
             using (BookAtUsContext context = new BookAtUsContext())
             {
                 List<ChatDTO> chat = context
                     .Chat
-                    .Where(p => p.Buyer == uname || p.Seller == uname)
-                    .Include(p => p.Product)
+                    .Where(p => p.Buyer == uname)
                     .Select(p => ToDTO(p))
                     .ToList();
                 return chat;
@@ -41,14 +37,29 @@ namespace BackendBookAtUs.Models
             }
         }
 
-        internal Chat Retrieve(int chatId)
+        internal List<ChatDTO> RetrieveSellers(string uname)
+        {
+            using (BookAtUsContext context = new BookAtUsContext())
+            {
+                List<ChatDTO> chat = context
+                    .Chat
+                    .Where(p => p.Seller == uname)
+                    .Select(p => ToDTO(p))
+                    .ToList();
+                return chat;
+
+            }
+        }
+
+        internal Chat Retrieve(ChatDTO chatDto)
         {
             using (BookAtUsContext context = new BookAtUsContext())
             {
                 Chat chat = context
                     .Chat
-                    .Where(p => p.ChatId == chatId)
-                    .Include(c => c.Messages)
+                    .Where(p => p.Product.ProductId == chatDto.ProductId)
+                    .Where(s => s.Seller == chatDto.Seller)
+                    .Where(b => b.Buyer == chatDto.Buyer)
                     .FirstOrDefault();
                 return chat;
 
@@ -71,37 +82,7 @@ namespace BackendBookAtUs.Models
             }
             catch (Exception ex)
             {
-                Debug.WriteLine("Error with catch: " + ex.InnerException);
-                return false;
-            }
-        }
-
-        internal bool Save(int chatId, Message msg)
-        {
-            try
-            {
-                BookAtUsContext context = new BookAtUsContext();
-                Chat chat = context
-                   .Chat
-                   .Where(p => p.ChatId == chatId)
-                   .Include(c => c.Messages)
-                   .FirstOrDefault();
-
-                msg.Date = DateTime.Now.ToString();
-
-                chat.Messages.Add(msg);
-
-                if (context.SaveChanges() >= 1)
-                    return true;
-                else
-                {
-                    Debug.WriteLine("Not saved change");
-                    return false;
-                }
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine("Error with catch: " + ex.InnerException);
+                Debug.WriteLine("Error with catch: " + ex.Message);
                 return false;
             }
         }
@@ -129,9 +110,7 @@ namespace BackendBookAtUs.Models
 
         static public ChatDTO ToDTO(Chat c)
         {
-            ChatDTO chat = new ChatDTO(c.ChatId, c.Product.ProductId, c.Buyer, c.Seller, c.Product.Title, c.Product.Image);
-            Debug.WriteLine(chat.ChatId);
-            return chat;
+            return new ChatDTO(c.ChatId, c.Product.ProductId, c.Buyer, c.Seller, c.Product.Title, c.Product.Image);
         }
     }
 }

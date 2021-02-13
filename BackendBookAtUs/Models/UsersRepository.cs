@@ -21,7 +21,19 @@ namespace BackendBookAtUs.Models
             }
         }
 
-        internal bool Delete(string username)
+        internal User RetrieveId(string id)
+        {
+            using (BookAtUsContext context = new BookAtUsContext())
+            {
+                User user = context
+                    .Users
+                    .FirstOrDefault(u => u.UserId == id);
+                return user;
+
+            }
+        }
+
+        internal bool Delete(string username) 
         {
             try
             {
@@ -37,7 +49,7 @@ namespace BackendBookAtUs.Models
                 {
                     Debug.WriteLine("Not saved change");
                     return false;
-                }
+                }          
             }
             catch (Exception ex)
             {

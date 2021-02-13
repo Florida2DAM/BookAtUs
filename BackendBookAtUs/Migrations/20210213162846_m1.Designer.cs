@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BackendBookAtUs.Migrations
 {
     [DbContext(typeof(BookAtUsContext))]
-    [Migration("20210205162216_m3")]
-    partial class m3
+    [Migration("20210213162846_m1")]
+    partial class m1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -28,10 +28,15 @@ namespace BackendBookAtUs.Migrations
                     b.Property<string>("Buyer")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
+                    b.Property<int?>("ProductId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Seller")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.HasKey("ChatId");
+
+                    b.HasIndex("ProductId");
 
                     b.ToTable("Chat");
                 });
@@ -47,6 +52,9 @@ namespace BackendBookAtUs.Migrations
 
                     b.Property<int?>("ChatId")
                         .HasColumnType("int");
+
+                    b.Property<string>("Date")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("User")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -76,18 +84,18 @@ namespace BackendBookAtUs.Migrations
                     b.Property<double>("Price")
                         .HasColumnType("double");
 
-                    b.Property<string>("ProprietaryUserId")
-                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
-
                     b.Property<string>("Title")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<DateTime>("UploadDate")
                         .HasColumnType("datetime(6)");
 
+                    b.Property<string>("UserId")
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
+
                     b.HasKey("ProductId");
 
-                    b.HasIndex("ProprietaryUserId");
+                    b.HasIndex("UserId");
 
                     b.ToTable("Products");
                 });
@@ -122,11 +130,11 @@ namespace BackendBookAtUs.Migrations
                     b.Property<string>("UserId")
                         .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
 
-                    b.Property<string>("Avatar")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                    b.Property<byte[]>("Avatar")
+                        .HasColumnType("longblob");
 
-                    b.Property<DateTime>("Birth")
-                        .HasColumnType("datetime(6)");
+                    b.Property<string>("Birth")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<int>("Buys")
                         .HasColumnType("int");
@@ -161,6 +169,13 @@ namespace BackendBookAtUs.Migrations
                     b.ToTable("Users");
                 });
 
+            modelBuilder.Entity("BackendBookAtUs.Models.Chat", b =>
+                {
+                    b.HasOne("BackendBookAtUs.Models.Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductId");
+                });
+
             modelBuilder.Entity("BackendBookAtUs.Models.Message", b =>
                 {
                     b.HasOne("BackendBookAtUs.Models.Chat", null)
@@ -172,7 +187,7 @@ namespace BackendBookAtUs.Migrations
                 {
                     b.HasOne("BackendBookAtUs.Models.User", "Proprietary")
                         .WithMany()
-                        .HasForeignKey("ProprietaryUserId");
+                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("BackendBookAtUs.Models.PurchaseConfirmed", b =>

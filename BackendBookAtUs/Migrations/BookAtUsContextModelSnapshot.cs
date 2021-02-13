@@ -82,18 +82,18 @@ namespace BackendBookAtUs.Migrations
                     b.Property<double>("Price")
                         .HasColumnType("double");
 
-                    b.Property<string>("ProprietaryUserId")
-                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
-
                     b.Property<string>("Title")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<DateTime>("UploadDate")
                         .HasColumnType("datetime(6)");
 
+                    b.Property<string>("Userid")
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
+
                     b.HasKey("ProductId");
 
-                    b.HasIndex("ProprietaryUserId");
+                    b.HasIndex("Userid");
 
                     b.ToTable("Products");
                 });
@@ -185,7 +185,7 @@ namespace BackendBookAtUs.Migrations
                 {
                     b.HasOne("BackendBookAtUs.Models.User", "Proprietary")
                         .WithMany()
-                        .HasForeignKey("ProprietaryUserId");
+                        .HasForeignKey("Userid");
                 });
 
             modelBuilder.Entity("BackendBookAtUs.Models.PurchaseConfirmed", b =>
