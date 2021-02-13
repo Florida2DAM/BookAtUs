@@ -13,7 +13,7 @@ namespace BackendBookAtUs.Models
 
         }
 
-        public Chat(int chatId, Product product, string buyer, string seller)
+        public Chat(Product product, string buyer, string seller)
         {
             Product = product;
             Buyer = buyer;

@@ -13,11 +13,14 @@ namespace BackendBookAtUs.Models
 {
     public class ChatsRepository
     {
-        internal List<ChatDTO> Retrieve()
+        internal List<Chat> Retrieve()
         {
             using (BookAtUsContext context = new BookAtUsContext())
             {
-                List<ChatDTO> chat = context.Chat.Select(p => ToDTO(p)).ToList();
+                List<Chat> chat = context
+                    .Chat
+                    .Include(p => p.Product)
+                    .ToList();
                 return chat;
 
             }
@@ -30,6 +33,7 @@ namespace BackendBookAtUs.Models
                 List<ChatDTO> chat = context
                     .Chat
                     .Where(p => p.Buyer == uname)
+                    .Include(p => p.Product)
                     .Select(p => ToDTO(p))
                     .ToList();
                 return chat;
@@ -60,6 +64,7 @@ namespace BackendBookAtUs.Models
                     .Where(p => p.Product.ProductId == chatDto.ProductId)
                     .Where(s => s.Seller == chatDto.Seller)
                     .Where(b => b.Buyer == chatDto.Buyer)
+                    .Include(c => c.Messages)
                     .FirstOrDefault();
                 return chat;
 
@@ -82,7 +87,37 @@ namespace BackendBookAtUs.Models
             }
             catch (Exception ex)
             {
-                Debug.WriteLine("Error with catch: " + ex.Message);
+                Debug.WriteLine("Error with catch: " + ex.InnerException);
+                return false;
+            }
+        }
+
+        internal bool Save(int chatId, Message msg)
+        {
+            try
+            {
+                BookAtUsContext context = new BookAtUsContext();
+                Chat chat = context
+                   .Chat
+                   .Where(p => p.ChatId == chatId)
+                   .Include(c => c.Messages)
+                   .FirstOrDefault();
+
+                msg.Date = DateTime.Now.ToString();
+
+                chat.Messages.Add(msg);
+
+                if (context.SaveChanges() >= 1)
+                    return true;
+                else
+                {
+                    Debug.WriteLine("Not saved change");
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Error with catch: " + ex.InnerException);
                 return false;
             }
         }
@@ -110,7 +145,9 @@ namespace BackendBookAtUs.Models
 
         static public ChatDTO ToDTO(Chat c)
         {
-            return new ChatDTO(c.ChatId, c.Product.ProductId, c.Buyer, c.Seller, c.Product.Title, c.Product.Image);
+            ChatDTO chat = new ChatDTO(c.ChatId, c.Product.ProductId, c.Buyer, c.Seller, c.Product.Title, c.Product.Image);
+            Debug.WriteLine(chat.ChatId);
+            return chat;
         }
     }
 }
