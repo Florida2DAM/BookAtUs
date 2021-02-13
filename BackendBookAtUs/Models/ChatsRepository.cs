@@ -26,28 +26,14 @@ namespace BackendBookAtUs.Models
             }
         }
 
-        internal List<ChatDTO> RetrieveBuyers(string uname)
+        internal List<ChatDTO> Retrieve(string uname)
         {
             using (BookAtUsContext context = new BookAtUsContext())
             {
                 List<ChatDTO> chat = context
                     .Chat
-                    .Where(p => p.Buyer == uname)
+                    .Where(p => p.Buyer == uname || p.Seller == uname)
                     .Include(p => p.Product)
-                    .Select(p => ToDTO(p))
-                    .ToList();
-                return chat;
-
-            }
-        }
-
-        internal List<ChatDTO> RetrieveSellers(string uname)
-        {
-            using (BookAtUsContext context = new BookAtUsContext())
-            {
-                List<ChatDTO> chat = context
-                    .Chat
-                    .Where(p => p.Seller == uname)
                     .Select(p => ToDTO(p))
                     .ToList();
                 return chat;

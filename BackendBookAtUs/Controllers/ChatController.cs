@@ -31,13 +31,10 @@ namespace BackendBookAtUs.Controllers
                 return null;
         }
 
-        public List<ChatDTO> Get(bool type, string username)
+        public List<ChatDTO> Get(string username)
         {
             ChatsRepository repo = new ChatsRepository();
-            if (type)
-                return repo.RetrieveBuyers(username);
-            else
-                return repo.RetrieveSellers(username);
+            return repo.Retrieve(username);
         }
 
         // POST: api/Chat
