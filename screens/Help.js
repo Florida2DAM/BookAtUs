@@ -11,6 +11,7 @@ import {
 import { Card, Image, Input, } from 'react-native-elements'
 import { ScrollView } from 'react-native-gesture-handler';
 import RadioButton from '../components/RadioButton';
+import { Linking } from 'react-native';
 const PROP = [
   {
     key: 'errors',
@@ -31,7 +32,19 @@ const PROP = [
 ];
 
 export class Help extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+        subject: '',
+        body: '',
+        correo: 'bookatus@hotmail.com'
+    };
+}
   render() {
+    const handleEmailPress = async () =>{
+    await Linking.openURL("mailto:"+this.state.correo+"?subject=AppProblem&body="+this.state.body);
+    }
+
     return (
       <View style={{ flex: 1 }}>
         <ScrollView>
@@ -46,10 +59,10 @@ export class Help extends Component {
                   <RadioButton PROP={PROP} />
                 </View>
               </View>
-              <Input style={{ marginTop: 10 }} placeholder='Write your problem' />
+              <Input style={{ marginTop: 10 }} placeholder='Write your problem' onChangeText={(e) => {this.setState({body : e})}}/>
             </Card>
             <View style={{ marginTop: 30, margin: 20 }}>
-              <Button title='Send' onPress={() => this.props.navigation.navigate('Profile')} />
+              <Button title='Send' onPress={() => handleEmailPress()} />
             </View>
           </View>
         </ScrollView>

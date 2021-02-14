@@ -37,6 +37,7 @@ export class BookList extends Component {
     }
 
     render() {
+        const username = this.props.route.params.username
         const booklist = () => {
             if (this.state.loading == true) {
                 return (
@@ -111,7 +112,8 @@ export class BookList extends Component {
                                                     <View>
                                                         <View style={{ flex: 1 }}>
                                                             <TouchableOpacity style={{ borderRadius: 10, margin: 5, borderWidth: 4, borderColor: 'lightgrey' }} containerStyle={{ width: 190, height: 300, borderRadius: 5 }} onPress={() => this.props.navigation.navigate('BookInfo', {
-                                                                data: item
+                                                                data: item,
+                                                                username: username
                                                             })}>
                                                                 <Image containerStyle={{ borderTopRightRadius: 5, borderTopLeftRadius: 5 }} style={{ width: '100%', aspectRatio: 1 }} source={{ uri: "data:image/png;base64," + item.Image }}></Image>
                                                                 <Text style={{ fontWeight: 'bold', fontSize: 20, margin: 5 }}>{item.Price}€</Text>

@@ -11,6 +11,8 @@ import {
 import { Image } from 'react-native-elements';
 import { ScrollView } from 'react-native-gesture-handler';
 import { Button } from 'react-native-elements';
+import axios from 'axios';
+import { Alert } from 'react-native';
 
 export class BookInfo extends Component {
   constructor() {
@@ -18,6 +20,48 @@ export class BookInfo extends Component {
     this.state = {
       category: '',
     }
+  }
+
+  postconfirmproduct() {
+    const data = {
+      id_Buyer: this.props.route.params.username,
+      id_Seller: this.props.route.params.data.UserId,
+      Date_Purchase: Date.now(),
+      ProductId: this.props.route.params.data.ProductId
+    }
+
+    axios.post('http://10.0.2.2:7010/api/PurchaseConfirmed', data).then(res => {
+      axios.put('http://10.0.2.2:7010/api/book?id='+this.props.route.params.data.ProductId).then(
+        this.props.navigation.navigate('Main')
+      )
+    })
+  }
+
+  chat() {
+    const chat = {
+      ProductId: this.props.route.params.data.ProductId,
+      Buyer: this.props.route.params.username,
+      Seller: this.props.route.params.data.UserId,
+    }
+    axios.post('http://10.0.2.2:7010/api/Chat', chat).then(res => {
+      this.props.navigation.navigate('MyChats', { username : this.props.route.params.username})
+    })
+  }
+
+  confirmbuy() {
+    Alert.alert(
+      "Are you sure?",
+      "Do you want to buy this book?",
+      [
+        {
+          text: "Cancel",
+          onPress: () => console.log("OK"),
+          style: "cancel"
+        },
+        { text: "OK", onPress: () => this.postconfirmproduct() }
+      ],
+      { cancelable: false }
+    );
   }
 
   selectcategory() {
@@ -41,7 +85,6 @@ export class BookInfo extends Component {
 
   render() {
     const item = this.props.route.params.data;
-    //alert(JSON.stringify(this.props.route.params.data.Category))
     return (
       <View style={styles.container}>
         <ScrollView>
@@ -53,6 +96,7 @@ export class BookInfo extends Component {
                 borderBottomWidth: 2,
               }}
             />
+            <Text style={{ fontSize: 30, fontWeight: 'bold', marginLeft: 10, marginTop: 5 }}>{item.Title}</Text>
             <Text style={{ fontSize: 30, fontWeight: 'bold', marginLeft: 10, marginTop: 5 }}>{item.Price}€</Text>
             <View
               style={{
@@ -75,8 +119,8 @@ export class BookInfo extends Component {
           </View>
         </ScrollView>
         <View style={styles.footer}>
-          <Button buttonStyle={styles.buttonContainer2} titleStyle={{ textAlign: 'auto' }} title='Chat'></Button>
-          <Button buttonStyle={styles.buttonContainer} titleStyle={{ textAlign: 'auto' }} title='Comprar'></Button>
+          <Button buttonStyle={styles.buttonContainer2} titleStyle={{ textAlign: 'auto' }} title='Chat' onPress={() => this.chat()}></Button>
+          <Button buttonStyle={styles.buttonContainer} titleStyle={{ textAlign: 'auto' }} title='Comprar' onPress={() => this.confirmbuy()}></Button>
         </View>
       </View>
     );

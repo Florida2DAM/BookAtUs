@@ -16,7 +16,7 @@ export class Message extends Component {
   }
   
     renderMsg = () => {
-        const currentUser = "maboto01";
+        const currentUser = this.props.currentUser;
         if (this.props.message.item.User == currentUser) {
             return(        
             <View elevation= {4} style={{backgroundColor:'skyblue', borderRadius: 10, padding: 5, margin: 5}}>
@@ -24,12 +24,12 @@ export class Message extends Component {
                 <Text style={{color:'black', fontSize:18, fontWeight: 'bold'}}>
                     {this.props.message.item.User}
                 </Text>
-                <Text style={{color:'black', fontSize:12, textAlign: 'right', fontWeight: 'bold'}}>
-                    #{this.props.message.item.MessageId}
-                </Text>
                 </View>
                 <Text style={{color:'black', fontSize:14, textAlign: 'right'}}>
                     {this.props.message.item.Body}
+                </Text>
+                <Text style={{color:'black', fontSize:10, textAlign: 'right'}}>
+                    {this.props.message.item.Date}
                 </Text>
             </View>)
         } else {
@@ -40,6 +40,9 @@ export class Message extends Component {
                 </Text>
                 <Text style={{color:'black', fontSize:14, textAlign: 'left'}}>
                 {this.props.message.item.Body}
+                </Text>
+                <Text style={{color:'black', fontSize:10, textAlign: 'right'}}>
+                    {this.props.message.item.Date}
                 </Text>
             </View>)
         }

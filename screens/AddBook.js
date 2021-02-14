@@ -14,6 +14,7 @@ import ImgToBase64 from 'react-native-image-base64';
 import DropDownPicker from 'react-native-dropdown-picker'
 import DocumentPicker from 'react-native-document-picker';
 import axios from "axios";
+import { TextInput } from 'react-native-gesture-handler';
 
 export class AddBook extends Component {
     constructor(props) {
@@ -24,9 +25,9 @@ export class AddBook extends Component {
             description: '',
             price: null,
             category: null,
-            userId: 'admin',
+            userId: this.props.route.params.username,
             image: '',
-            url: 'http://100.25.140.168:7010/api/Product'
+            url: 'http://10.0.2.2:7010/api/Product'
         };
     }
 
@@ -53,15 +54,16 @@ export class AddBook extends Component {
 
     postbook() {
         const book = {
-            title: this.state.title,
-            description: this.state.description,
-            price: this.state.price,
-            category: this.state.category,
-            proprietaryuserid: this.state.userId,
+            Title: this.state.title,
+            Description: this.state.description,
+            Price: this.state.price,
+            Category: this.state.category,
+            UserId: this.state.userId,
             image: this.state.image
         };
-        axios.post(this.state.url, book).then(
-
+        axios.post(this.state.url, book).then(res =>{
+            this.props.navigation.navigate('Main')
+        }   
         ).catch(err => {
             alert(err)
         })
@@ -103,11 +105,17 @@ export class AddBook extends Component {
                     </View>
                     <View style={styles.ViewDescription}>
                         <Text style={styles.Text}>Description: </Text>
-                        <Input style={styles.InputDescription}
-                            onChangeText={(f) => this.setState({ description: f })}
-                        >
+                        <TextInput
+                            style={{borderWidth: 2, marginBottom: 2}}
+                            underlineColorAndroid="transparent"
+                            placeholder="Type something"
+                            placeholderTextColor="grey"
+                            numberOfLines={4}
+                            multiline={true}
+                            onChangeText={(e) => this.setState({description: e})}
+                        />
 
-                        </Input>
+
                     </View>
                     <View style={styles.ViewTitle}>
                         <Text style={styles.Text}>Price: </Text>
@@ -148,7 +156,7 @@ export class AddBook extends Component {
                         </View>
                     </View>
                     <View>
-                        <Button disabled={disable} buttonStyle={{ width: 230, borderRadius: 10, backgroundColor: '#0091EA' }} title='Post' onPress={this.postbook} />
+                        <Button disabled={disable} buttonStyle={{ width: 230, borderRadius: 10, backgroundColor: '#0091EA' }} title='Post' onPress={this.postbook.bind(this)} />
                     </View>
                 </View>
             </ScrollView>

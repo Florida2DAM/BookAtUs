@@ -9,11 +9,12 @@ export class Profile extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            username: 'maboto01'
+            username: ''
         };
     }
 
     render() {
+        const username = this.props.route.params.username;
         return (
             <ScrollView>
                 <View style={{ flex: 1, flexDirection: 'column', backgroundColor: 'white', alignItems: 'center', alignContent: 'center' }}>
@@ -26,21 +27,21 @@ export class Profile extends Component {
                                     <Icon name="chat" type size={30} color="#ffffff"></Icon>
                                 }
                                     iconContainerStyle={{ margin: 20 }}
-                                    titleStyle={{ color: "#ffffff" }} title='Chat' onPress={() => this.props.navigation.navigate('MyChats', { username: this.state.username })} > </Button>
+                                    titleStyle={{ color: "#ffffff" }} title='Chat' onPress={() => this.props.navigation.navigate('MyChats', { username: username })} > </Button>
                             </View>
                             <View style={styles.seccio3}>
                                 <Button icon={
-                                    <Icon name="favorite" type size={30} color="#ffffff"></Icon>
+                                    <Icon name="book" type size={30} color="#ffffff"></Icon>
                                 }
                                     iconContainerStyle={{ margin: 20 }}
-                                    titleStyle={{ color: "#ffffff" }} title='Favorites' onPress={() => this.props.navigation.navigate('Favorites', { username: this.state.username })} > </Button>
+                                    titleStyle={{ color: "#ffffff" }} title='My books' onPress={() => this.props.navigation.navigate('MyAds', { username: username})} > </Button>
                             </View>
                             <View style={styles.seccio4}>
                                 <Button icon={
                                     <Icon name="exit-to-app" type size={30} color="#ffffff"></Icon>
                                 }
                                     iconContainerStyle={{ margin: 20 }}
-                                    titleStyle={{ color: "#ffffff" }} title='Exit' onPress={() => this.props.navigation.navigate('Login', { username: this.state.username })} > </Button>
+                                    titleStyle={{ color: "#ffffff" }} title='Exit' onPress={() => this.props.navigation.navigate('Login', { username: username })} > </Button>
                             </View>
                             <View style={styles.seccio5}>
                                 <Button icon={
@@ -49,14 +50,14 @@ export class Profile extends Component {
                                         size={30} color="#ffffff"></Icon>
                                 }
                                     iconContainerStyle={{ margin: 20 }}
-                                    titleStyle={{ color: "#ffffff" }} title='EditProfile' onPress={() => this.props.navigation.navigate('EditProfile', { username: this.state.username })} > </Button>
+                                    titleStyle={{ color: "#ffffff" }} title='EditProfile' onPress={() => this.props.navigation.navigate('EditProfile', { username: username })} > </Button>
                             </View>
                             <View style={styles.seccio6}>
                                 <Button icon={
                                     <Icon name="help" type size={30} color="#ffffff"></Icon>
                                 }
                                     iconContainerStyle={{ margin: 20 }}
-                                    titleStyle={{ color: "#ffffff" }} title='Help' onPress={() => this.props.navigation.navigate('Help', { username: this.state.username })} > </Button>
+                                    titleStyle={{ color: "#ffffff" }} title='Help' onPress={() => this.props.navigation.navigate('Help', { username: username })} > </Button>
 
                             </View>
                         </View>

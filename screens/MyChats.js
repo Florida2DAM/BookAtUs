@@ -20,7 +20,7 @@ export class MyChats extends Component {
       chats:
         [],
       showListSwith: false,
-      username: "alexito"
+      username: this.props.route.params.username
     }
   }
 
@@ -29,13 +29,13 @@ export class MyChats extends Component {
   }
 
   componentDidMount() {
-    axios.get('http://100.25.140.168:7010/api/Chat?username=' +  this.state.username).then(res => {
+    axios.get('http://10.0.2.2:7010/api/Chat?username=' +  this.state.username).then(res => {
       if (res.data != []) {
         this.setState({ chats: res.data });
         console.log('data deceived: ');
       } else {
         console.log('Any data found: ' + res.data);
-        console.log('http://100.25.140.168:7010/api/Chat?username=' + this.state.username)
+        console.log('http://10.0.2.2:7010/api/Chat?username=' + this.state.username)
       }
     }
     ).catch(err => {
@@ -44,14 +44,14 @@ export class MyChats extends Component {
   }
 
   render() {
-
+    const username = this.props.route.params.username;
     return (
       <View style={{ flexDirection: 'column', height: '100%' }}>
         <FlatList
           data={this.state.chats}
           keyExtractor={(item, index) => index.toString()}
           style={{ padding: 5, flex: 1, backgroundColor: 'white' }}
-          renderItem={(item) => (<ChatList chat={item} showswitch={this.state.showListSwith} navigation={this.props.navigation} username={this.state.username}/>)}
+          renderItem={(item) => (<ChatList chat={item} showswitch={this.state.showListSwith} navigation={this.props.navigation} currentUser={username}/>)}
         />
         <View style={{ height: 50, width: '100%', flexDirection: 'row', justifyContent: 'space-between', alignContent: 'center' }}>
           <TouchableOpacity style={{ width: '40%', marginLeft: '5%', margin: 5, borderRadius: 50, borderColor: 'skyblue', borderWidth: 3 }} onPress={() => this.changeList(true)}>

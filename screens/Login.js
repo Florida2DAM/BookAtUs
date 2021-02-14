@@ -53,6 +53,7 @@ export class Login extends Component {
                             <Input
                                 placeholder='Password'
                                 textContentType='password'
+                                secureTextEntry={true}
                                 leftIcon={{ name: 'lock' }}
                                 onChangeText={e => this.setState({ Password: e })}
                             />
@@ -65,7 +66,7 @@ export class Login extends Component {
                                 log = false
                             } else {
                                 debugger;
-                                fetch('http://100.25.140.168:7010/api/Login', {
+                                fetch('http://10.0.2.2:7010/api/Login', {
                                     method: 'POST',
                                     headers: {
                                         'Accept': 'application/json',
@@ -81,7 +82,9 @@ export class Login extends Component {
                                             alert('User not found')
                                         }
                                         else {
-                                            navigation.navigate('Main');
+                                            navigation.navigate('Main', {
+                                                username : this.state.Email
+                                            });
                                         }
                                     })
                             }

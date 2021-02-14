@@ -20,15 +20,15 @@ export class ChatList extends Component {
   }
 
     renderMsg = () => {
-        const currentUser = "maboto01";
+        const currentUser = this.props.currentUser;
         if (this.props.showswitch) {
             if (this.props.chat.item.Seller == currentUser) {
                 return(        
-                <TouchableOpacity onPress={() => this.props.navigation.navigate('Chat', {chatid: this.props.chat.item.ChatId})} style={{backgroundColor:'skyblue', borderRadius: 10, padding: 5, margin: 5}}>
+                <TouchableOpacity onPress={() => this.props.navigation.navigate('Chat', {chatid: this.props.chat.item.ChatId, username: currentUser})} style={{backgroundColor:'skyblue', borderRadius: 10, padding: 5, margin: 5}}>
                     <View style={{flexDirection: 'row', height: 50}}>
                         <Image style={{height: '100%', borderRadius: 50, aspectRatio: 1, marginRight: 5}}
                             source={{
-                            uri: this.props.chat.item.ProductImage,
+                            uri: "data:image/png;base64,"+this.props.chat.item.ProductImage,
                             }}
                         />
                         <View style={{flexDirection: 'column'}}>
@@ -43,11 +43,11 @@ export class ChatList extends Component {
         } else {
             if (this.props.chat.item.Seller != currentUser) {
                 return(        
-                <TouchableOpacity onPress={() => this.props.navigation.navigate('Chat')} style={{backgroundColor:'skyblue', borderRadius: 10, padding: 5, margin: 5}}>
+                <TouchableOpacity onPress={() => this.props.navigation.navigate('Chat', {chatid: this.props.chat.item.ChatId, username: currentUser})} style={{backgroundColor:'skyblue', borderRadius: 10, padding: 5, margin: 5}}>
                     <View style={{flexDirection: 'row', height: 50}}>
                         <Image style={{height: '100%', borderRadius: 50, aspectRatio: 1, marginRight: 5}}
                             source={{
-                            uri: this.props.chat.item.ProductImage,
+                            uri: "data:image/png;base64,"+this.props.chat.item.ProductImage,
                             }}
                         />
                         <View style={{flexDirection: 'column'}}>

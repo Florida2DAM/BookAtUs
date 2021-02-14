@@ -38,6 +38,7 @@ export class Main extends Component {
       },
       )
     }).catch(err => {
+      this.setState({loading: false,})
       alert(err)
     })
   }
@@ -47,6 +48,7 @@ export class Main extends Component {
   };
 
   render() {
+    const username = this.props.route.params.username;
     const showbook = () => {
       if (this.state.loading) {
         return (
@@ -73,7 +75,8 @@ export class Main extends Component {
                       <View style={{ width: Dimensions.get('window').width - 220 }}>
                         <View>
                           <TouchableOpacity style={{ borderRadius: 10, margin: 5, borderWidth: 4, borderColor: 'lightgrey', padding: 2 }} containerStyle={{ width: 190, height: 300, borderRadius: 5 }} onPress={() => this.props.navigation.navigate('BookInfo', {
-                            data: item
+                            data: item, 
+                            username : username
                           })}>
                             <Image resizeMode='contain' containerStyle={{ borderTopRightRadius: 5, borderTopLeftRadius: 5 }} style={{ width: '100%', aspectRatio: 1 }} source={{ uri: "data:image/png;base64," + item.Image }}></Image>
                             <Text style={{ fontWeight: 'bold', fontSize: 20, margin: 5 }}>{item.Price}€</Text>
@@ -97,7 +100,9 @@ export class Main extends Component {
 
     const component1 = () => <TouchableOpacity
       activeOpacity={0.8}
-      onPress={() => this.props.navigation.navigate('BookList')}
+      onPress={() => this.props.navigation.navigate('BookList', {
+        username: username,
+      })}
       style={{
         elevation: 8,
         backgroundColor: "#81D3F8",
@@ -118,7 +123,9 @@ export class Main extends Component {
     </TouchableOpacity>
     const component2 = () => <TouchableOpacity
       activeOpacity={0.8}
-      onPress={() => this.props.navigation.navigate("AddBook")}
+      onPress={() => this.props.navigation.navigate("AddBook", {
+        username: username,
+      })}
       style={{
         elevation: 8,
         backgroundColor: "#81D3F8",
@@ -127,7 +134,6 @@ export class Main extends Component {
         width: '100%',
         height: '100%'
       }}
-
     >
       <Text style={{
         fontSize: 18,
@@ -139,7 +145,9 @@ export class Main extends Component {
     </TouchableOpacity>
     const component3 = () => <TouchableOpacity
       activeOpacity={0.8}
-      onPress={() => this.props.navigation.navigate('Profile')}
+      onPress={() => this.props.navigation.navigate('Profile', {
+        username: username,
+      })}
       style={{
         elevation: 8,
         backgroundColor: "#81D3F8",

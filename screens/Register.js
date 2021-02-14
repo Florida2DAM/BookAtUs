@@ -27,7 +27,7 @@ export class Register extends Component {
             rating: 0,
             sells: 0,
             buys: 0,
-            url: 'http://100.25.140.168:7010/api/insertUser',
+            url: 'http://10.0.2.2:7010/api/insertUser',
             checked: false,
             date: null
         };
@@ -35,18 +35,11 @@ export class Register extends Component {
 
     navigateToScreen = (route, params) => () => {
         const navigateAction = NavigationActions.navigate({
-          routeName: route,
-          params: params
+            routeName: route,
+            params: params
         });
         this.props.navigation.dispatch(navigateAction);
-        }
-        
-
-    handlePicker = data => {
-        this.setState({ pickedData: data });
-        let date = picked;
-        alert(date)
-    };
+    }
 
     handlePlaceholder = () =>
         this.state.pickedDate
@@ -75,8 +68,8 @@ export class Register extends Component {
     }
 
     render() {
-        
-let disable = true;
+
+        let disable = true;
         if (this.state.image != '' && this.state.name != '' && this.state.surname != '' && this.state.date != '' && this.state.userid != '' && this.state.password != '' & this.state.checked) {
             disable = false;
         }
@@ -108,11 +101,13 @@ let disable = true;
                             />
                             <Input
                                 placeholder='Password'
+                                secureTextEntry={true}
                                 leftIcon={{ name: 'lock' }}
                                 onChangeText={(e) => this.setState({ password: e })}
                             />
                             <Input
                                 placeholder='Confirm Password'
+                                secureTextEntry={true}
                                 leftIcon={{ name: 'lock' }}
                                 onChangeText={(e) => this.setState({ confirmpassword: e })}
                             />
@@ -184,7 +179,7 @@ let disable = true;
                                         alert(err)
                                     })
                                 }
-                            }}/>
+                            }} />
                             <Text style={{ textAlign: 'center', fontFamily: 'Arial', fontSize: 18 }}>Have you an account?</Text>
                             <Text style={{ textAlign: 'center', fontFamily: 'Arial', fontSize: 18, color: '#169BD5' }} onPress={() => this.props.navigation.navigate('Login')}>Log in</Text>
                         </View>

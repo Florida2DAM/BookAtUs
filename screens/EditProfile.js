@@ -10,9 +10,10 @@ import {
   TouchableOpacity,
   ScrollView,
 } from 'react-native';
-import DatePicker from 'react-native-datepicker'
+import DatePicker from 'react-native-datepicker';
 import { Button, Input } from 'react-native-elements'
 import ImgToBase64 from 'react-native-image-base64';
+import axios from 'axios';
 
 export class EditProfile extends Component {
   constructor(props) {
@@ -23,55 +24,71 @@ export class EditProfile extends Component {
       surname: '',
       avatar: null,
       password: '',
-      date: null
+      user: null
     };
   }
- 
-  editUser(){
-    if (this.state.password != this.state.confirmpassword) {
-      alert('Passwords are different')
-  } else {
-      const newuser = {
-          name: this.state.name,
-          surname: this.state.surname,
-          avatar: this.state.avatar,
-          password: this.state.password,
-          birth: this.state.date,
-      };
-      axios.post('http://localhost:7010/api/Users/'+this.props.route.params.username+'/', user).then(res => {
-          if (res.data == false) {
-              alert("Sorry, User already created")
-          } else {
-              alert("User created")
-              this.props.navigation.navigate('Login')
-          }
-      }
-      ).catch(err => {
-          alert(err)
+
+  componentDidMount() {
+    axios.get('http://10.0.2.2:7010/api/Users/' + this.props.route.params.username).then(res => {
+      const user = res.data
+      this.setState({
+        user
       })
+    }).catch(err => {
+      alert(err)
+      this.props.navigation.navigate('Profile')
+    })
   }
+
+  editUser() {
+    if (this.state.user == null) {
+      this.setState({ user: this.state.user.Name })
+    }
+    if (this.state.surname == null) {
+      this.setState({ surname: this.state.user.Surname })
+    }
+    if (this.state.avatar == null) {
+      this.setState({ avatar: this.state.user.Avatar })
+    }
+    if (this.state.password == null) {
+      this.setState({ password: this.state.user.Password })
+    }
+    const newuser = {
+      UserId: this.state.user.UserId,
+      Name: this.state.name,
+      Surname: this.state.surname,
+      avatar: this.state.avatar,
+      Password: this.state.password,
+      Birth: this.state.user.Birth
+    };
+    axios.put('http://10.0.2.2:7010/api/Users/' + this.props.route.params.username + '/', newuser).then(res => {
+      alert('Updated user')
+    }).catch(err => {
+      alert(err)
+    })
+
   }
 
   async SingleFilePicker() {
     try {
-        const res = await DocumentPicker.pick({
-            type: [DocumentPicker.types.images],
-        });
+      const res = await DocumentPicker.pick({
+        type: [DocumentPicker.types.images],
+      });
 
-        this.setState({ singleFileOBJ: res });
-        ImgToBase64.getBase64String(res.uri)
-            .then(base64String => this.setState({ avatar: base64String }))
-            .catch(err => alert(err));
+      this.setState({ singleFileOBJ: res });
+      ImgToBase64.getBase64String(res.uri)
+        .then(base64String => this.setState({ avatar: base64String }))
+        .catch(err => alert(err));
 
     } catch (err) {
-        if (DocumentPicker.isCancel(err)) {
-            Alert.alert('Canceled');
-        } else {
-            Alert.alert('Unknown Error: ' + JSON.stringify(err));
-            throw err;
-        }
+      if (DocumentPicker.isCancel(err)) {
+        Alert.alert('Canceled');
+      } else {
+        Alert.alert('Unknown Error: ' + JSON.stringify(err));
+        throw err;
+      }
     }
-}
+  }
   render() {
     const year = new Date().getFullYear() - 18;
     const month = new Date().getMonth();
@@ -85,6 +102,7 @@ export class EditProfile extends Component {
             <Text style={styles.Text}>Name : </Text>
             <Input style={styles.InputTitle}
               onChangeText={(e) => this.setState({ name: e })}
+              placeholder={this.state.user == null ? "Name..." : this.state.user.Name}
             >
 
             </Input>
@@ -93,6 +111,7 @@ export class EditProfile extends Component {
             <Text style={styles.Text}>Surname: </Text>
             <Input style={styles.InputDescription}
               onChangeText={(f) => this.setState({ surname: f })}
+              placeholder={this.state.user == null ? "Name..." : this.state.user.Surname}
             >
 
             </Input>
@@ -100,40 +119,16 @@ export class EditProfile extends Component {
           <View style={styles.ViewTitle}>
             <Text style={styles.Text}>Password: </Text>
             <Input style={styles.InputPrice}
-              keyboardType='numeric'
-              onChangeText={(d) => this.setState({ price: d })}           >
-
+              keyboardType='visible-password'
+              secureTextEntry={true}
+              onChangeText={(d) => this.setState({ password: d })}>
             </Input>
-            <View style={{ borderWidth: 1, padding: 10, borderRadius: 10 }}>
-              <DatePicker
-                style={{ width: 300 }}
-                date={this.state.date}
-                mode="date"
-                placeholder="Select Birthday"
-                format="DD-MM-YYYY"
-                maxDate={datepicker}
-                confirmBtnText="Confirm"
-                cancelBtnText="Cancel"
-                customStyles={{
-                  dateIcon: {
-                    position: 'absolute',
-                    left: 0,
-                    top: 4,
-                    marginLeft: 0
-                  },
-                  dateInput: {
-                    marginLeft: 36
-                  }
-                }}
-                onDateChange={(date) => { this.setState({ date }) }}
-              />
-            </View>
           </View>
           <View style={{ alignItems: 'center' }}>
             <TouchableOpacity style={{ alignItems: 'center', marginTop: 100 }} onPress={this.SingleFilePicker.bind(this)}>
               <Image source={{ uri: this.state.singleFileOBJ.uri ? this.state.singleFileOBJ.uri : 'https://i.imgur.com/uYRjNNZ.png' }} style={{ width: 143, height: 130 }} />
             </TouchableOpacity>
-            <Button buttonStyle={{ marginTop: 10, width: 290, borderRadius: 10, justifyContent: 'space-around', backgroundColor: '#0091EA' }} title='Modify' />
+            <Button buttonStyle={{ marginTop: 10, width: 290, borderRadius: 10, justifyContent: 'space-around', backgroundColor: '#0091EA' }} onPress={() => this.editUser()} title='Modify' />
           </View>
         </View>
       </ScrollView>

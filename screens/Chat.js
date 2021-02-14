@@ -27,7 +27,7 @@ export class Chat extends Component {
 
   uploadNewMsg = () => {
     if (this.currentMsg != "") {
-    axios.put('http://100.25.140.168:7010/api/Chat?chatId=' + this.props.route.params.chatid, { MessageId: null, User: this.state.username, Body: this.currentMsg }).then(res => {
+    axios.put('http://10.0.2.2:7010/api/Chat?chatId=' + this.props.route.params.chatid, { MessageId: null, User: this.state.username, Body: this.currentMsg }).then(res => {
       if (res.data) {
         this.textInput.clear();
         this.getChatData();
@@ -52,7 +52,7 @@ export class Chat extends Component {
   }
 
   getChatData = () => {
-    axios.get('http://100.25.140.168:7010/api/Chat?chatId=' + this.props.route.params.chatid).then(res => {
+    axios.get('http://10.0.2.2:7010/api/Chat?chatId=' + this.props.route.params.chatid).then(res => {
       if (res.data != []) {
         this.setState({ chats: res.data.Messages.reverse() });
       } else {
@@ -65,6 +65,7 @@ export class Chat extends Component {
   }
 
   render() {
+    const username = this.props.route.params.username;
     return (
       <View style={{ flexDirection: 'column', height: '100%' }}>
         <FlatList
@@ -72,7 +73,7 @@ export class Chat extends Component {
           keyExtractor={(item, index) => index.toString()}
           style={{ padding: 5, flex: 2, backgroundColor: 'white' }}
           inverted={true}
-          renderItem={(item) => (<Message message={item} />)}
+          renderItem={(item) => (<Message message={item} currentUser={username}/>)}
         />
         <View style={{ height: 50, backgroundColor: 'lightgrey', flexDirection: 'row' }}>
           <TextInput
