@@ -29,7 +29,7 @@ namespace BackendBookAtUs.Models
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
-                optionsBuilder.UseMySql("Server=MYSQL5042.site4now.net;Database=db_a6f307_bookatu;Uid=a6f307_bookatu;Pwd=Florida_2020;SslMode = none");
+                optionsBuilder.UseMySql("Server=localhost;Database=bookatus2;Uid=root;Pwd='';SslMode = none");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

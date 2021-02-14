@@ -13,38 +13,37 @@ namespace BackendBookAtUs.Controllers
     public class ChatController : ApiController
     {
         // GET: api/Chat
-        public bool Get()
+        public List<Chat> Get()
         {
-            return false;
+            ChatsRepository repo = new ChatsRepository();
+            return repo.Retrieve();
         }
 
         // GET: api/Chat/5
-        public Chat Get(ChatDTO chat)
+        public Chat Get(int chatId)
         {
             ChatsRepository repo = new ChatsRepository();
-            return repo.Retrieve(chat);
+            return repo.Retrieve(chatId);
         }
 
-        public List<ChatDTO> Get(bool type, string username)
+        public List<ChatDTO> Get(string username)
         {
             ChatsRepository repo = new ChatsRepository();
-            if (type)
-                return repo.RetrieveBuyers(username);
-            else
-                return repo.RetrieveSellers(username);
+            return repo.Retrieve(username);
         }
 
         // POST: api/Chat
-        public bool Post([FromBody]Chat chat)
+        public bool Post([FromBody] Chat chat)
         {
             ChatsRepository repo = new ChatsRepository();
             return repo.Save(chat);
         }
 
         // PUT: api/Chat/5
-        public void Put(int id, [FromBody]string value)
+        public bool Put(int chatId, [FromBody] Message msg)
         {
-
+            ChatsRepository repo = new ChatsRepository();
+            return repo.Save(chatId, msg);
         }
 
         // DELETE: api/Chat/5

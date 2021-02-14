@@ -11,12 +11,12 @@ namespace BackendBookAtUs.Models
 {
     public class Product
     {
-        public Product() 
+        public Product()
         {
-        
+
         }
 
-        public Product(int productId, string title, string description, double price, int category, byte[] image, DateTime uploadDate, List<User> watched, List<User> likes, User User)
+        public Product(int productId, string title, string description, double price, int category, byte[] image, DateTime uploadDate, string User)
         {
             ProductId = productId;
             Title = title;
@@ -25,9 +25,7 @@ namespace BackendBookAtUs.Models
             Category = category;
             Image = image;
             UploadDate = uploadDate;
-            Watched = watched;
-            Likes = likes;
-            Proprietary = User;
+            UserId = User;
         }
 
         public Product(string title, string description, double price, int category)
@@ -45,9 +43,8 @@ namespace BackendBookAtUs.Models
         public int Category { get; set; }
         public Byte[] Image { get; set; }
         public DateTime UploadDate { get; set; }
-        public List<User> Watched { get; set; }
-        public List<User> Likes { get; set; }
+        public bool vendido { get; set; }
 
-        public User Proprietary { get; set; }
+        public string UserId { get; set; }
     }
 }

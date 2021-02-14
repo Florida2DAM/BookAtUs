@@ -25,6 +25,7 @@ namespace BackendBookAtUs.Models
             Rating = 0;
             Sells = 0;
             Buys = 0;
+            Products = new List<Product>();
         }
 
         public string Name { get; set; }
@@ -36,7 +37,11 @@ namespace BackendBookAtUs.Models
         public double Rating { get; set; }
         public int Sells { get; set; }
         public int Buys { get; set; }
+
+        public List<Product> Products { get; set; }
+
     }
+
     public class Login
     {
 

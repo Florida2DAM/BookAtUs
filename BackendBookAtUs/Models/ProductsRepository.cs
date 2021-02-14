@@ -66,15 +66,23 @@ namespace BackendBookAtUs.Models
             {
                 BookAtUsContext context = new BookAtUsContext();
                 product.UploadDate = DateTime.Now;
-                context.Products.Add(product);
-                if (context.SaveChanges() >= 1)
-                    return true;
-                else
+                User user = context.Users.FirstOrDefault(p => p.UserId == product.UserId);
+                if (user == null)
                 {
                     Debug.WriteLine("Not saved change");
                     return false;
                 }
-
+                else
+                {
+                    context.Products.Add(product);
+                    if (context.SaveChanges() >= 1)
+                        return true;
+                    else
+                    {
+                        Debug.WriteLine("Not saved change");
+                        return false;
+                    }
+                }
             }
             catch (Exception ex)
             {

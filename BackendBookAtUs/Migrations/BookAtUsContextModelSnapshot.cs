@@ -88,12 +88,12 @@ namespace BackendBookAtUs.Migrations
                     b.Property<DateTime>("UploadDate")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<string>("Userid")
+                    b.Property<string>("UserId")
                         .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
 
                     b.HasKey("ProductId");
 
-                    b.HasIndex("Userid");
+                    b.HasIndex("UserId");
 
                     b.ToTable("Products");
                 });
@@ -143,12 +143,6 @@ namespace BackendBookAtUs.Migrations
                     b.Property<string>("Password")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<int?>("ProductId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("ProductId1")
-                        .HasColumnType("int");
-
                     b.Property<double>("Rating")
                         .HasColumnType("double");
 
@@ -159,10 +153,6 @@ namespace BackendBookAtUs.Migrations
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.HasKey("UserId");
-
-                    b.HasIndex("ProductId");
-
-                    b.HasIndex("ProductId1");
 
                     b.ToTable("Users");
                 });
@@ -183,9 +173,9 @@ namespace BackendBookAtUs.Migrations
 
             modelBuilder.Entity("BackendBookAtUs.Models.Product", b =>
                 {
-                    b.HasOne("BackendBookAtUs.Models.User", "Proprietary")
-                        .WithMany()
-                        .HasForeignKey("Userid");
+                    b.HasOne("BackendBookAtUs.Models.User", null)
+                        .WithMany("Products")
+                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("BackendBookAtUs.Models.PurchaseConfirmed", b =>
@@ -193,17 +183,6 @@ namespace BackendBookAtUs.Migrations
                     b.HasOne("BackendBookAtUs.Models.Product", "product")
                         .WithMany()
                         .HasForeignKey("ProductId");
-                });
-
-            modelBuilder.Entity("BackendBookAtUs.Models.User", b =>
-                {
-                    b.HasOne("BackendBookAtUs.Models.Product", null)
-                        .WithMany("Likes")
-                        .HasForeignKey("ProductId");
-
-                    b.HasOne("BackendBookAtUs.Models.Product", null)
-                        .WithMany("Watched")
-                        .HasForeignKey("ProductId1");
                 });
 #pragma warning restore 612, 618
         }

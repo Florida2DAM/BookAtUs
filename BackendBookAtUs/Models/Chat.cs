@@ -13,14 +13,14 @@ namespace BackendBookAtUs.Models
 
         }
 
-        public Chat(int chatId, Product product, string buyer, string seller)
+        public Chat(Product product, string buyer, string seller)
         {
             Product = product;
             Buyer = buyer;
             Seller = seller;
             Messages = new List<Message>();
         }
- 
+
         public int ChatId { get; set; }
         public Product Product { get; set; }
         public string Buyer { get; set; }
@@ -53,4 +53,5 @@ namespace BackendBookAtUs.Models
         public string ProductName { get; set; }
         public Byte[] ProductImage { get; set; }
     }
+
 }
