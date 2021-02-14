@@ -37,7 +37,6 @@ namespace BackendBookAtUs.Models
                     .Select(p => ToDTO(p))
                     .ToList();
                 return chat;
-
             }
         }
 

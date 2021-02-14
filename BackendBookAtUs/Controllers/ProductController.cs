@@ -39,11 +39,21 @@ namespace BackendBookAtUs.Controllers
             repo.Save(p);
         }
 
+        [Route("api/Put")]
+        [HttpPut]
         // PUT: api/Product/5
         public void Put(int id, [FromBody]Product p)
         {
             var repo = new ProductsRepository();
             repo.Put(id, p);
+        }
+
+        [Route("api/book")]
+        [HttpPut]
+        public bool Put(int id)
+        {
+            var repo = new ProductsRepository();
+            return  repo.soldOutBook(id);
         }
 
         // DELETE: api/Product/5

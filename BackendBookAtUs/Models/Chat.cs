@@ -38,7 +38,7 @@ namespace BackendBookAtUs.Models
 
         }
 
-        public ChatDTO(int chatId, int productId, string buyer, string seller, string productName, byte[] productImage)
+        public ChatDTO(int chatId, int productId, string buyer, string seller, string productName, Byte[] productImage)
         {
             ChatId = chatId;
             ProductId = productId;
@@ -55,5 +55,4 @@ namespace BackendBookAtUs.Models
         public string ProductName { get; set; }
         public Byte[] ProductImage { get; set; }
     }
-
 }

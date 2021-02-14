@@ -338,6 +338,14 @@
     <Compile Include="Migrations\20210214122714_m1.designer.cs">
       <DependentUpon>20210214122714_m1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20210214163842_m2.cs" />
+    <Compile Include="Migrations\20210214163842_m2.designer.cs">
+      <DependentUpon>20210214163842_m2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20210214180622_m3.cs" />
+    <Compile Include="Migrations\20210214180622_m3.designer.cs">
+      <DependentUpon>20210214180622_m3.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\BookAtUsContextModelSnapshot.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />

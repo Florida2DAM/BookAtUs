@@ -18,6 +18,7 @@ namespace BackendBookAtUs.Models
             {
                 List<Product> products = context
                     .Products
+                    .Where(p => p.vendido == false)
                     .ToList();
                 return products;
             }
@@ -115,6 +116,22 @@ namespace BackendBookAtUs.Models
             {
                 Debug.WriteLine("Error with catch: " + ex.Message);
                 return false;
+            }
+        }
+
+        internal bool soldOutBook(int id)
+        {
+            using (BookAtUsContext context = new BookAtUsContext())
+            {
+                Product product = context.Products.FirstOrDefault(p => p.ProductId == id);
+                product.vendido = true;
+                if (context.SaveChanges() >= 1)
+                    return true;
+                else
+                {
+                    Debug.WriteLine("Not saved change");
+                    return false;
+                }
             }
         }
 

@@ -3,14 +3,16 @@ using System;
 using BackendBookAtUs.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BackendBookAtUs.Migrations
 {
     [DbContext(typeof(BookAtUsContext))]
-    partial class BookAtUsContextModelSnapshot : ModelSnapshot
+    [Migration("20210214163842_m2")]
+    partial class m2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

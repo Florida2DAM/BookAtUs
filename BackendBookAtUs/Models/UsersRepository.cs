@@ -87,7 +87,7 @@ namespace BackendBookAtUs.Models
             user.Name = u.Name;
             user.Surname = u.Surname;
             user.Avatar = u.Avatar;
-            user.Password = u.Password;
+            user.Password = Security.Encode(u.Password);
             user.Birth = u.Birth;
             context.SaveChanges();
         }

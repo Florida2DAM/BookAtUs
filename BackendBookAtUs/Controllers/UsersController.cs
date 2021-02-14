@@ -13,13 +13,14 @@ namespace BackendBookAtUs.Controllers
     public class UsersController : ApiController
     {
         // GET: api/Users
-        public IEnumerable<string> Get()
+        public List<User> Get()
         {
-            return new string[] { "value1", "value2" };
+            UsersRepository repo = new UsersRepository();
+            return repo.Retrieve();
         }
 
         // GET: api/Users/5
-       public User Get(string id)
+        public User Get(string id)
         {
             UsersRepository repo = new UsersRepository();
             return repo.RetrieveId(id);
@@ -36,7 +37,7 @@ namespace BackendBookAtUs.Controllers
 
         [Route("api/Login")]
         [HttpPost]
-        public Response UserLogin([FromBody]Login login)
+        public Response UserLogin([FromBody] Login login)
         {
             BookAtUsContext context = new BookAtUsContext();
             var log = context.Users.Where(x => x.UserId.Equals(login.Email) && x.Password == Security.Encode(login.Password)).FirstOrDefault();
@@ -52,7 +53,7 @@ namespace BackendBookAtUs.Controllers
         }
 
         // PUT: api/Users/5
-        public void Put(string id, [FromBody]User u)
+        public void Put(string id, [FromBody] User u)
         {
             var repo = new UsersRepository();
             repo.Put(id, u);
