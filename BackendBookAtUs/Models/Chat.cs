@@ -13,8 +13,10 @@ namespace BackendBookAtUs.Models
 
         }
 
-        public Chat(Product product, string buyer, string seller)
+        public Chat(int productId, string buyer, string seller)
         {
+            var repo = new ProductsRepository();
+            Product product = repo.RetrieveId(productId);
             Product = product;
             Buyer = buyer;
             Seller = seller;
