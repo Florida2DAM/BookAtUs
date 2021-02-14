@@ -1,6 +1,7 @@
 ﻿using BackendBookAtUs.Models;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -33,9 +34,10 @@ namespace BackendBookAtUs.Controllers
         }
 
         // POST: api/Chat
-        public bool Post([FromBody] Chat chat)
+        public bool Post(int productId, string buyer, string seller)
         {
             ChatsRepository repo = new ChatsRepository();
+            Chat chat = new Chat(productId, buyer, seller);
             return repo.Save(chat);
         }
 

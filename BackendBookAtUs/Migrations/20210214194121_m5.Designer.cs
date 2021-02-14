@@ -3,14 +3,16 @@ using System;
 using BackendBookAtUs.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BackendBookAtUs.Migrations
 {
     [DbContext(typeof(BookAtUsContext))]
-    partial class BookAtUsContextModelSnapshot : ModelSnapshot
+    [Migration("20210214194121_m5")]
+    partial class m5
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -26,13 +28,15 @@ namespace BackendBookAtUs.Migrations
                     b.Property<string>("Buyer")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<int>("Product")
+                    b.Property<int?>("ProductId")
                         .HasColumnType("int");
 
                     b.Property<string>("Seller")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.HasKey("ChatId");
+
+                    b.HasIndex("ProductId");
 
                     b.ToTable("Chat");
                 });
@@ -154,6 +158,13 @@ namespace BackendBookAtUs.Migrations
                     b.HasKey("UserId");
 
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("BackendBookAtUs.Models.Chat", b =>
+                {
+                    b.HasOne("BackendBookAtUs.Models.Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductId");
                 });
 
             modelBuilder.Entity("BackendBookAtUs.Models.Message", b =>

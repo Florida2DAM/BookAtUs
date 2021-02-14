@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Diagnostics;
 using System.Linq;
 using System.Web;
 
@@ -14,17 +15,17 @@ namespace BackendBookAtUs.Models
         }
 
         public Chat(int productId, string buyer, string seller)
-        {
-            var repo = new ProductsRepository();
-            Product product = repo.RetrieveId(productId);
-            Product = product;
+        { 
+            Debug.WriteLine("Hay: " + productId + " " + buyer + " " + seller);
+            Product = productId;
             Buyer = buyer;
             Seller = seller;
             Messages = new List<Message>();
+
         }
 
         public int ChatId { get; set; }
-        public Product Product { get; set; }
+        public int Product { get; set; }
         public string Buyer { get; set; }
         public string Seller { get; set; }
         public List<Message> Messages { get; set; }

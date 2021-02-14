@@ -346,6 +346,22 @@
     <Compile Include="Migrations\20210214180622_m3.designer.cs">
       <DependentUpon>20210214180622_m3.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20210214193542_m4.cs" />
+    <Compile Include="Migrations\20210214193542_m4.designer.cs">
+      <DependentUpon>20210214193542_m4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20210214194121_m5.cs" />
+    <Compile Include="Migrations\20210214194121_m5.designer.cs">
+      <DependentUpon>20210214194121_m5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20210214201316_m6.cs" />
+    <Compile Include="Migrations\20210214201316_m6.designer.cs">
+      <DependentUpon>20210214201316_m6.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20210214203134_m7.cs" />
+    <Compile Include="Migrations\20210214203134_m7.designer.cs">
+      <DependentUpon>20210214203134_m7.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\BookAtUsContextModelSnapshot.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />

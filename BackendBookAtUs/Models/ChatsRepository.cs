@@ -70,7 +70,7 @@ namespace BackendBookAtUs.Models
             }
             catch (Exception ex)
             {
-                Debug.WriteLine("Error with catch: " + ex.InnerException);
+                Debug.WriteLine("Error with catch: xD " + ex.Message);
                 return false;
             }
         }
@@ -128,7 +128,9 @@ namespace BackendBookAtUs.Models
 
         static public ChatDTO ToDTO(Chat c)
         {
-            ChatDTO chat = new ChatDTO(c.ChatId, c.Product.ProductId, c.Buyer, c.Seller, c.Product.Title, c.Product.Image);
+            ProductsRepository repo = new ProductsRepository();
+            Product p = repo.RetrieveId(c.Product);
+            ChatDTO chat = new ChatDTO(c.ChatId, p.ProductId, c.Buyer, c.Seller, p.Title, p.Image);
             Debug.WriteLine(chat.ChatId);
             return chat;
         }
