@@ -24,6 +24,18 @@ namespace BackendBookAtUs.Models
             }
         }
 
+        internal List<Product> RetrieveU(string userid)
+        {
+            using (BookAtUsContext context = new BookAtUsContext())
+            {
+                List<Product> products = context
+                    .Products
+                    .Where(p => p.UserId == userid)
+                    .ToList();
+                return products;
+            }
+        }
+
         internal Product RetrieveId(int id)
         {
             using (BookAtUsContext context = new BookAtUsContext())

@@ -16,6 +16,15 @@ namespace BackendBookAtUs.Controllers
             return products;
         }
 
+        [HttpGet]
+        [Route("api/BookUser")]
+        public IEnumerable<Product> GetU(string userid)
+        {
+            var repo = new ProductsRepository();
+            List<Product> products = repo.RetrieveU(userid);
+            return products;
+        }
+
         // GET: api/Product
         public IEnumerable<Product> GetC(int category)
         {

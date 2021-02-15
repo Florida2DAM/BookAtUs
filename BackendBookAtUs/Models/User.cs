@@ -14,6 +14,14 @@ namespace BackendBookAtUs.Models
 
         }
 
+        public User(string name, string surname, byte[] avatar, string password)
+        {
+            Name = name;
+            Surname = surname;
+            Avatar = avatar;
+            Password = password;
+        }
+
         public User(string name, string surname, string userId, byte[] avatar, string birth, string password)
         {
             Name = name;
