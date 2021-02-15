@@ -92,7 +92,7 @@ namespace BackendBookAtUs.Models
             context.SaveChanges();
         }
 
-        internal void Put(string id, string password)
+        internal void PutPassword(string id, string password)
         {
             BookAtUsContext context = new BookAtUsContext();
             User user = context.Users.FirstOrDefault(us => us.UserId == id);

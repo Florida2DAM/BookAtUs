@@ -73,7 +73,15 @@ namespace BackendBookAtUs.Controllers
         public void Put(string id, string password)
         {
             var repo = new UsersRepository();
-            repo.Put(id, password);
+            repo.PutPassword(id, password);
+        }
+
+        [Route("api/EditUser")]
+        [HttpPut]
+        public void PutU(string id, [FromBody] User u)
+        {
+            var repo = new UsersRepository();
+            repo.Put(id, u);
         }
 
         // DELETE: api/Users/5
