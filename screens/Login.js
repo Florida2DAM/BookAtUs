@@ -1,8 +1,8 @@
 
 import React, { Component } from 'react';
-import { StyleSheet, View, Button, Text, StatusBar, ScrollView, FlatList } from 'react-native';
+import { StyleSheet, View, Button, Text, StatusBar, ScrollView, Dimensions } from 'react-native';
 import {
-    Input,
+    Input, Image
 } from 'react-native-elements';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -38,28 +38,34 @@ export class Login extends Component {
 
     pantallaPrincipal = ({ navigation }) => {
         return (
-            <View style={{ flex: 1, flexDirection: 'column', backgroundColor: 'white', alignItems: 'center', alignContent: 'center' }}>
+            <View style={{ flex: 1, flexDirection: 'column', backgroundColor: '#1D263B', alignItems: 'center', alignContent: 'center' }}>
                 <ScrollView>
                     <StatusBar barStyle="white-content" />
                     <View style={{ margin: 50 }}>
-                        <Text style={{ fontFamily: 'Arial', fontSize: 32, textAlign: 'center', color: '#333333', flex: 0.55, marginBottom: 50 }}> Log in and start discovering </Text>
-                        <View style={{ flex: 1 }}>
+                        <View style={{ alignItems: 'center' }}>
+                            <Image source={{ uri: 'https://i.imgur.com/F0krMFp.png' }} style={{ width: Dimensions.get('window').width - 220  , height: 225, marginBottom: 20, borderRadius: 20 }} />
+                        </View>
+                        <View style={{ flex: 9.5 }}>
                             <Input
+                                style={{ color: '#BFD7EA' }}
+                                placeholderTextColor='#9F84BD'
                                 placeholder='Email'
                                 textContentType='emailAddress'
-                                leftIcon={{ name: 'mail' }}
+                                leftIcon={{ name: 'mail', color: '#9F84BD' }}
                                 onChangeText={e => this.setState({ Email: e })}
                             />
                             <Input
+                                style={{ color: '#BFD7EA' }}
+                                placeholderTextColor='#9F84BD'
                                 placeholder='Password'
                                 textContentType='password'
                                 secureTextEntry={true}
-                                leftIcon={{ name: 'lock' }}
+                                leftIcon={{ name: 'lock', color: '#9F84BD' }}
                                 onChangeText={e => this.setState({ Password: e })}
                             />
                             <Text style={{ textAlign: 'right', fontFamily: 'Arial', fontSize: 18, color: '#169BD5', marginBottom: 80 }} onPress={() => navigation.navigate('Password')}>Don't remember your password?</Text>
                         </View>
-
+                        
                         <Button title='Continue' onPress={() => {
                             if (this.state.Email == '' || this.state.Password == '') {
                                 alert("Empty User/Password")
@@ -83,14 +89,14 @@ export class Login extends Component {
                                         }
                                         else {
                                             navigation.navigate('Main', {
-                                                username : this.state.Email
+                                                username: this.state.Email
                                             });
                                         }
                                     })
                             }
                         }}
                         />
-                        <Text style={{ textAlign: 'center', fontFamily: 'Arial', fontSize: 18 }}>Don't you have an account?</Text>
+                        <Text style={{ textAlign: 'center', fontFamily: 'Arial', fontSize: 18, color: '#BFD7EA' }}>Don't you have an account?</Text>
                         <Text style={{ textAlign: 'center', fontFamily: 'Arial', fontSize: 18, color: '#169BD5' }} onPress={() => { navigation.navigate('Register') }}>Sign in</Text>
                     </View>
                 </ScrollView>
@@ -101,7 +107,7 @@ export class Login extends Component {
     render() {
         return (
             <NavigationContainer>
-                <Stack.Navigator>
+                <Stack.Navigator screenOptions={{ headerShown: false }}>
                     <Stack.Screen name="Login" component={this.pantallaPrincipal} />
                     <Stack.Screen name="Password" component={Password} />
                     <Stack.Screen name="Main" component={Main} />

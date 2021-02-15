@@ -14,7 +14,6 @@ import ImgToBase64 from 'react-native-image-base64';
 import DropDownPicker from 'react-native-dropdown-picker'
 import DocumentPicker from 'react-native-document-picker';
 import axios from "axios";
-import { TextInput } from 'react-native-gesture-handler';
 
 export class AddBook extends Component {
     constructor(props) {
@@ -61,9 +60,8 @@ export class AddBook extends Component {
             UserId: this.state.userId,
             image: this.state.image
         };
-        axios.post(this.state.url, book).then(res =>{
+        axios.post(this.state.url, book).then(
             this.props.navigation.navigate('Main')
-        }   
         ).catch(err => {
             alert(err)
         })
@@ -92,12 +90,17 @@ export class AddBook extends Component {
             disable = false;
         }
         return (
-            <ScrollView>
-                <View style={styles.contenidor}>
+           
+            <View style={styles.MainContainer}>
+                 <ScrollView>
+                    <View style={{ alignItems: 'center' }}>
+                        <Image source={{ uri: 'https://i.imgur.com/F0krMFp.png' }} style={{ width: 350, height: 155, marginBottom: 20, borderRadius: 20 }} />
+                    </View>
                     <StatusBar barStyle="dark-content" />
                     <View style={styles.ViewTitle}>
                         <Text style={styles.Text}>Book Title: </Text>
                         <Input style={styles.InputTitle}
+                            placeholder='Type something'
                             onChangeText={(e) => this.setState({ title: e })}
                         >
 
@@ -105,17 +108,14 @@ export class AddBook extends Component {
                     </View>
                     <View style={styles.ViewDescription}>
                         <Text style={styles.Text}>Description: </Text>
-                        <TextInput
-                            style={{borderWidth: 2, marginBottom: 2}}
-                            underlineColorAndroid="transparent"
-                            placeholder="Type something"
-                            placeholderTextColor="grey"
-                            numberOfLines={4}
+                        <Input style={styles.InputDescription}
+                            placeholder='Type something'
                             multiline={true}
-                            onChangeText={(e) => this.setState({description: e})}
-                        />
+                            numberOfLines={4}
+                            onChangeText={(f) => this.setState({ description: f })}
+                        >
 
-
+                        </Input>
                     </View>
                     <View style={styles.ViewTitle}>
                         <Text style={styles.Text}>Price: </Text>
@@ -125,10 +125,10 @@ export class AddBook extends Component {
 
                         </Input>
                     </View>
-                    <View>
+                    <View >
                         <DropDownPicker
                             items={[
-                                { label: 'Mystery', value: 'mystery' },
+                                { label: 'Mystery', value: 'mystery', color: 'blue' },
                                 { label: 'Fantasy', value: 'Fantasy' },
                                 { label: 'Studies', value: 'Studies' },
                                 { label: 'Romance', value: 'Romance' },
@@ -136,17 +136,18 @@ export class AddBook extends Component {
                                 { label: 'Dark novel', value: 'Dark novel' }
                             ]}
                             defaultValue={this.state.book}
+                            labelStyle={{ color: '#BFD7EA' }}
                             containerStyle={{ height: 60, width: 350 }}
-                            style={{ backgroundColor: '#fafafa' }}
+                            style={{ backgroundColor: '#1D263B' }}
                             itemStyle={{
                                 justifyContent: 'flex-start'
                             }}
-                            dropDownStyle={{ backgroundColor: '#fafafa' }}
+                            dropDownStyle={{ backgroundColor: '#1D263B' }}
                             onChangeItem={item => this.categorytoint(item.value)}
                         />
                     </View>
                     <View style={styles.MainContainer}>
-                        <Text style={styles.text}>
+                        <Text style={styles.Text}>
                             File Name: {this.state.singleFileOBJ.name ? this.state.singleFileOBJ.name : ''}
                         </Text>
                         <View style={{ alignItems: 'center' }}>
@@ -155,29 +156,30 @@ export class AddBook extends Component {
                             </TouchableOpacity>
                         </View>
                     </View>
-                    <View>
+                    <View style={styles.MainContainer}>
                         <Button disabled={disable} buttonStyle={{ width: 230, borderRadius: 10, backgroundColor: '#0091EA' }} title='Post' onPress={this.postbook.bind(this)} />
                     </View>
-                </View>
-            </ScrollView>
+                </ScrollView>
+            </View>
+
         );
     }
 };
 
 const styles = StyleSheet.create({
     contenidor: {
-        backgroundColor: 'white',
+        backgroundColor: '#1D263B',
         flex: 1,
         flexDirection: 'column',
         padding: 5,
-        margin: 5,
         alignContent: 'space-around',
         alignItems: 'center',
+        justifyContent:'center'
     },
     ViewTitle: {
         width: 350,
         height: 110,
-        backgroundColor: 'white',
+        backgroundColor: '#1D263B',
         color: 'white',
         fontSize: 13,
         borderRadius: 20,
@@ -187,17 +189,18 @@ const styles = StyleSheet.create({
     ViewDescription: {
         width: 350,
         height: 150,
-        backgroundColor: 'white',
+        backgroundColor: '#1D263B',
         color: 'white',
         fontSize: 13,
         borderRadius: 20,
         paddingBottom: 5,
-        marginBottom: 10
+        marginBottom: 10,
+        
     },
     ViewPrice: {
         width: 350,
         height: 110,
-        backgroundColor: 'white',
+        backgroundColor: '#1D263B',
         color: 'white',
         fontSize: 13,
         borderRadius: 20,
@@ -206,34 +209,53 @@ const styles = StyleSheet.create({
     },
     Text: {
         padding: 5,
-        fontSize: 15
+        fontSize: 15,
+        color: '#BFD7EA'
     },
     InputTitle: {
         height: 55,
         width: 200,
         fontSize: 12,
         borderStyle: 'solid',
-        borderWidth: 2
+        borderWidth: 2,
+        borderColor: '#BFD7EA',
+        color: '#BFD7EA',
+        alignContent: 'space-around',
+        alignItems: 'center',
+
+
     },
     InputDescription: {
         height: 100,
         width: 200,
         fontSize: 12,
         borderStyle: 'solid',
-        borderWidth: 2
+        borderWidth: 2,
+        borderColor: '#BFD7EA',
+        color: '#BFD7EA',
+        alignContent: 'space-around',
+        alignItems: 'center',
     },
     InputPrice: {
         height: 60,
         width: 200,
         fontSize: 12,
         borderStyle: 'solid',
-        borderWidth: 2
+        borderWidth: 2,
+        borderColor: '#BFD7EA',
+        color: '#BFD7EA',
+        alignContent: 'space-around',
+        alignItems: 'center',
     },
     MainContainer: {
         flex: 1,
         backgroundColor: '#fff',
         padding: 16,
         justifyContent: 'center',
+        backgroundColor: '#1D263B',
+        alignContent: 'space-around',
+        alignItems: 'center',
+
     },
 
     button: {

@@ -79,36 +79,48 @@ export class Register extends Component {
         const datepicker = day + "-" + month + "-" + year
         return (
             <ScrollView>
-                <View style={{ flex: 1, flexDirection: 'column', backgroundColor: 'white', alignItems: 'center', alignContent: 'center' }}>
+                <View style={{ flex: 1, flexDirection: 'column', backgroundColor: '#1D263B', alignItems: 'center', alignContent: 'center' }}>
                     <StatusBar barStyle="light-content" />
                     <View style={{ margin: 50 }}>
-                        <Text style={{ fontFamily: 'Arial', fontSize: 32, textAlign: 'center', color: '#333333' }}> Register and manage your sales </Text>
+                        <View style={{ alignItems: 'center' }}>
+                            <Image source={{ uri: 'https://i.imgur.com/F0krMFp.png' }} style={{ width: '100%', height: 220, marginBottom: 20, borderRadius: 20 }} />
+                        </View>
                         <View style={{ flex: 9.5 }}>
                             <Input
+                                style={{ color: '#BFD7EA' }}
+                                placeholderTextColor='#9F84BD'
                                 placeholder='Name'
-                                leftIcon={{ name: 'person' }}
+                                leftIcon={{ name: 'person',color: '#9F84BD' }}
                                 onChangeText={(e) => this.setState({ name: e })}
                             />
                             <Input
+                                style={{ color: '#BFD7EA' }}
+                                placeholderTextColor='#9F84BD'
                                 placeholder='Surname'
-                                leftIcon={{ name: 'person' }}
+                                leftIcon={{ name: 'person',color: '#9F84BD' }}
                                 onChangeText={(e) => this.setState({ surname: e })}
                             />
                             <Input
+                                style={{ color: '#BFD7EA' }}
+                                placeholderTextColor='#9F84BD'
                                 placeholder='Email'
-                                leftIcon={{ name: 'mail' }}
+                                leftIcon={{ name: 'mail',color: '#9F84BD' }}
                                 onChangeText={(e) => this.setState({ userid: e })}
                             />
                             <Input
+                                style={{ color: '#BFD7EA' }}
+                                placeholderTextColor='#9F84BD'
                                 placeholder='Password'
                                 secureTextEntry={true}
-                                leftIcon={{ name: 'lock' }}
+                                leftIcon={{ name: 'lock',color: '#9F84BD' }}
                                 onChangeText={(e) => this.setState({ password: e })}
                             />
                             <Input
+                                style={{ color: '#BFD7EA' }}
+                                placeholderTextColor='#9F84BD'
                                 placeholder='Confirm Password'
                                 secureTextEntry={true}
-                                leftIcon={{ name: 'lock' }}
+                                leftIcon={{ name: 'lock' ,color: '#9F84BD'}}
                                 onChangeText={(e) => this.setState({ confirmpassword: e })}
                             />
                             <View style={{ borderWidth: 2, padding: 10, borderRadius: 10 }}>
@@ -129,7 +141,11 @@ export class Register extends Component {
                                             marginLeft: 0
                                         },
                                         dateInput: {
-                                            marginLeft: 36
+                                            marginLeft: 36,
+                                            borderColor:'#636E79'
+                                        },
+                                        dateText:{
+                                            color:'#BFD7EA'
                                         }
                                     }}
                                     onDateChange={(date) => { this.setState({ date }) }}
@@ -143,6 +159,9 @@ export class Register extends Component {
 
                         <View style={{ flex: 1 }}>
                             <CheckBox
+                                containerStyle={{backgroundColor:'#2296F3',borderColor:'#2296F3'}}
+                                textStyle={{color:'#BFD7EA'}}
+                                checkedColor='#9F84BD'
                                 center
                                 title='I accept the conditions of use and the basic information on data protection'
                                 checkedIcon='dot-circle-o'
@@ -152,7 +171,7 @@ export class Register extends Component {
                             />
                         </View>
                         <View style={{ flex: 1 }}>
-                            <Button disabled={disable} title='Continue' onPress={() => {
+                            <Button disabled={disable} title='Continue' buttonStyle={{backgroundColor:'#2296F3'}} onPress={() => {
                                 if (this.state.password != this.state.confirmpassword) {
                                     alert('Passwords are different')
                                 } else {
@@ -180,7 +199,7 @@ export class Register extends Component {
                                     })
                                 }
                             }} />
-                            <Text style={{ textAlign: 'center', fontFamily: 'Arial', fontSize: 18 }}>Have you an account?</Text>
+                            <Text style={{ textAlign: 'center', fontFamily: 'Arial', fontSize: 18,color: '#BFD7EA' }}>Have you an account?</Text>
                             <Text style={{ textAlign: 'center', fontFamily: 'Arial', fontSize: 18, color: '#169BD5' }} onPress={() => this.props.navigation.navigate('Login')}>Log in</Text>
                         </View>
                     </View>
