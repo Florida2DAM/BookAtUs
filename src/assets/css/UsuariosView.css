@@ -1,0 +1,139 @@
+.btn-delete-user {
+    background-color: rgb( 255, 99, 71);
+    border-radius: 3px;
+    border-style: none;
+}
+
+.btn-delete-user:hover {
+    background-color: #ff4625;
+    color: white;
+}
+
+.btn-modify-pwd {
+    background-color: rgb(17, 127, 253);
+    border-radius: 3px;
+    border-style: none;
+}
+
+.btn-modify-pwd:hover {
+    background-color: rgb(17, 60, 253);
+    color: white;
+}
+
+.changePwdDialog {
+    position:fixed;
+    top: 50%;
+    left: 50%;
+    width:40em;
+    height:24em;
+    margin-top: -12em; /*set to a negative number 1/2 of your height*/
+    margin-left: -20em; /*set to a negative number 1/2 of your width*/
+    border: 1px solid #ccc;
+    background-color: #f3f3f3;
+    display: none;
+    padding: 25px;
+    border-radius: 25px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    opacity: 0.9;
+}
+
+.editDate {
+    position:fixed;
+    top: 50%;
+    left: 50%;
+    width:40em;
+    height:24em;
+    margin-top: -12em; /*set to a negative number 1/2 of your height*/
+    margin-left: -20em; /*set to a negative number 1/2 of your width*/
+    border: 1px solid #ccc;
+    background-color: #f3f3f3;
+    display: none;
+    padding: 25px;
+    border-radius: 25px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    opacity: 0.9;
+}
+
+.addNewEvent {
+    position:fixed;
+    top: 50%;
+    left: 50%;
+    width:40em;
+    height:24em;
+    margin-top: -12em; /*set to a negative number 1/2 of your height*/
+    margin-left: -20em; /*set to a negative number 1/2 of your width*/
+    border: 1px solid #ccc;
+    background-color: #f3f3f3;
+    display: none;
+    padding: 25px;
+    border-radius: 25px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    opacity: 0.9;
+}
+
+.pwd_input {
+    height: 30px;
+    width: 70%;
+    margin: 10px;
+}
+
+.table-wrapper {
+    margin: 10px 70px 70px;
+    box-shadow: 0px 35px 50px rgba( 0, 0, 0, 0.2 );
+}
+  
+table{
+    padding: 50px;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: normal;
+    border: none;
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 100%;
+    white-space: nowrap;
+    background-color: white;
+}
+  
+td, th {
+    text-align: center;
+    padding: 8px;
+}
+  
+td {
+    border-right: 1px solid #f8f8f8;
+    font-size: 12px;
+}
+  
+thead th {
+    color: #ffffff !important;
+    background: #4FC3A1 !important;
+}
+  
+  
+thead th:nth-child(odd) {
+    color: #ffffff !important;
+    background: #324960 !important;
+}
+  
+tr:nth-child(even) {
+    background: #FFFFFF !important;
+}
+
+tr:nth-child(odd) {
+    background: rgb(239, 239, 239) !important;
+}
+
+@media (max-width: 1401px) {
+
+    .table-wrapper {
+        margin: 10px 10px 10px;
+        box-shadow: 0px 35px 50px rgba( 0, 0, 0, 0.2 );
+    }
+  }
