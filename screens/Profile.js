@@ -16,34 +16,34 @@ export class Profile extends Component {
     render() {
         const username = this.props.route.params.username;
         return (
-            <ScrollView>
-                <View style={{ flex: 1, flexDirection: 'column', backgroundColor: 'white', alignItems: 'center', alignContent: 'center' }}>
+            <View style={{ flex: 1, flexDirection: 'column', backgroundColor: '#1D263B' }}>
+                <ScrollView contentContainerStyle={{ alignItems: 'center' }}>
                     <StatusBar barStyle="dark-content" />
                     <View style={{ margin: 50 }}>
-                        <Text style={{ fontFamily: 'Arial', fontSize: 32, textAlign: 'center', color: '#333333', flex: 0.55 }}> Profile and Settings </Text>
+                        <Text style={{ fontFamily: 'Arial', fontSize: 32, textAlign: 'center', color: '#BFD7EA', flex: 0.55 }}> Profile and Settings </Text>
                         <View style={styles.contenidor}>
-                            <View style={styles.seccio2}>
+                            <View style={styles.section1}>
                                 <Button icon={
                                     <Icon name="chat" type size={30} color="#ffffff"></Icon>
                                 }
                                     iconContainerStyle={{ margin: 20 }}
                                     titleStyle={{ color: "#ffffff" }} title='Chat' onPress={() => this.props.navigation.navigate('MyChats', { username: username })} > </Button>
                             </View>
-                            <View style={styles.seccio3}>
+                            <View style={styles.section2}>
                                 <Button icon={
                                     <Icon name="book" type size={30} color="#ffffff"></Icon>
                                 }
                                     iconContainerStyle={{ margin: 20 }}
-                                    titleStyle={{ color: "#ffffff" }} title='My books' onPress={() => this.props.navigation.navigate('MyAds', { username: username})} > </Button>
+                                    titleStyle={{ color: "#ffffff" }} title='My books' onPress={() => this.props.navigation.navigate('MyAds', { username: username })} > </Button>
                             </View>
-                            <View style={styles.seccio4}>
+                            <View style={styles.section3}>
                                 <Button icon={
                                     <Icon name="exit-to-app" type size={30} color="#ffffff"></Icon>
                                 }
                                     iconContainerStyle={{ margin: 20 }}
                                     titleStyle={{ color: "#ffffff" }} title='Exit' onPress={() => this.props.navigation.navigate('Login', { username: username })} > </Button>
                             </View>
-                            <View style={styles.seccio5}>
+                            <View style={styles.section4}>
                                 <Button icon={
                                     <Icon
                                         name="create"
@@ -52,7 +52,7 @@ export class Profile extends Component {
                                     iconContainerStyle={{ margin: 20 }}
                                     titleStyle={{ color: "#ffffff" }} title='EditProfile' onPress={() => this.props.navigation.navigate('EditProfile', { username: username })} > </Button>
                             </View>
-                            <View style={styles.seccio6}>
+                            <View style={styles.section5}>
                                 <Button icon={
                                     <Icon name="help" type size={30} color="#ffffff"></Icon>
                                 }
@@ -62,34 +62,14 @@ export class Profile extends Component {
                             </View>
                         </View>
                     </View>
-                </View>
-            </ScrollView>
+                </ScrollView>
+            </View>
         );
     }
 }
 
 const styles = StyleSheet.create({
-    contenidor: {
-        backgroundColor: 'white',
-        flex: 1,
-        flexDirection: 'column',
-        justifyContent: 'center',
-        justifyContent: 'center',
-        padding: 5,
-        margin: 5,
-        alignContent: 'space-around',
-        alignItems: 'center',
-    },
-    seccio1: {
-        flex: 1,
-        fontSize: 12,
-        fontWeight: '600',
-        width: 350,
-        margin: 4,
-        padding: 12,
-        textAlign: 'right',
-    },
-    seccio2: {
+    section1: {
         flex: 1,
         fontSize: 350,
         fontWeight: '600',
@@ -98,7 +78,7 @@ const styles = StyleSheet.create({
         padding: 12,
         textAlign: 'center',
     },
-    seccio3: {
+    section2: {
         flex: 1,
         fontSize: 350,
         fontWeight: '600',
@@ -107,7 +87,7 @@ const styles = StyleSheet.create({
         padding: 12,
         textAlign: 'left',
     },
-    seccio4: {
+    section3: {
         flex: 1,
         fontSize: 350,
         fontWeight: '600',
@@ -116,7 +96,7 @@ const styles = StyleSheet.create({
         padding: 12,
         textAlign: 'left',
     },
-    seccio5: {
+    section4: {
         flex: 1,
         fontSize: 350,
         fontWeight: '600',
@@ -125,7 +105,7 @@ const styles = StyleSheet.create({
         padding: 12,
         textAlign: 'left',
     },
-    seccio6: {
+    section5: {
         flex: 1,
         fontSize: 350,
         fontWeight: '600',

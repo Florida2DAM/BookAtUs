@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
     radioText: {
         marginRight: 35,
         fontSize: 18,
-        color: '#000',
+        color: '#BFD7EA',
         fontWeight: '700'
     },
 	radioCircle: {

@@ -90,36 +90,37 @@ export class AddBook extends Component {
             disable = false;
         }
         return (
-           
+
             <View style={styles.MainContainer}>
-                 <ScrollView>
+                <ScrollView>
                     <View style={{ alignItems: 'center' }}>
                         <Image source={{ uri: 'https://i.imgur.com/F0krMFp.png' }} style={{ width: 350, height: 155, marginBottom: 20, borderRadius: 20 }} />
                     </View>
                     <StatusBar barStyle="dark-content" />
                     <View style={styles.ViewTitle}>
-                        <Text style={styles.Text}>Book Title: </Text>
-                        <Input style={styles.InputTitle}
-                            placeholder='Type something'
+                        <Input style={{ color: '#BFD7EA' }}
+                            placeholderTextColor='#9F84BD'
+                            placeholder='Book title'
+                            leftIcon={{ name: 'book', color: '#9F84BD' }}
                             onChangeText={(e) => this.setState({ title: e })}
                         >
-
                         </Input>
                     </View>
                     <View style={styles.ViewDescription}>
-                        <Text style={styles.Text}>Description: </Text>
-                        <Input style={styles.InputDescription}
-                            placeholder='Type something'
+                        <Input style={{ color: '#BFD7EA' }}
+                            placeholderTextColor='#9F84BD'
+                            placeholder='Description'
+                            leftIcon={{ name: 'create', color: '#9F84BD' }}
                             multiline={true}
-                            numberOfLines={4}
                             onChangeText={(f) => this.setState({ description: f })}
                         >
-
                         </Input>
                     </View>
-                    <View style={styles.ViewTitle}>
-                        <Text style={styles.Text}>Price: </Text>
-                        <Input style={styles.InputPrice}
+                    <View style={styles.ViewPrice}>
+                        <Input style={{ color: '#BFD7EA' }}
+                            placeholderTextColor='#9F84BD'
+                            placeholder='Price'
+                            leftIcon={{ name: 'euro', color: '#9F84BD' }}
                             keyboardType='numeric'
                             onChangeText={(d) => this.setState({ price: d })}           >
 
@@ -174,7 +175,7 @@ const styles = StyleSheet.create({
         padding: 5,
         alignContent: 'space-around',
         alignItems: 'center',
-        justifyContent:'center'
+        justifyContent: 'center'
     },
     ViewTitle: {
         width: 350,
@@ -183,8 +184,7 @@ const styles = StyleSheet.create({
         color: 'white',
         fontSize: 13,
         borderRadius: 20,
-        paddingBottom: 5,
-        marginBottom: 10
+        marginTop: 20
     },
     ViewDescription: {
         width: 350,
@@ -192,10 +192,8 @@ const styles = StyleSheet.create({
         backgroundColor: '#1D263B',
         color: 'white',
         fontSize: 13,
-        borderRadius: 20,
-        paddingBottom: 5,
-        marginBottom: 10,
-        
+        borderRadius: 20
+
     },
     ViewPrice: {
         width: 350,
@@ -204,48 +202,12 @@ const styles = StyleSheet.create({
         color: 'white',
         fontSize: 13,
         borderRadius: 20,
-        paddingBottom: 5,
-        marginBottom: 10
+        marginTop: '-10%'
     },
     Text: {
         padding: 5,
         fontSize: 15,
         color: '#BFD7EA'
-    },
-    InputTitle: {
-        height: 55,
-        width: 200,
-        fontSize: 12,
-        borderStyle: 'solid',
-        borderWidth: 2,
-        borderColor: '#BFD7EA',
-        color: '#BFD7EA',
-        alignContent: 'space-around',
-        alignItems: 'center',
-
-
-    },
-    InputDescription: {
-        height: 100,
-        width: 200,
-        fontSize: 12,
-        borderStyle: 'solid',
-        borderWidth: 2,
-        borderColor: '#BFD7EA',
-        color: '#BFD7EA',
-        alignContent: 'space-around',
-        alignItems: 'center',
-    },
-    InputPrice: {
-        height: 60,
-        width: 200,
-        fontSize: 12,
-        borderStyle: 'solid',
-        borderWidth: 2,
-        borderColor: '#BFD7EA',
-        color: '#BFD7EA',
-        alignContent: 'space-around',
-        alignItems: 'center',
     },
     MainContainer: {
         flex: 1,

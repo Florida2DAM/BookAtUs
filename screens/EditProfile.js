@@ -95,21 +95,25 @@ export class EditProfile extends Component {
     const day = new Date().getDate();
     const datepicker = day + "-" + month + "-" + year
     return (
-      <ScrollView>
-        <View style={styles.contenidor}>
+      <View style={styles.contenidor}>
+        <ScrollView style={{ width: '80%' }}>
           <StatusBar barStyle="dark-content" />
+          <View style={{ alignItems: 'center' }}>
+            <Image source={{ uri: 'https://i.imgur.com/F0krMFp.png' }} style={{ width: '100%', height: 220, marginBottom: 20, borderRadius: 20, marginTop: 10 }} />
+          </View>
           <View style={styles.ViewTitle}>
-            <Text style={styles.Text}>Name : </Text>
-            <Input style={styles.InputTitle}
+            <Input style={{ color: '#BFD7EA' }}
+              placeholderTextColor='#9F84BD'
+              leftIcon={{ name: 'person', color: '#9F84BD' }}
               onChangeText={(e) => this.setState({ name: e })}
               placeholder={this.state.user == null ? "Name..." : this.state.user.Name}
             >
-
             </Input>
           </View>
           <View style={styles.ViewDescription}>
-            <Text style={styles.Text}>Surname: </Text>
-            <Input style={styles.InputDescription}
+            <Input style={{ color: '#BFD7EA' }}
+              placeholderTextColor='#9F84BD'
+              leftIcon={{ name: 'person', color: '#9F84BD' }}
               onChangeText={(f) => this.setState({ surname: f })}
               placeholder={this.state.user == null ? "Name..." : this.state.user.Surname}
             >
@@ -117,88 +121,93 @@ export class EditProfile extends Component {
             </Input>
           </View>
           <View style={styles.ViewTitle}>
-            <Text style={styles.Text}>Password: </Text>
-            <Input style={styles.InputPrice}
+            <Input style={{ color: '#BFD7EA' }}
+              placeholderTextColor='#9F84BD'
+              leftIcon={{ name: 'lock', color: '#9F84BD' }}
               keyboardType='visible-password'
               secureTextEntry={true}
               onChangeText={(d) => this.setState({ password: d })}>
             </Input>
           </View>
           <View style={{ alignItems: 'center' }}>
-            <TouchableOpacity style={{ alignItems: 'center', marginTop: 100 }} onPress={this.SingleFilePicker.bind(this)}>
+            <TouchableOpacity style={{ alignItems: 'center' }} onPress={this.SingleFilePicker.bind(this)}>
               <Image source={{ uri: this.state.singleFileOBJ.uri ? this.state.singleFileOBJ.uri : 'https://i.imgur.com/uYRjNNZ.png' }} style={{ width: 143, height: 130 }} />
             </TouchableOpacity>
             <Button buttonStyle={{ marginTop: 10, width: 290, borderRadius: 10, justifyContent: 'space-around', backgroundColor: '#0091EA' }} onPress={() => this.editUser()} title='Modify' />
           </View>
-        </View>
-      </ScrollView>
+        </ScrollView>
+      </View>
     );
   }
 };
 const styles = StyleSheet.create({
   contenidor: {
-    backgroundColor: 'white',
     flex: 1,
     flexDirection: 'column',
-    padding: 5,
-    margin: 5,
-    alignContent: 'space-around',
+    backgroundColor: '#1D263B',
     alignItems: 'center',
+    alignContent: 'center'
   },
-  ViewTitle: {
+  ViewName: {
     width: 350,
     height: 110,
-    backgroundColor: 'white',
+    backgroundColor: '#1D263B',
     color: 'white',
     fontSize: 13,
     borderRadius: 20,
     paddingBottom: 5,
     marginBottom: 10
   },
-  ViewDescription: {
+  ViewSurname: {
     width: 350,
     height: 110,
-    backgroundColor: 'white',
+    backgroundColor: '#1D263B',
     color: 'white',
     fontSize: 13,
     borderRadius: 20,
     paddingBottom: 5,
     marginBottom: 10
   },
-  ViewPrice: {
+  ViewPassword: {
     width: 350,
     height: 110,
-    backgroundColor: 'white',
+    backgroundColor: '#1D263B',
     color: 'white',
     fontSize: 13,
-    borderRadius: 20,
-    paddingBottom: 5,
-    marginBottom: 10
+    borderRadius: 20
   },
   Text: {
     padding: 5,
-    fontSize: 15
+    fontSize: 15,
+    color: '#BFD7EA'
   },
-  InputTitle: {
+  InputName: {
     height: 55,
     width: 200,
     fontSize: 12,
     borderStyle: 'solid',
-    borderWidth: 2
+    borderWidth: 2,
+    borderColor: '#BFD7EA',
+    color: '#BFD7EA'
+
   },
-  InputDescription: {
+  InputSurname: {
     height: 55,
     width: 200,
     fontSize: 12,
     borderStyle: 'solid',
-    borderWidth: 2
+    borderWidth: 2,
+    borderColor: '#BFD7EA',
+    color: '#BFD7EA'
   },
-  InputPrice: {
+  InputPassword: {
     height: 60,
     width: 200,
     fontSize: 12,
     borderStyle: 'solid',
-    borderWidth: 2
+    borderWidth: 2,
+    borderColor: '#BFD7EA',
+    color: '#BFD7EA'
   },
   MainContainer: {
     flex: 1,

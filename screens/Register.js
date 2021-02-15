@@ -90,21 +90,21 @@ export class Register extends Component {
                                 style={{ color: '#BFD7EA' }}
                                 placeholderTextColor='#9F84BD'
                                 placeholder='Name'
-                                leftIcon={{ name: 'person',color: '#9F84BD' }}
+                                leftIcon={{ name: 'person', color: '#9F84BD' }}
                                 onChangeText={(e) => this.setState({ name: e })}
                             />
                             <Input
                                 style={{ color: '#BFD7EA' }}
                                 placeholderTextColor='#9F84BD'
                                 placeholder='Surname'
-                                leftIcon={{ name: 'person',color: '#9F84BD' }}
+                                leftIcon={{ name: 'person', color: '#9F84BD' }}
                                 onChangeText={(e) => this.setState({ surname: e })}
                             />
                             <Input
                                 style={{ color: '#BFD7EA' }}
                                 placeholderTextColor='#9F84BD'
                                 placeholder='Email'
-                                leftIcon={{ name: 'mail',color: '#9F84BD' }}
+                                leftIcon={{ name: 'mail', color: '#9F84BD' }}
                                 onChangeText={(e) => this.setState({ userid: e })}
                             />
                             <Input
@@ -112,7 +112,7 @@ export class Register extends Component {
                                 placeholderTextColor='#9F84BD'
                                 placeholder='Password'
                                 secureTextEntry={true}
-                                leftIcon={{ name: 'lock',color: '#9F84BD' }}
+                                leftIcon={{ name: 'lock', color: '#9F84BD' }}
                                 onChangeText={(e) => this.setState({ password: e })}
                             />
                             <Input
@@ -120,7 +120,7 @@ export class Register extends Component {
                                 placeholderTextColor='#9F84BD'
                                 placeholder='Confirm Password'
                                 secureTextEntry={true}
-                                leftIcon={{ name: 'lock' ,color: '#9F84BD'}}
+                                leftIcon={{ name: 'lock', color: '#9F84BD' }}
                                 onChangeText={(e) => this.setState({ confirmpassword: e })}
                             />
                             <View style={{ borderWidth: 2, padding: 10, borderRadius: 10 }}>
@@ -142,10 +142,10 @@ export class Register extends Component {
                                         },
                                         dateInput: {
                                             marginLeft: 36,
-                                            borderColor:'#636E79'
+                                            borderColor: '#636E79'
                                         },
-                                        dateText:{
-                                            color:'#BFD7EA'
+                                        dateText: {
+                                            color: '#BFD7EA'
                                         }
                                     }}
                                     onDateChange={(date) => { this.setState({ date }) }}
@@ -159,8 +159,8 @@ export class Register extends Component {
 
                         <View style={{ flex: 1 }}>
                             <CheckBox
-                                containerStyle={{backgroundColor:'#2296F3',borderColor:'#2296F3'}}
-                                textStyle={{color:'#BFD7EA'}}
+                                containerStyle={{ backgroundColor: '#2296F3', borderColor: '#2296F3' }}
+                                textStyle={{ color: '#BFD7EA' }}
                                 checkedColor='#9F84BD'
                                 center
                                 title='I accept the conditions of use and the basic information on data protection'
@@ -171,7 +171,7 @@ export class Register extends Component {
                             />
                         </View>
                         <View style={{ flex: 1 }}>
-                            <Button disabled={disable} title='Continue' buttonStyle={{backgroundColor:'#2296F3'}} onPress={() => {
+                            <Button disabled={disable} title='Continue' buttonStyle={{ backgroundColor: '#2296F3' }} onPress={() => {
                                 if (this.state.password != this.state.confirmpassword) {
                                     alert('Passwords are different')
                                 } else {
@@ -199,7 +199,7 @@ export class Register extends Component {
                                     })
                                 }
                             }} />
-                            <Text style={{ textAlign: 'center', fontFamily: 'Arial', fontSize: 18,color: '#BFD7EA' }}>Have you an account?</Text>
+                            <Text style={{ textAlign: 'center', fontFamily: 'Arial', fontSize: 18, color: '#BFD7EA' }}>Have you an account?</Text>
                             <Text style={{ textAlign: 'center', fontFamily: 'Arial', fontSize: 18, color: '#169BD5' }} onPress={() => this.props.navigation.navigate('Login')}>Log in</Text>
                         </View>
                     </View>

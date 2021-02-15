@@ -39,11 +39,11 @@ export class Login extends Component {
     pantallaPrincipal = ({ navigation }) => {
         return (
             <View style={{ flex: 1, flexDirection: 'column', backgroundColor: '#1D263B', alignItems: 'center', alignContent: 'center' }}>
-                <ScrollView>
+                <ScrollView >
                     <StatusBar barStyle="white-content" />
                     <View style={{ margin: 50 }}>
                         <View style={{ alignItems: 'center' }}>
-                            <Image source={{ uri: 'https://i.imgur.com/F0krMFp.png' }} style={{ width: Dimensions.get('window').width - 220  , height: 225, marginBottom: 20, borderRadius: 20 }} />
+                            <Image source={{ uri: 'https://i.imgur.com/F0krMFp.png' }} style={{ width: Dimensions.get('window').width - 220, minWidth: 300, height: 225, marginBottom: 20, borderRadius: 20 }} />
                         </View>
                         <View style={{ flex: 9.5 }}>
                             <Input
@@ -65,7 +65,7 @@ export class Login extends Component {
                             />
                             <Text style={{ textAlign: 'right', fontFamily: 'Arial', fontSize: 18, color: '#169BD5', marginBottom: 80 }} onPress={() => navigation.navigate('Password')}>Don't remember your password?</Text>
                         </View>
-                        
+
                         <Button title='Continue' onPress={() => {
                             if (this.state.Email == '' || this.state.Password == '') {
                                 alert("Empty User/Password")

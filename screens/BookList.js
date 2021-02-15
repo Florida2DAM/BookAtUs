@@ -41,15 +41,15 @@ export class BookList extends Component {
         const booklist = () => {
             if (this.state.loading == true) {
                 return (
-                    <View style={{ alignItems: 'center' }}>
-                        <Text style={{ marginTop: 40, fontSize: 40, padding: 50 }}>Loading books</Text>
+                    <View style={{ alignItems: 'center', backgroundColor: '#1D263B', height: '200%' }}>
+                        <Text style={{ marginTop: 40, fontSize: 40, padding: 50, color: '#BFD7EA' }}>Loading books</Text>
                         <Image
                             source={{ uri: 'https://i.imgur.com/ukqcyRa.gif' }}
-                            style={{ width: 200, height: 200 }}
+                            style={{ width: 200, height: 200, tintColor: '#BFD7EA' }}
                         />
                         <Image
-                            source={{ uri: 'https://i.imgur.com/eMszLvR.png' }}
-                            style={{ width: 300, height: 100, marginTop: 90 }}
+                            source={{ uri: 'https://i.imgur.com/F0krMFp.png' }}
+                            style={{ width: 350, height: 155, marginTop: 90, borderRadius: 20 }}
                         />
 
                     </View>
@@ -58,36 +58,36 @@ export class BookList extends Component {
                 if (this.state.showbook == false) {
                     return (
                         <ScrollView>
-                            <View style={{ flex: 1, flexDirection: 'column', backgroundColor: 'white', alignItems: 'center', alignContent: 'center' }}>
+                            <View style={{ flex: 1, flexDirection: 'column', backgroundColor: '#1D263B', alignItems: 'center', alignContent: 'center' }}>
                                 <StatusBar barStyle="dark-content" />
                                 <View style={{ margin: 50 }}>
-                                    <Text style={{ fontFamily: 'Arial', fontSize: 32, textAlign: 'center', color: '#333333', flex: 0.20 }}> Book Categories </Text>
+                                    <Text style={{ fontFamily: 'Arial', fontSize: 32, textAlign: 'center', color: '#BFD7EA', flex: 0.20 }}> Book Categories </Text>
                                     <View style={{ flex: 1, flexDirection: 'row' }}>
-                                        <Card containerStyle={{ width: 175 }}>
+                                        <Card containerStyle={{ width: 175, backgroundColor: '#5C6784', borderColor: '#5C6784', borderRadius: 10 }}>
                                             <Button title='Fantasy' onPress={() => { this.loadBooks('http://100.25.140.168:7010/api/Product?category=2'), this.changeCategory('Fantasy') }} />
                                             <Image source={{ uri: 'https://i.imgur.com/BiKQwmUs.jpg' }} style={{ width: 143, height: 130 }} onPress={() => { this.loadBooks('http://100.25.140.168:7010/api/Product?category=2'), this.changeCategory('Fantasy') }}></Image>
                                         </Card>
-                                        <Card containerStyle={{ width: 175 }}>
+                                        <Card containerStyle={{ width: 175, backgroundColor: '#5C6784', borderColor: '#5C6784', borderRadius: 10 }}>
                                             <Button title='Mystery' onPress={() => { this.loadBooks('http://100.25.140.168:7010/api/Product?category=1'), this.changeCategory('Mystery') }} />
                                             <Image source={{ uri: 'https://i.imgur.com/htzIa7fs.jpg' }} style={{ width: 143, height: 130 }} onPress={() => { this.loadBooks('http://100.25.140.168:7010/api/Product?category=1'), this.changeCategory('Mystery') }}></Image>
                                         </Card>
                                     </View>
                                     <View style={{ flex: 1, flexDirection: 'row' }}>
-                                        <Card containerStyle={{ width: 175 }}>
+                                        <Card containerStyle={{ width: 175, backgroundColor: '#5C6784', borderColor: '#5C6784', borderRadius: 10 }}>
                                             <Button title='Studies' onPress={() => { this.loadBooks('http://100.25.140.168:7010/api/Product?category=3'), this.changeCategory('Studies') }} />
                                             <Image source={{ uri: 'https://i.imgur.com/Vaxo1Kos.jpg' }} style={{ width: 143, height: 130 }} onPress={() => { this.loadBooks('http://100.25.140.168:7010/api/Product?category=3'), this.changeCategory('Studies') }}></Image>
                                         </Card>
-                                        <Card containerStyle={{ width: 175 }}>
+                                        <Card containerStyle={{ width: 175, backgroundColor: '#5C6784', borderColor: '#5C6784', borderRadius: 10 }}>
                                             <Button title='Romance' onPress={() => { this.loadBooks('http://100.25.140.168:7010/api/Product?category=4'), this.changeCategory('Romance') }} />
                                             <Image source={{ uri: 'https://i.imgur.com/pWuhhh2s.jpg' }} style={{ width: 143, height: 130 }} onPress={() => { this.loadBooks('http://100.25.140.168:7010/api/Product?category=4'), this.changeCategory('Romance') }}></Image>
                                         </Card>
                                     </View>
                                     <View style={{ flex: 1, flexDirection: 'row' }}>
-                                        <Card containerStyle={{ width: 175 }}>
+                                        <Card containerStyle={{ width: 175, backgroundColor: '#5C6784', borderColor: '#5C6784', borderRadius: 10 }}>
                                             <Button title='Light novel' onPress={() => { this.loadBooks('http://100.25.140.168:7010/api/Product?category=5'), this.changeCategory('Light Novel') }} />
                                             <Image source={{ uri: 'https://i.imgur.com/5jjnXtzs.jpg' }} style={{ width: 143, height: 130 }} onPress={() => { this.loadBooks('http://100.25.140.168:7010/api/Product?category=5'), this.changeCategory('Light Novel') }}></Image>
                                         </Card>
-                                        <Card containerStyle={{ width: 175 }}>
+                                        <Card containerStyle={{ width: 175, backgroundColor: '#5C6784', borderColor: '#5C6784', borderRadius: 10 }}>
                                             <Button title='Dark novel' onPress={() => { this.loadBooks('http://100.25.140.168:7010/api/Product?category=6'), this.changeCategory('Dark Novel') }} />
                                             <Image source={{ uri: 'https://i.imgur.com/gtxJeHys.jpg' }} style={{ width: 143, height: 130 }} onPress={() => { this.loadBooks('http://100.25.140.168:7010/api/Product?category=6'), this.changeCategory('Dark Novel') }}></Image>
                                         </Card>
@@ -116,8 +116,8 @@ export class BookList extends Component {
                                                                 username: username
                                                             })}>
                                                                 <Image containerStyle={{ borderTopRightRadius: 5, borderTopLeftRadius: 5 }} style={{ width: '100%', aspectRatio: 1 }} source={{ uri: "data:image/png;base64," + item.Image }}></Image>
-                                                                <Text style={{ fontWeight: 'bold', fontSize: 20, margin: 5 }}>{item.Price}€</Text>
-                                                                <Text>
+                                                                <Text style={{ fontWeight: 'bold', fontSize: 20, margin: 5, color: '#BFD7EA' }}>{item.Price}€</Text>
+                                                                <Text style={{ color: '#BFD7EA' }}>
                                                                     {item.Description.length >= 20 ? <Text>{item.Description.substring(0, 20)}...</Text> : item.Description}
                                                                 </Text>
                                                             </TouchableOpacity>

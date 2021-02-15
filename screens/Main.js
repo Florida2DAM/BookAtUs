@@ -11,7 +11,7 @@ import {
   TouchableOpacity,
   FlatList,
 } from 'react-native';
-import { Image } from 'react-native-elements'
+import { Image, Icon } from 'react-native-elements'
 import axios from 'axios';
 
 export class Main extends Component {
@@ -38,7 +38,7 @@ export class Main extends Component {
       },
       )
     }).catch(err => {
-      this.setState({loading: false,})
+      this.setState({ loading: false, })
       alert(err)
     })
   }
@@ -53,10 +53,10 @@ export class Main extends Component {
       if (this.state.loading) {
         return (
           <View style={{ alignItems: 'center' }}>
-            <Text style={{ fontSize: 40, padding: 50 }}>Loading books</Text>
+            <Text style={{ fontSize: 40, padding: 50, color: '#BFD7EA' }}>Loading books</Text>
             <Image
               source={{ uri: 'https://i.imgur.com/ukqcyRa.gif' }}
-              style={{ width: 150, height: 150 }}
+              style={{ width: 150, height: 150, tintColor: '#BFD7EA' }}
             />
           </View>
         )
@@ -74,13 +74,13 @@ export class Main extends Component {
                     return (
                       <View style={{ width: Dimensions.get('window').width - 220 }}>
                         <View>
-                          <TouchableOpacity style={{ borderRadius: 10, margin: 5, borderWidth: 4, borderColor: 'lightgrey', padding: 2 }} containerStyle={{ width: 190, height: 300, borderRadius: 5 }} onPress={() => this.props.navigation.navigate('BookInfo', {
-                            data: item, 
-                            username : username
+                          <TouchableOpacity style={{ borderRadius: 10, margin: 5, borderWidth: 2, borderColor: '#BFD7EA', padding: 2 }} containerStyle={{ width: 190, height: 300, borderRadius: 5 }} onPress={() => this.props.navigation.navigate('BookInfo', {
+                            data: item,
+                            username: username
                           })}>
                             <Image resizeMode='contain' containerStyle={{ borderTopRightRadius: 5, borderTopLeftRadius: 5 }} style={{ width: '100%', aspectRatio: 1 }} source={{ uri: "data:image/png;base64," + item.Image }}></Image>
-                            <Text style={{ fontWeight: 'bold', fontSize: 20, margin: 5 }}>{item.Price}€</Text>
-                            <Text>
+                            <Text style={{ fontWeight: 'bold', fontSize: 16, margin: 5, color: '#BFD7EA'}}>{item.Title} {item.Price}€</Text>
+                            <Text style={{ color: '#BFD7EA', margin: 5 }}>
                               {item.Description.length >= 20 ? <Text>{item.Description.substring(0, 20)}...</Text> : item.Description}
                             </Text>
                           </TouchableOpacity>
@@ -98,90 +98,109 @@ export class Main extends Component {
       }
     }
 
-    const component1 = () => <TouchableOpacity
+    const component1 = () => { return( <TouchableOpacity
       activeOpacity={0.8}
       onPress={() => this.props.navigation.navigate('BookList', {
         username: username,
       })}
       style={{
         elevation: 8,
-        backgroundColor: "#81D3F8",
+        backgroundColor: 'blue',
         paddingVertical: 22,
-        paddingHorizontal: 20,
-        width: '100%',
-        height: '100%'
+        paddingHorizontal: 20
       }}
 
     >
-      <Text style={{
-        fontSize: 18,
-        color: "#fff",
-        fontWeight: "bold",
-        alignSelf: "center",
-        textTransform: "uppercase"
-      }}>Library</Text>
-    </TouchableOpacity>
-    const component2 = () => <TouchableOpacity
+      <Icon
+        name='my-library-books'
+        type size={30}
+        color="#ffffff" />
+    </TouchableOpacity>)}
+    const component2 = () => { return( <TouchableOpacity
       activeOpacity={0.8}
       onPress={() => this.props.navigation.navigate("AddBook", {
         username: username,
       })}
       style={{
         elevation: 8,
-        backgroundColor: "#81D3F8",
+        backgroundColor: 'blue',
         paddingVertical: 22,
-        paddingHorizontal: 20,
-        width: '100%',
-        height: '100%'
+        paddingHorizontal: 20
       }}
     >
-      <Text style={{
-        fontSize: 18,
-        color: "#fff",
-        fontWeight: "bold",
-        alignSelf: "center",
-        textTransform: "uppercase"
-      }}>Add</Text>
-    </TouchableOpacity>
-    const component3 = () => <TouchableOpacity
+      <Icon
+        name='library-add'
+        type size={30}
+        color="#ffffff" />
+    </TouchableOpacity>)}
+    const component3 = () => { return( <TouchableOpacity
       activeOpacity={0.8}
       onPress={() => this.props.navigation.navigate('Profile', {
         username: username,
       })}
       style={{
         elevation: 8,
-        backgroundColor: "#81D3F8",
+        backgroundColor: 'blue',
         paddingVertical: 22,
-        paddingHorizontal: 20,
-        width: '100%',
-        height: '100%'
+        paddingHorizontal: 20
       }}
 
     >
-      <Text style={{
-        fontSize: 18,
-        color: "#fff",
-        fontWeight: "bold",
-        alignSelf: "center",
-        textTransform: "uppercase"
-      }}>Profile</Text>
-    </TouchableOpacity>
-    const buttons = [{ element: component1 }, { element: component2 }, { element: component3 }]
+      <Icon
+        name='person'
+        type size={30}
+        color="#ffffff" />
+    </TouchableOpacity>)}
+    const component5 = () => { return( <TouchableOpacity
+      activeOpacity={0.8}
+      onPress={() => this.props.navigation.navigate('MyAds', {
+        username: username,
+      })}
+      style={{
+        elevation: 8,
+        backgroundColor: 'blue',
+        paddingVertical: 22,
+        paddingHorizontal: 20
+      }}
+
+    >
+      <Icon
+        name='book'
+        type size={30}
+        color="#ffffff" />
+    </TouchableOpacity>)}
+    const component6 = () => { return( <TouchableOpacity
+    activeOpacity={0.8}
+    onPress={() => this.props.navigation.navigate('Profile', {
+      username: username,
+    })}
+    style={{
+      elevation: 8,
+      backgroundColor: 'blue',
+      paddingVertical: 22,
+      paddingHorizontal: 20,
+      margin:5
+    }}
+
+  >
+    <Icon
+      name='chat'
+      type size={30}
+      color="#ffffff" />
+  </TouchableOpacity>)}
     const { selectedIndex } = this.state
     return (
       <View style={styles.container}>
         <View style={{ flex: 1 }}>
           <ScrollView>
-            <Image source={{ uri: 'https://i.imgur.com/DTWszbP.png' }} style={{ width: '90%', height: 140, borderRadius: 20, margin: 20 }} />
+            <View style={{ alignItems: 'center' }}>
+              <Image source={{ uri: 'https://i.imgur.com/F0krMFp.png' }} style={{ width: 350, height: 155, marginBottom: 20, borderRadius: 20, marginTop: 10 }} />
+            </View>
             {showbook()}
           </ScrollView>
         </View>
         <View style={styles.footer}>
-          <ButtonGroup
-            onPress={this.updateIndex}
-            selectedIndex={selectedIndex}
-            buttons={buttons}
-            containerStyle={{ height: 75, backgroundColor: '#81D3F8' }} />
+          {component1(), component2(), component3(), component5(), component6()}
         </View>
       </View>
 
@@ -194,22 +213,21 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'column',
+    backgroundColor: '#1D263B'
   },
   categoryContainer: {
-    backgroundColor: 'lightgrey',
+    backgroundColor: '#1D263B',
     borderRadius: 10,
     margin: 10,
-    width: '30%'
+    width: '30%',
+    color: 'white'
   },
   footer: {
-    position: 'absolute',
     flex: 0.1,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    backgroundColor: 'whitesmoke',
+    backgroundColor: 'red',
     height: 90,
-    alignItems: 'center',
+    margin: '-3%',
+    flexDirection: 'row'
   },
 })
 

@@ -31,7 +31,7 @@ export class BookInfo extends Component {
     }
 
     axios.post('http://100.25.140.168:7010/api/PurchaseConfirmed', data).then(res => {
-      axios.put('http://100.25.140.168:7010/api/book?id='+this.props.route.params.data.ProductId).then(
+      axios.put('http://100.25.140.168:7010/api/book?id=' + this.props.route.params.data.ProductId).then(
         this.props.navigation.navigate('Main')
       )
     })
@@ -44,7 +44,7 @@ export class BookInfo extends Component {
       Seller: this.props.route.params.data.UserId,
     }
     axios.post('http://100.25.140.168:7010/api/Chat?productId=' + chat.ProductId + '&buyer=' + chat.Buyer + '&seller=' + chat.Seller).then(res => {
-      this.props.navigation.navigate('MyChats', { username : this.props.route.params.username})
+      this.props.navigation.navigate('MyChats', { username: this.props.route.params.username })
     })
   }
 
@@ -84,12 +84,12 @@ export class BookInfo extends Component {
   }
 
   renderBtns(item) {
-    if(item.UserId == this.props.route.params.username){
+    if (item.UserId == this.props.route.params.username) {
       <View style={styles.footer}>
         <Text></Text>
       </View>
     } else {
-      return(
+      return (
         <View style={styles.footer}>
           <Button buttonStyle={styles.buttonContainer2} titleStyle={{ textAlign: 'auto' }} title='Chat' onPress={() => this.chat()}></Button>
           <Button buttonStyle={styles.buttonContainer} titleStyle={{ textAlign: 'auto' }} title='Comprar' onPress={() => this.confirmbuy()}></Button>
@@ -107,27 +107,31 @@ export class BookInfo extends Component {
             <Image resizeMode='contain' source={{ uri: "data:image/png;base64," + item.Image }} style={{ width: '100%', height: 220 }}></Image>
             <View
               style={{
-                borderBottomColor: 'lightgrey',
-                borderBottomWidth: 2,
+                borderBottomColor: '#BFD7EA'
               }}
             />
-            <Text style={{ fontSize: 30, fontWeight: 'bold', marginLeft: 10, marginTop: 5 }}>{item.Title}</Text>
-            <Text style={{ fontSize: 30, fontWeight: 'bold', marginLeft: 10, marginTop: 5 }}>{item.Price}€</Text>
+            <Text style={{ fontSize: 30, fontWeight: 'bold', marginLeft: 10, marginTop: 5, color: '#BFD7EA' }}>{item.Price}€</Text>
+            <Text style={{ fontSize: 24, fontWeight: 'bold', marginLeft: 10, marginTop: 5, color: '#BFD7EA' }}>{item.Title}</Text>
             <View
               style={{
-                borderBottomColor: 'lightgrey',
-                borderBottomWidth: 2,
+                borderBottomColor: '#BFD7EA'
               }}
             />
-            <Text style={{ fontSize: 25, fontWeight: 'bold', marginLeft: 10, marginTop: 5 }}>{item.Description}</Text>
-
             <View style={styles.categoryContainer}>
               {this.selectcategory()}
             </View>
+
             <View
               style={{
-                borderBottomColor: 'lightgrey',
-                borderBottomWidth: 2,
+                borderBottomColor: '#BFD7EA',
+                marginBottom: 5,
+                marginTop: 5
+              }}
+            />
+            <Text style={{ fontSize: 18, fontWeight: 'bold', marginLeft: 10, marginTop: 5, color: '#BFD7EA',marginBottom:60 }}>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</Text>
+            <View
+              style={{
+                borderBottomColor: '#BFD7EA'
               }}
             />
             <Text style={styles.date}>Upload date: {item.UploadDate.replace('T', ' ')}</Text>
@@ -143,9 +147,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'column',
+    backgroundColor: '#1D263B'
   },
   categoryContainer: {
-    backgroundColor: 'lightgrey',
+    backgroundColor: '#BFD7EA',
     borderRadius: 10,
     margin: 10,
     width: '30%'
@@ -156,27 +161,29 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     bottom: 0,
-    backgroundColor: 'whitesmoke',
+    backgroundColor: '#1D263B',
     height: 100,
-    alignItems: 'center',
+    alignItems:'center'
   },
   category: {
     fontSize: 18,
-    padding: 4
+    padding: 4,
+    alignSelf: 'center'
   },
   date: {
     fontSize: 20,
-    margin: 10
+    margin: 10,
+    color: '#BFD7EA'
   },
   buttonContainer: {
-    backgroundColor: '#FFA579',
+    backgroundColor: '#2296F3',
     width: Dimensions.get('screen').width - 40,
     height: 40,
     borderRadius: 90,
     marginBottom: 0
   },
   buttonContainer2: {
-    backgroundColor: '#13BDA6',
+    backgroundColor: '#2296F3',
     width: Dimensions.get('screen').width - 40,
     height: 40,
     borderRadius: 90,
