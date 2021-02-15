@@ -98,8 +98,9 @@ export class BookList extends Component {
                     )
                 } else {
                     return (
-                        <View style={{ flex: 1, alignItems: 'center' }}>
+                        <View style={{ flex: 1, flexDirection: 'column', backgroundColor: '#1D263B', alignItems: 'center', alignContent: 'center' }}>
                             <View>
+                                <Text style={{color: '#BFD7EA', fontSize: 30, alignSelf:'center', padding: 11}}>{this.state.category}</Text>
                                 <ScrollView>
                                     <FlatList
                                         style={{ flexWrap: 'wrap' }}

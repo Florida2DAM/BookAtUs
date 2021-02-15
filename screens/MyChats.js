@@ -4,7 +4,8 @@ import React, { Component } from 'react';
 import {
   View,
   FlatList,
-  TouchableOpacity
+  TouchableOpacity,
+  Text
 } from 'react-native';
 
 import { ChatList } from '../components/ChatList';
@@ -23,9 +24,20 @@ export class MyChats extends Component {
       username: this.props.route.params.username
     }
   }
+  change = false;
 
   changeList = (ScreenSwitch) => {
     this.setState({ showListSwith: ScreenSwitch });
+  }
+
+  changeText(){
+    if (!this.change) {
+      this.change = true
+      return <Text style={{color: '#BFD7EA', fontSize: 20, alignSelf: 'center'}}>Selling</Text>
+    } else {
+      this.change = false
+      return <Text style={{color: '#BFD7EA', fontSize: 20, alignSelf: 'center'}}>Buying</Text>
+    }
   }
 
   componentDidMount() {
@@ -46,14 +58,15 @@ export class MyChats extends Component {
   render() {
     const username = this.props.route.params.username;
     return (
-      <View style={{ flexDirection: 'column', height: '100%' }}>
+      <View style={{ flexDirection: 'column', height: '100%', backgroundColor: '#1D263B' }}>
+        {this.changeText()}
         <FlatList
           data={this.state.chats}
           keyExtractor={(item, index) => index.toString()}
-          style={{ padding: 5, flex: 1, backgroundColor: 'white' }}
+          style={{ padding: 5, flex: 1, backgroundColor: '#1D263B' }}
           renderItem={(item) => (<ChatList chat={item} showswitch={this.state.showListSwith} navigation={this.props.navigation} currentUser={username} />)}
         />
-        <View style={{ height: 50, width: '100%', flexDirection: 'row', justifyContent: 'space-between', alignContent: 'center' }}>
+        <View style={{ height: 50, width: '100%', flexDirection: 'row', justifyContent: 'space-between', alignContent: 'center', backgroundColor: '#1D263B' }}>
           <TouchableOpacity style={{ width: '40%', marginLeft: '5%', margin: 5, borderRadius: 50, borderColor: 'skyblue', borderWidth: 3 }} onPress={() => this.changeList(true)}>
             <Icon name='down'
               type='antdesign'

@@ -18,7 +18,7 @@ export class Register extends Component {
         super(props);
         this.state = {
             singleFileOBJ: '',
-            userid: '',
+            Email: '',
             name: '',
             surname: '',
             avatar: null,
@@ -29,8 +29,25 @@ export class Register extends Component {
             buys: 0,
             url: 'http://100.25.140.168:7010/api/insertUser',
             checked: false,
-            date: null
+            date: null,
+            login: false
         };
+    }
+
+    validate = (text) => {
+        console.log(text);
+        let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        if (reg.test(text) === false) {
+            console.log("Email is Not Correct");
+            this.setState({
+                Email: text,
+                login: false
+            })
+        }
+        else {
+            this.setState({ Email: text, login: true })
+            console.log("Email is Correct");
+        }
     }
 
     navigateToScreen = (route, params) => () => {
@@ -68,9 +85,8 @@ export class Register extends Component {
     }
 
     render() {
-
         let disable = true;
-        if (this.state.image != '' && this.state.name != '' && this.state.surname != '' && this.state.date != '' && this.state.userid != '' && this.state.password != '' & this.state.checked) {
+        if (this.state.avatar != null && this.state.name != '' && this.state.surname != '' && this.state.date != '' && this.state.Email != '' && this.state.password != '' & this.state.checked) {
             disable = false;
         }
         const year = new Date().getFullYear() - 18;
@@ -104,8 +120,9 @@ export class Register extends Component {
                                 style={{ color: '#BFD7EA' }}
                                 placeholderTextColor='#9F84BD'
                                 placeholder='Email'
+                                keyboardType='email-address'
                                 leftIcon={{ name: 'mail', color: '#9F84BD' }}
-                                onChangeText={(e) => this.setState({ userid: e })}
+                                onChangeText={(text) => this.validate(text)}
                             />
                             <Input
                                 style={{ color: '#BFD7EA' }}
@@ -159,7 +176,7 @@ export class Register extends Component {
 
                         <View style={{ flex: 1 }}>
                             <CheckBox
-                                containerStyle={{ backgroundColor: '#2296F3', borderColor: '#2296F3' }}
+                                containerStyle={{ backgroundColor: '#1D263B', borderColor: '#1D263B', marginTop: 10 }}
                                 textStyle={{ color: '#BFD7EA' }}
                                 checkedColor='#9F84BD'
                                 center
@@ -175,28 +192,32 @@ export class Register extends Component {
                                 if (this.state.password != this.state.confirmpassword) {
                                     alert('Passwords are different')
                                 } else {
-                                    const user = {
-                                        userid: this.state.userid,
-                                        name: this.state.name,
-                                        surname: this.state.surname,
-                                        avatar: this.state.avatar,
-                                        password: this.state.password,
-                                        birth: this.state.date,
-                                        rating: this.state.rating,
-                                        sells: this.state.sells,
-                                        buys: this.state.buys
-                                    };
-                                    axios.post(this.state.url, user).then(res => {
-                                        if (res.data == false) {
-                                            alert("Sorry, User already created")
-                                        } else {
-                                            alert("User created")
-                                            this.props.navigation.navigate('Login')
+                                    if (this.state.login == false ) {
+                                        alert("This isn't a email")
+                                    } else {
+                                        const user = {
+                                            userid: this.state.Email,
+                                            name: this.state.name,
+                                            surname: this.state.surname,
+                                            avatar: this.state.avatar,
+                                            password: this.state.password,
+                                            birth: this.state.date,
+                                            rating: this.state.rating,
+                                            sells: this.state.sells,
+                                            buys: this.state.buys
+                                        };
+                                        axios.post(this.state.url, user).then(res => {
+                                            if (res.data == false) {
+                                                alert("Sorry, User already created")
+                                            } else {
+                                                alert("User created")
+                                                this.props.navigation.navigate('Login')
+                                            }
                                         }
+                                        ).catch(err => {
+                                            alert(err)
+                                        })
                                     }
-                                    ).catch(err => {
-                                        alert(err)
-                                    })
                                 }
                             }} />
                             <Text style={{ textAlign: 'center', fontFamily: 'Arial', fontSize: 18, color: '#BFD7EA' }}>Have you an account?</Text>

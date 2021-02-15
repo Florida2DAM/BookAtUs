@@ -9,13 +9,36 @@ export class Password extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            Email: '',
             body: '',
-            correo: 'bookatus@hotmail.com'
+            correo: 'bookatus@hotmail.com',
+            login : false
         };
     }
+
+    validate = (text) => {
+        console.log(text);
+        let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        if (reg.test(text) === false) {
+            console.log("Email is Not Correct");
+            this.setState({
+                Email: text,
+                login: false
+            })
+        }
+        else {
+            this.setState({ Email: text, login: true })
+            console.log("Email is Correct");
+        }
+    }
+
     render() {
         const handleEmailPress = async () => {
-            await Linking.openURL("mailto:" + this.state.correo + "?subject=ChangePassword&body=" + this.state.body);
+            if (this.state.login == false) {
+                alert("This isn't a email")
+            } else{
+                await Linking.openURL("mailto:" + this.state.correo + "?subject=ChangePassword&body=" + this.state.body);
+            }
         }
         return (
             <View style={{ flex: 1, flexDirection: 'column', backgroundColor: '#1D263B', alignItems: 'center', alignContent: 'center' }}>
@@ -28,7 +51,7 @@ export class Password extends Component {
                         <View style={{ flex: 1, marginBottom: 50 }}>
                             <Text style={{ fontFamily: 'Arial', fontSize: 18, textAlign: 'center', color: '#BFD7EA', flex: 0.55, marginBottom: 50 }}> Write your email and we will send you the instructions to create a new one </Text>
                             <Input
-                                onChangeText={(e) => this.setState({ body: e })}
+                                onChangeText={(text) => this.validate(text)}
                                 style={{ color: '#BFD7EA' }}
                                 placeholderTextColor='#9F84BD'
                                 placeholder='Email'

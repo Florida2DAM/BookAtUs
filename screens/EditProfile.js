@@ -54,19 +54,16 @@ export class EditProfile extends Component {
       this.setState({ password: this.state.user.Password })
     }
     const newuser = {
-      UserId: this.state.user.UserId,
       Name: this.state.name,
       Surname: this.state.surname,
-      avatar: this.state.avatar,
+      Avatar: this.state.avatar,
       Password: this.state.password,
-      Birth: this.state.user.Birth
     };
-    axios.put('http://100.25.140.168:7010/api/Users/' + this.props.route.params.username + '/', newuser).then(res => {
+    axios.put('http://100.25.140.168:7010/api/EditUser?id=' + this.props.route.params.username + '/', newuser).then(res => {
       alert('Updated user')
     }).catch(err => {
       alert(err)
     })
-
   }
 
   async SingleFilePicker() {
@@ -90,6 +87,10 @@ export class EditProfile extends Component {
     }
   }
   render() {
+    let disable = true
+    if (this.state.user != '' && this.state.surname != '' && this.state.avatar != null && this.state.password != '') {
+      disable = false
+    } 
     const year = new Date().getFullYear() - 18;
     const month = new Date().getMonth();
     const day = new Date().getDate();
@@ -133,7 +134,7 @@ export class EditProfile extends Component {
             <TouchableOpacity style={{ alignItems: 'center' }} onPress={this.SingleFilePicker.bind(this)}>
               <Image source={{ uri: this.state.singleFileOBJ.uri ? this.state.singleFileOBJ.uri : 'https://i.imgur.com/uYRjNNZ.png' }} style={{ width: 143, height: 130 }} />
             </TouchableOpacity>
-            <Button buttonStyle={{ marginTop: 10, width: 290, borderRadius: 10, justifyContent: 'space-around', backgroundColor: '#0091EA' }} onPress={() => this.editUser()} title='Modify' />
+            <Button disabled={disable} buttonStyle={{ marginTop: 10, width: 290, borderRadius: 10, justifyContent: 'space-around', backgroundColor: '#0091EA' }} onPress={() => this.editUser()} title='Modify' />
           </View>
         </ScrollView>
       </View>

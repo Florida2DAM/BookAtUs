@@ -26,6 +26,7 @@ export class Login extends Component {
         this.state = {
             Email: '',
             Password: '',
+            login: false
         }
     }
 
@@ -34,6 +35,22 @@ export class Login extends Component {
             alert(this.state.LogIn)
             alert('User nor found')
         });
+    }
+
+    validate = (text) => {
+        console.log(text);
+        let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        if (reg.test(text) === false) {
+            console.log("Email is Not Correct");
+            this.setState({
+                Email: text,
+                login: false
+            })
+        }
+        else {
+            this.setState({ Email: text, login: true })
+            console.log("Email is Correct");
+        }
     }
 
     pantallaPrincipal = ({ navigation }) => {
@@ -47,12 +64,14 @@ export class Login extends Component {
                         </View>
                         <View style={{ flex: 9.5 }}>
                             <Input
+
                                 style={{ color: '#BFD7EA' }}
                                 placeholderTextColor='#9F84BD'
                                 placeholder='Email'
                                 textContentType='emailAddress'
                                 leftIcon={{ name: 'mail', color: '#9F84BD' }}
-                                onChangeText={e => this.setState({ Email: e })}
+                                keyboardType='email-address'
+                                onChangeText={(text) => this.validate(text)}
                             />
                             <Input
                                 style={{ color: '#BFD7EA' }}
@@ -71,28 +90,32 @@ export class Login extends Component {
                                 alert("Empty User/Password")
                                 log = false
                             } else {
-                                debugger;
-                                fetch('http://100.25.140.168:7010/api/Login', {
-                                    method: 'POST',
-                                    headers: {
-                                        'Accept': 'application/json',
-                                        'Content-Type': 'application/json'
-                                    },
-                                    body: JSON.stringify({
-                                        Email: this.state.Email,
-                                        Password: this.state.Password
-                                    })
-                                }).then((Response) => Response.json())
-                                    .then((result) => {
-                                        if (result.Status == 'Invalid') {
-                                            alert('User not found')
-                                        }
-                                        else {
-                                            navigation.navigate('Main', {
-                                                username: this.state.Email
-                                            });
-                                        }
-                                    })
+                                if (this.state.login == false) {
+                                    alert("This isn't a email")
+                                } else {
+                                    debugger;
+                                    fetch('http://100.25.140.168:7010/api/Login', {
+                                        method: 'POST',
+                                        headers: {
+                                            'Accept': 'application/json',
+                                            'Content-Type': 'application/json'
+                                        },
+                                        body: JSON.stringify({
+                                            Email: this.state.Email,
+                                            Password: this.state.Password
+                                        })
+                                    }).then((Response) => Response.json())
+                                        .then((result) => {
+                                            if (result.Status == 'Invalid') {
+                                                alert('User not found')
+                                            }
+                                            else {
+                                                navigation.navigate('Main', {
+                                                    username: this.state.Email
+                                                });
+                                            }
+                                        })
+                                }
                             }
                         }}
                         />

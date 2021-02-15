@@ -50,7 +50,7 @@ export class Profile extends Component {
                                         size={30} color="#ffffff"></Icon>
                                 }
                                     iconContainerStyle={{ margin: 20 }}
-                                    titleStyle={{ color: "#ffffff" }} title='EditProfile' onPress={() => this.props.navigation.navigate('EditProfile', { username: username })} > </Button>
+                                    titleStyle={{ color: "#ffffff" }} disabled={true} title='EditProfile (next versions...)' onPress={() => this.props.navigation.navigate('EditProfile', { username: username })} > </Button>
                             </View>
                             <View style={styles.section5}>
                                 <Button icon={
