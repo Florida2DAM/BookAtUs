@@ -33,7 +33,6 @@ namespace BackendBookAtUs.Models
                 List<ChatDTO> chat = context
                     .Chat
                     .Where(p => p.Buyer == uname || p.Seller == uname)
-                    .Include(p => p.Product)
                     .Select(p => ToDTO(p))
                     .ToList();
                 return chat;
@@ -59,12 +58,24 @@ namespace BackendBookAtUs.Models
             try
             {
                 BookAtUsContext context = new BookAtUsContext();
-                context.Chat.Add(chat);
-                if (context.SaveChanges() >= 1)
-                    return true;
+                Chat chatCompare = context
+                    .Chat
+                    .Where(p => p.Product == chat.Product && p.Buyer == chat.Buyer && p.Seller == chat.Seller)
+                    .FirstOrDefault();
+
+                if (chatCompare == null)
+                {
+                    context.Chat.Add(chat);
+                    if (context.SaveChanges() >= 1)
+                        return true;
+                    else
+                    {
+                        Debug.WriteLine("Not saved change");
+                        return false;
+                    }
+                }
                 else
                 {
-                    Debug.WriteLine("Not saved change");
                     return false;
                 }
             }

@@ -53,7 +53,7 @@ namespace BackendBookAtUs.Controllers
         public bool Put(int id)
         {
             var repo = new ProductsRepository();
-            return  repo.soldOutBook(id);
+            return  repo.SoldOutBook(id);
         }
 
         // DELETE: api/Product/5

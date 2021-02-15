@@ -119,7 +119,7 @@ namespace BackendBookAtUs.Models
             }
         }
 
-        internal bool soldOutBook(int id)
+        internal bool SoldOutBook(int id)
         {
             using (BookAtUsContext context = new BookAtUsContext())
             {
