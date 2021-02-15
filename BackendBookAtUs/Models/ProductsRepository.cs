@@ -18,7 +18,7 @@ namespace BackendBookAtUs.Models
             {
                 List<Product> products = context
                     .Products
-                    .Where(p => p.vendido == false)
+                    .Where(p => p.Sold == false)
                     .ToList();
                 return products;
             }
@@ -124,7 +124,7 @@ namespace BackendBookAtUs.Models
             using (BookAtUsContext context = new BookAtUsContext())
             {
                 Product product = context.Products.FirstOrDefault(p => p.ProductId == id);
-                product.vendido = true;
+                product.Sold = true;
                 if (context.SaveChanges() >= 1)
                     return true;
                 else

@@ -52,11 +52,28 @@ namespace BackendBookAtUs.Controllers
 
         }
 
-        // PUT: api/Users/5
+        [Route("api/LoginAdmin")]
+        [HttpPut]
         public void Put(string id, [FromBody] User u)
         {
             var repo = new UsersRepository();
             repo.Put(id, u);
+        }
+
+        [Route("api/LoginAdmin")]
+        [HttpGet]
+        public void getLoginAdmin(string id, [FromBody] User u)
+        {
+            var repo = new UsersRepository();
+            repo.Put(id, u);
+        }
+
+        [Route("api/ChangePassword")]
+        [HttpPut]
+        public void Put(string id, string password)
+        {
+            var repo = new UsersRepository();
+            repo.Put(id, password);
         }
 
         // DELETE: api/Users/5

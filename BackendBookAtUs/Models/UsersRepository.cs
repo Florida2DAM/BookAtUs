@@ -91,5 +91,13 @@ namespace BackendBookAtUs.Models
             user.Birth = u.Birth;
             context.SaveChanges();
         }
+
+        internal void Put(string id, string password)
+        {
+            BookAtUsContext context = new BookAtUsContext();
+            User user = context.Users.FirstOrDefault(us => us.UserId == id);
+            user.Password = Security.Encode(password);
+            context.SaveChanges();
+        }
     }
 }

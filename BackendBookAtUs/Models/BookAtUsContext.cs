@@ -15,7 +15,8 @@ namespace BackendBookAtUs.Models
         public DbSet<User> Users { get; set; }
         public DbSet<PurchaseConfirmed> PurchaseConfirmed { get; set; }
         public DbSet<Chat> Chat { get; set; }
-
+        public DbSet<Admin> Admins { get; set; }
+        
         public BookAtUsContext()
         {
 

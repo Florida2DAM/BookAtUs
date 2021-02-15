@@ -43,8 +43,8 @@ namespace BackendBookAtUs.Models
         public int Category { get; set; }
         public Byte[] Image { get; set; }
         public DateTime UploadDate { get; set; }
-        public bool vendido { get; set; }
-
+        public bool Sold { get; set; }
         public string UserId { get; set; }
+        public User User { get; set; }
     }
 }

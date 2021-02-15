@@ -362,6 +362,10 @@
     <Compile Include="Migrations\20210214203134_m7.designer.cs">
       <DependentUpon>20210214203134_m7.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20210215141858_m8.cs" />
+    <Compile Include="Migrations\20210215141858_m8.designer.cs">
+      <DependentUpon>20210215141858_m8.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\BookAtUsContextModelSnapshot.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -376,6 +380,7 @@
     <Compile Include="Models\PurchaseConfirmedRepository.cs" />
     <Compile Include="Models\Response.cs" />
     <Compile Include="Models\Security.cs" />
+    <Compile Include="Models\Admin.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\UsersRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
