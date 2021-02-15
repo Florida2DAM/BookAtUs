@@ -27,7 +27,7 @@ export class Chat extends Component {
 
   uploadNewMsg = () => {
     if (this.currentMsg != "") {
-    axios.put('http://10.0.2.2:7010/api/Chat?chatId=' + this.props.route.params.chatid, { MessageId: null, User: this.state.username, Body: this.currentMsg }).then(res => {
+    axios.put('http://100.25.140.168:7010/api/Chat?chatId=' + this.props.route.params.chatid, { MessageId: null, User: this.state.username, Body: this.currentMsg }).then(res => {
       if (res.data) {
         this.textInput.clear();
         this.getChatData();
@@ -52,7 +52,7 @@ export class Chat extends Component {
   }
 
   getChatData = () => {
-    axios.get('http://10.0.2.2:7010/api/Chat?chatId=' + this.props.route.params.chatid).then(res => {
+    axios.get('http://100.25.140.168:7010/api/Chat?chatId=' + this.props.route.params.chatid).then(res => {
       if (res.data != []) {
         this.setState({ chats: res.data.Messages.reverse() });
       } else {

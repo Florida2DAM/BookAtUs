@@ -30,8 +30,8 @@ export class BookInfo extends Component {
       ProductId: this.props.route.params.data.ProductId
     }
 
-    axios.post('http://10.0.2.2:7010/api/PurchaseConfirmed', data).then(res => {
-      axios.put('http://10.0.2.2:7010/api/book?id='+this.props.route.params.data.ProductId).then(
+    axios.post('http://100.25.140.168:7010/api/PurchaseConfirmed', data).then(res => {
+      axios.put('http://100.25.140.168:7010/api/book?id='+this.props.route.params.data.ProductId).then(
         this.props.navigation.navigate('Main')
       )
     })
@@ -43,7 +43,7 @@ export class BookInfo extends Component {
       Buyer: this.props.route.params.username,
       Seller: this.props.route.params.data.UserId,
     }
-    axios.post('http://10.0.2.2:7010/api/Chat', chat).then(res => {
+    axios.post('http://100.25.140.168:7010/api/Chat?productId=' + chat.ProductId + '&buyer=' + chat.Buyer + '&seller=' + chat.Seller).then(res => {
       this.props.navigation.navigate('MyChats', { username : this.props.route.params.username})
     })
   }
@@ -83,6 +83,21 @@ export class BookInfo extends Component {
     return (<Text style={styles.category}>{category}</Text>)
   }
 
+  renderBtns(item) {
+    if(item.UserId == this.props.route.params.username){
+      <View style={styles.footer}>
+        <Text></Text>
+      </View>
+    } else {
+      return(
+        <View style={styles.footer}>
+          <Button buttonStyle={styles.buttonContainer2} titleStyle={{ textAlign: 'auto' }} title='Chat' onPress={() => this.chat()}></Button>
+          <Button buttonStyle={styles.buttonContainer} titleStyle={{ textAlign: 'auto' }} title='Comprar' onPress={() => this.confirmbuy()}></Button>
+        </View>
+      );
+    }
+  }
+
   render() {
     const item = this.props.route.params.data;
     return (
@@ -118,10 +133,7 @@ export class BookInfo extends Component {
             <Text style={styles.date}>Upload date: {item.UploadDate.replace('T', ' ')}</Text>
           </View>
         </ScrollView>
-        <View style={styles.footer}>
-          <Button buttonStyle={styles.buttonContainer2} titleStyle={{ textAlign: 'auto' }} title='Chat' onPress={() => this.chat()}></Button>
-          <Button buttonStyle={styles.buttonContainer} titleStyle={{ textAlign: 'auto' }} title='Comprar' onPress={() => this.confirmbuy()}></Button>
-        </View>
+        {this.renderBtns(item)}
       </View>
     );
   }

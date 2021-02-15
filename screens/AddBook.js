@@ -27,7 +27,7 @@ export class AddBook extends Component {
             category: null,
             userId: this.props.route.params.username,
             image: '',
-            url: 'http://10.0.2.2:7010/api/Product'
+            url: 'http://100.25.140.168:7010/api/Product'
         };
     }
 

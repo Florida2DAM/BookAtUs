@@ -64,32 +64,32 @@ export class BookList extends Component {
                                     <Text style={{ fontFamily: 'Arial', fontSize: 32, textAlign: 'center', color: '#333333', flex: 0.20 }}> Book Categories </Text>
                                     <View style={{ flex: 1, flexDirection: 'row' }}>
                                         <Card containerStyle={{ width: 175 }}>
-                                            <Button title='Fantasy' onPress={() => { this.loadBooks('http://10.0.2.2:7010/api/Product?category=2'), this.changeCategory('Fantasy') }} />
-                                            <Image source={{ uri: 'https://i.imgur.com/BiKQwmUs.jpg' }} style={{ width: 143, height: 130 }} onPress={() => { this.loadBooks('http://10.0.2.2:7010/api/Product?category=2'), this.changeCategory('Fantasy') }}></Image>
+                                            <Button title='Fantasy' onPress={() => { this.loadBooks('http://100.25.140.168:7010/api/Product?category=2'), this.changeCategory('Fantasy') }} />
+                                            <Image source={{ uri: 'https://i.imgur.com/BiKQwmUs.jpg' }} style={{ width: 143, height: 130 }} onPress={() => { this.loadBooks('http://100.25.140.168:7010/api/Product?category=2'), this.changeCategory('Fantasy') }}></Image>
                                         </Card>
                                         <Card containerStyle={{ width: 175 }}>
-                                            <Button title='Mystery' onPress={() => { this.loadBooks('http://10.0.2.2:7010/api/Product?category=1'), this.changeCategory('Mystery') }} />
-                                            <Image source={{ uri: 'https://i.imgur.com/htzIa7fs.jpg' }} style={{ width: 143, height: 130 }} onPress={() => { this.loadBooks('http://10.0.2.2:7010/api/Product?category=1'), this.changeCategory('Mystery') }}></Image>
-                                        </Card>
-                                    </View>
-                                    <View style={{ flex: 1, flexDirection: 'row' }}>
-                                        <Card containerStyle={{ width: 175 }}>
-                                            <Button title='Studies' onPress={() => { this.loadBooks('http://10.0.2.2:7010/api/Product?category=3'), this.changeCategory('Studies') }} />
-                                            <Image source={{ uri: 'https://i.imgur.com/Vaxo1Kos.jpg' }} style={{ width: 143, height: 130 }} onPress={() => { this.loadBooks('http://10.0.2.2:7010/api/Product?category=3'), this.changeCategory('Studies') }}></Image>
-                                        </Card>
-                                        <Card containerStyle={{ width: 175 }}>
-                                            <Button title='Romance' onPress={() => { this.loadBooks('http://10.0.2.2:7010/api/Product?category=4'), this.changeCategory('Romance') }} />
-                                            <Image source={{ uri: 'https://i.imgur.com/pWuhhh2s.jpg' }} style={{ width: 143, height: 130 }} onPress={() => { this.loadBooks('http://10.0.2.2:7010/api/Product?category=4'), this.changeCategory('Romance') }}></Image>
+                                            <Button title='Mystery' onPress={() => { this.loadBooks('http://100.25.140.168:7010/api/Product?category=1'), this.changeCategory('Mystery') }} />
+                                            <Image source={{ uri: 'https://i.imgur.com/htzIa7fs.jpg' }} style={{ width: 143, height: 130 }} onPress={() => { this.loadBooks('http://100.25.140.168:7010/api/Product?category=1'), this.changeCategory('Mystery') }}></Image>
                                         </Card>
                                     </View>
                                     <View style={{ flex: 1, flexDirection: 'row' }}>
                                         <Card containerStyle={{ width: 175 }}>
-                                            <Button title='Light novel' onPress={() => { this.loadBooks('http://10.0.2.2:7010/api/Product?category=5'), this.changeCategory('Light Novel') }} />
-                                            <Image source={{ uri: 'https://i.imgur.com/5jjnXtzs.jpg' }} style={{ width: 143, height: 130 }} onPress={() => { this.loadBooks('http://10.0.2.2:7010/api/Product?category=5'), this.changeCategory('Light Novel') }}></Image>
+                                            <Button title='Studies' onPress={() => { this.loadBooks('http://100.25.140.168:7010/api/Product?category=3'), this.changeCategory('Studies') }} />
+                                            <Image source={{ uri: 'https://i.imgur.com/Vaxo1Kos.jpg' }} style={{ width: 143, height: 130 }} onPress={() => { this.loadBooks('http://100.25.140.168:7010/api/Product?category=3'), this.changeCategory('Studies') }}></Image>
                                         </Card>
                                         <Card containerStyle={{ width: 175 }}>
-                                            <Button title='Dark novel' onPress={() => { this.loadBooks('http://10.0.2.2:7010/api/Product?category=6'), this.changeCategory('Dark Novel') }} />
-                                            <Image source={{ uri: 'https://i.imgur.com/gtxJeHys.jpg' }} style={{ width: 143, height: 130 }} onPress={() => { this.loadBooks('http://10.0.2.2:7010/api/Product?category=6'), this.changeCategory('Dark Novel') }}></Image>
+                                            <Button title='Romance' onPress={() => { this.loadBooks('http://100.25.140.168:7010/api/Product?category=4'), this.changeCategory('Romance') }} />
+                                            <Image source={{ uri: 'https://i.imgur.com/pWuhhh2s.jpg' }} style={{ width: 143, height: 130 }} onPress={() => { this.loadBooks('http://100.25.140.168:7010/api/Product?category=4'), this.changeCategory('Romance') }}></Image>
+                                        </Card>
+                                    </View>
+                                    <View style={{ flex: 1, flexDirection: 'row' }}>
+                                        <Card containerStyle={{ width: 175 }}>
+                                            <Button title='Light novel' onPress={() => { this.loadBooks('http://100.25.140.168:7010/api/Product?category=5'), this.changeCategory('Light Novel') }} />
+                                            <Image source={{ uri: 'https://i.imgur.com/5jjnXtzs.jpg' }} style={{ width: 143, height: 130 }} onPress={() => { this.loadBooks('http://100.25.140.168:7010/api/Product?category=5'), this.changeCategory('Light Novel') }}></Image>
+                                        </Card>
+                                        <Card containerStyle={{ width: 175 }}>
+                                            <Button title='Dark novel' onPress={() => { this.loadBooks('http://100.25.140.168:7010/api/Product?category=6'), this.changeCategory('Dark Novel') }} />
+                                            <Image source={{ uri: 'https://i.imgur.com/gtxJeHys.jpg' }} style={{ width: 143, height: 130 }} onPress={() => { this.loadBooks('http://100.25.140.168:7010/api/Product?category=6'), this.changeCategory('Dark Novel') }}></Image>
                                         </Card>
                                     </View>
                                 </View>

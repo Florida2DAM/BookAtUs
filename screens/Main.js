@@ -30,7 +30,7 @@ export class Main extends Component {
 
   componentDidMount() {
     this.setState({ loading: true })
-    axios.get('http://10.0.2.2:7010/api/Product').then(res => {
+    axios.get('http://100.25.140.168:7010/api/Product').then(res => {
       this.setState({
         books: res.data,
         loading: false,

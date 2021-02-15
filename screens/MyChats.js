@@ -29,13 +29,13 @@ export class MyChats extends Component {
   }
 
   componentDidMount() {
-    axios.get('http://10.0.2.2:7010/api/Chat?username=' +  this.state.username).then(res => {
+    axios.get('http://100.25.140.168:7010/api/Chat?username=' +  this.state.username).then(res => {
       if (res.data != []) {
         this.setState({ chats: res.data });
         console.log('data deceived: ');
       } else {
         console.log('Any data found: ' + res.data);
-        console.log('http://10.0.2.2:7010/api/Chat?username=' + this.state.username)
+        console.log('http://100.25.140.168:7010/api/Chat?username=' + this.state.username)
       }
     }
     ).catch(err => {

@@ -29,7 +29,7 @@ export class EditProfile extends Component {
   }
 
   componentDidMount() {
-    axios.get('http://10.0.2.2:7010/api/Users/' + this.props.route.params.username).then(res => {
+    axios.get('http://100.25.140.168:7010/api/Users/' + this.props.route.params.username).then(res => {
       const user = res.data
       this.setState({
         user
@@ -61,7 +61,7 @@ export class EditProfile extends Component {
       Password: this.state.password,
       Birth: this.state.user.Birth
     };
-    axios.put('http://10.0.2.2:7010/api/Users/' + this.props.route.params.username + '/', newuser).then(res => {
+    axios.put('http://100.25.140.168:7010/api/Users/' + this.props.route.params.username + '/', newuser).then(res => {
       alert('Updated user')
     }).catch(err => {
       alert(err)
